@@ -5,3 +5,5 @@
 node_modules
 
 .che/
+
+package-lock.json
