@@ -15,11 +15,7 @@ sap.ui.define([
 			this.getOwnerComponent().getRouter().navTo("LoginPage");
 		},
 		onInit: function () {
-			/* Nav */
-			this.attachDataToNavigation();
-			this.attachDataToFixedNavigation();
 			this._setToggleButtonTooltip(!sap.ui.Device.system.desktop);
-
 		},
 		navHelper: function (navString, key) {
 			/* Navigation Helper for switching views */
@@ -139,7 +135,7 @@ sap.ui.define([
 				placement: sap.m.PlacementType.Bottom,
 				content: [
 					new Button({
-						text: 'Help',
+						text: 'Settings',
 						type: sap.m.ButtonType.Transparent
 					}),
 					new Button({

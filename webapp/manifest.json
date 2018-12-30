@@ -94,39 +94,37 @@
 				"target": [
 					"LoginPage"
 				]
-			},
-			{
+			}, {
 				"name": "LandingPage",
 				"pattern": "LandingPage",
 				"greedy": false,
 				"target": [
 					"LandingPage"
 				]
-			}
-			],
+			}],
 			"targets": {
 				"LandingPage": {
 					"viewType": "JS",
 					"transition": "slide",
 					"clearAggregation": true,
 					"viewName": "LandingPage",
-					"viewLevel" : 0
+					"viewLevel": 0
 				},
 				"Dashboard": {
 					"viewType": "XML",
 					"transition": "slide",
 					"clearAggregation": true,
 					"viewName": "dashboard",
-					"viewLevel" : 2
+					"viewLevel": 2
 				},
 				"LoginPage": {
 					"viewType": "XML",
 					"transition": "slide",
 					"clearAggregation": true,
 					"viewName": "login",
-					"viewLevel" : 1
+					"viewLevel": 1
 				}
-				
+
 			}
 		}
 	},
