@@ -1,8 +1,9 @@
 var path = require('path'), express = require('express');
+var favicon = require('serve-favicon');
 var qs = require('querystring');
 var app = express();
 app.use('/ui5', express.static(path.join(__dirname, 'webapp')));
-app.use(express.favicon());
+app.use(favicon(__dirname + '/webapp/favicon.ico'));
 
 app.get('/', function(req, res){
 	console.log("method in get/: " + req.method);    
