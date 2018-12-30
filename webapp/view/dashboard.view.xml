@@ -36,7 +36,11 @@
 		<tnt:sideContent>
 			<tnt:SideNavigation expanded="true" itemSelect="onItemSelect">
 				<tnt:NavigationList id="navListItems">
-					<!-- nav items here -->
+					<tnt:NavigationListItem text="Item 1"
+						icon="sap-icon://employee">
+						<NavigationListItem text="Sub Item 1" />
+						<NavigationListItem text="Sub Item 2" />
+					</tnt:NavigationListItem>
 				</tnt:NavigationList>
 				<tnt:fixedItem>
 					<tnt:NavigationList id="fixedNavListItems">
