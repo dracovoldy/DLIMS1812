@@ -9,7 +9,7 @@
 					</layoutData>
 				</Button>
 				<ToolbarSpacer width="20px"/>
-				<Button text="LIMS - Connect" type="Transparent">
+				<Button text="Tools" type="Transparent">
 					<layoutData>
 						<OverflowToolbarLayoutData priority="High"/>
 					</layoutData>
