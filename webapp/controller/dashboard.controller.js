@@ -9,21 +9,20 @@ sap.ui.define([
 	"use strict";
 
 	var CController = Controller.extend("com.limscloud.app.controller.dashboard", {
-		
-		toLogout : function () {
-			/* Logout */			
+
+		toLogout: function () {
+			/* Logout */
 			this.getOwnerComponent().getRouter().navTo("LoginPage");
-		} ,		
-		onInit : function() {
-			/* Nav */	
+		},
+		onInit: function () {
+			/* Nav */
 			this.attachDataToNavigation();
 			this.attachDataToFixedNavigation();
 			this._setToggleButtonTooltip(!sap.ui.Device.system.desktop);
 
-			
-		} ,
+		},
 		navHelper: function (navString, key) {
-			/* Navigation Helper for switching views */	
+			/* Navigation Helper for switching views */
 			var that = this;
 			//var oScrollContainer = this.getView().byId(key);		
 			var navContainerRef = this.getView().byId("pageContainer");
@@ -31,7 +30,7 @@ sap.ui.define([
 				horizontal: false,
 				vertical: true,
 				height: "100%"
-				
+
 			});
 			//oScrollContainer.removeAllContent();
 			var oCurrentView = oScrollContainer.getContent();
@@ -40,93 +39,94 @@ sap.ui.define([
 				if (view === undefined) {
 					view = sap.ui.view({
 						type: sap.ui.core.mvc.ViewType.XML,
-						viewName: "com.limscloud.app.view."+ navString
+						viewName: "com.limscloud.app.view." + navString
 					});
 				}
 				oScrollContainer.addContent(view);
 				navContainerRef.addPage(oScrollContainer);
 			}
-			
-		} ,
+
+		},
 		attachDataToNavigation: function () {
 			var self = this;
 			/* Generate dynamically */
-			var navList = this.getView().byId("navListItems");			
+			var navList = this.getView().byId("navListItems");
 			var aData = jQuery.ajax({
-				type : "GET",
-				contentType : "application/json",
-				url : "/navigations",
-				dataType : "json",
-				async: true, 
-				success : function(data,textStatus, jqXHR) {	
+				type: "GET",
+				contentType: "application/json",
+				url: "/navigations",
+				dataType: "json",
+				async: true,
+				success: function (data, textStatus, jqXHR) {
 
-					data.sort(function(a,b){ return a.id.localeCompare(b.id); });
+					data.sort(function (a, b) {
+						return a.id.localeCompare(b.id);
+					});
 
 					var dataLength = data.length;
-					for(var i = 0; i < dataLength; i++){	
-						var navChildList = new sap.tnt.NavigationListItem({				
-							text: data[i].title,								
+					for (var i = 0; i < dataLength; i++) {
+						var navChildList = new sap.tnt.NavigationListItem({
+							text: data[i].title,
 							key: data[i].key,
 							icon: data[i].icon,
 							expanded: data[i].expanded,
-							select: [self.navHelper(data[i].select, data[i].key) , Controller]						
+							select: [self.navHelper(data[i].select, data[i].key), Controller]
 						});
-						navList.addItem(navChildList);						
+						navList.addItem(navChildList);
 						//console.log(data[i].items);
 						try {
 							//Block of code to try
-							if(data[i].items.length == null) throw "empty";
+							if (data[i].items.length == null) throw "empty";
 							var itemsLength = data[i].items.length;
-							if(itemsLength > 0){
-								
-								for(var k = 0; k < itemsLength; k++){
-									var navSubChildList = new sap.tnt.NavigationListItem({				
-										text: data[i].items[k].title,															
+							if (itemsLength > 0) {
+
+								for (var k = 0; k < itemsLength; k++) {
+									var navSubChildList = new sap.tnt.NavigationListItem({
+										text: data[i].items[k].title,
 										key: data[i].items[k].key,
-										select: [self.navHelper(data[i].items[k].select, data[i].items[k].key) , Controller]
+										select: [self.navHelper(data[i].items[k].select, data[i].items[k].key), Controller]
 									});
 									navChildList.addItem(navSubChildList);
 								}
 							}
-						}
-						catch(err) {
+						} catch (err) {
 							//Block of code to handle errors
 						}
-						
+
 					}
 				}
 			});
-			
-		} ,
+
+		},
 		attachDataToFixedNavigation: function () {
 			var self = this;
 			/* Generate dynamically */
-			var navList = this.getView().byId("fixedNavListItems");			
+			var navList = this.getView().byId("fixedNavListItems");
 			var aData = jQuery.ajax({
-				type : "GET",
-				contentType : "application/json",
-				url : "/fixedNavigations",
-				dataType : "json",
-				async: true, 
-				success : function(data,textStatus, jqXHR) {	
-					
+				type: "GET",
+				contentType: "application/json",
+				url: "/fixedNavigations",
+				dataType: "json",
+				async: true,
+				success: function (data, textStatus, jqXHR) {
+
 					//data.sort(function(a,b){ return a.id.localeCompare(b.id); });
 
 					var dataLength = data.length;
-					for(var i = 0; i < dataLength; i++){	
-						var navChildList = new sap.tnt.NavigationListItem({				
-							text: data[i].title,					
-							icon: data[i].icon,		
-							key: data[i].key,				
-							select: [self.navHelper(data[i].select, data[i].key) , Controller]						
+					for (var i = 0; i < dataLength; i++) {
+						var navChildList = new sap.tnt.NavigationListItem({
+							text: data[i].title,
+							icon: data[i].icon,
+							key: data[i].key,
+							select: [self.navHelper(data[i].select, data[i].key), Controller]
 						});
-						navList.addItem(navChildList);						
+						navList.addItem(navChildList);
 					}
 				}
 			});
-			
-		} ,
-		onItemSelect : function(oEvent) {
+
+		},
+		onItemSelect: function (oEvent) {
 			var item = oEvent.getParameter('item');
 			var viewId = this.getView().getId();
 			sap.ui.getCore().byId(viewId + "--pageContainer").to(item.getKey(), "slide");
@@ -137,7 +137,7 @@ sap.ui.define([
 			var popover = new Popover({
 				showHeader: false,
 				placement: sap.m.PlacementType.Bottom,
-				content:[					
+				content: [
 					new Button({
 						text: 'Help',
 						type: sap.m.ButtonType.Transparent
@@ -153,7 +153,7 @@ sap.ui.define([
 			popover.openBy(event.getSource());
 		},
 
-		onSideNavButtonPress : function() {
+		onSideNavButtonPress: function () {
 			var viewId = this.getView().getId();
 			var toolPage = sap.ui.getCore().byId(viewId + "--toolPage");
 			var sideExpanded = toolPage.getSideExpanded();
@@ -163,7 +163,7 @@ sap.ui.define([
 			toolPage.setSideExpanded(!toolPage.getSideExpanded());
 		},
 
-		_setToggleButtonTooltip : function(bLarge) {
+		_setToggleButtonTooltip: function (bLarge) {
 			var toggleButton = this.byId('sideNavigationToggleButton');
 			if (bLarge) {
 				toggleButton.setTooltip('Expand');
@@ -173,7 +173,6 @@ sap.ui.define([
 		}
 
 	});
-
 
 	return CController;
 

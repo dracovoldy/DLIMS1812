@@ -1,74 +1,45 @@
-<core:View height="100%"
-		   xmlns:core="sap.ui.core"
-		   xmlns="sap.m"
-		   xmlns:tnt="sap.tnt"
-		   xmlns:html="http://www.w3.org/1999/xhtml"
-		   xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
-		   controllerName="com.limscloud.app.controller.dashboard">
+<core:View height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:tnt="sap.tnt" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" controllerName="com.limscloud.app.controller.dashboard">
 	<tnt:ToolPage id="toolPage">
 		<tnt:header>
 			<tnt:ToolHeader>
-				<Button id="sideNavigationToggleButton"
-						icon="sap-icon://menu2"
-						type="Transparent"
-						press="onSideNavButtonPress">
+				<Button id="sideNavigationToggleButton" icon="sap-icon://menu2" type="Transparent" press="onSideNavButtonPress">
 					<layoutData>
-						<OverflowToolbarLayoutData priority="NeverOverflow" />
+						<OverflowToolbarLayoutData priority="NeverOverflow"/>
 					</layoutData>
 				</Button>
-				<ToolbarSpacer width="20px" />
-				<Button text="File" type="Transparent">
+				<ToolbarSpacer width="20px"/>
+				<Button text="LIMS - Connect" type="Transparent">
 					<layoutData>
-						<OverflowToolbarLayoutData priority="High" />
+						<OverflowToolbarLayoutData priority="High"/>
 					</layoutData>
 				</Button>
-				<Button text="Edit" type="Transparent">
+				<Button text="Help" type="Transparent">
 					<layoutData>
-						<OverflowToolbarLayoutData priority="Low" />
+						<OverflowToolbarLayoutData priority="Low"/>
 					</layoutData>
 				</Button>
-				<Button text="View" type="Transparent">
-					<layoutData>
-						<OverflowToolbarLayoutData priority="Low" />
-					</layoutData>
-				</Button>
-				<Button text="Navigate" type="Transparent">
-					<layoutData>
-						<OverflowToolbarLayoutData priority="Low" />
-					</layoutData>
-				</Button>
-				<Button text="Run" type="Transparent">
-					<layoutData>
-						<OverflowToolbarLayoutData priority="Low" />
-					</layoutData>
-				</Button>
-				<Button text="Tools" type="Transparent">
-					<layoutData>
-						<OverflowToolbarLayoutData priority="Low" />
-					</layoutData>
-				</Button>
-				<tnt:ToolHeaderUtilitySeparator />
+			
+				<tnt:ToolHeaderUtilitySeparator/>
 				<ToolbarSpacer>
 					<layoutData>
-						<OverflowToolbarLayoutData priority="NeverOverflow" minWidth="20px" />
+						<OverflowToolbarLayoutData priority="NeverOverflow" minWidth="20px"/>
 					</layoutData>
 				</ToolbarSpacer>
 				<Button text="Abhishek Mallik" type="Transparent" press="handleUserNamePress">
 					<layoutData>
-						<OverflowToolbarLayoutData priority="NeverOverflow" />
+						<OverflowToolbarLayoutData priority="NeverOverflow"/>
 					</layoutData>
 				</Button>
-
 			</tnt:ToolHeader>
 		</tnt:header>
 		<tnt:sideContent>
-			<tnt:SideNavigation expanded="true" 
-								itemSelect="onItemSelect">
+			<tnt:SideNavigation expanded="true" itemSelect="onItemSelect">
 				<tnt:NavigationList id="navListItems">
 					<!-- nav items here -->
 				</tnt:NavigationList>
 				<tnt:fixedItem>
-					<tnt:NavigationList id="fixedNavListItems" >
+					<tnt:NavigationList id="fixedNavListItems">
 						<!-- fixed nav items here -->
 					</tnt:NavigationList>
 				</tnt:fixedItem>
@@ -77,36 +48,7 @@
 		<tnt:mainContents>
 			<NavContainer id="pageContainer">
 				<pages>
-					<!-- <ScrollContainer id="root1"
-									 horizontal="false"
-									 vertical="true"
-									 height="100%">						
-					</ScrollContainer>
-
-					<ScrollContainer id="page1"
-									 horizontal="false"
-									 vertical="true"
-									 height="100%">						
-					</ScrollContainer>
-
-					<ScrollContainer id="page2"
-									 horizontal="false"
-									 vertical="true"
-									 height="100%">						
-					</ScrollContainer>
-
-					<ScrollContainer id="foot1"
-									 horizontal="false"
-									 vertical="true"
-									 height="100%">						
-					</ScrollContainer>
-					
-					<ScrollContainer id="foot2"
-									 horizontal="false"
-									 vertical="true"
-									 height="100%">						
-					</ScrollContainer> -->
-
+				
 				</pages>
 			</NavContainer>
 		</tnt:mainContents>
