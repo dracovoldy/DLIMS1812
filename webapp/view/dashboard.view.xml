@@ -19,7 +19,6 @@
 						<OverflowToolbarLayoutData priority="Low"/>
 					</layoutData>
 				</Button>
-			
 				<tnt:ToolHeaderUtilitySeparator/>
 				<ToolbarSpacer>
 					<layoutData>
@@ -36,24 +35,27 @@
 		<tnt:sideContent>
 			<tnt:SideNavigation expanded="true" itemSelect="onItemSelect">
 				<tnt:NavigationList id="navListItems">
-					<tnt:NavigationListItem text="Item 1"
-						icon="sap-icon://employee">
-						<tnt:NavigationListItem text="Sub Item 1" />
-						<tnt:NavigationListItem text="Sub Item 2" />
+					<!-- Nav Items -->
+					<tnt:NavigationListItem text="Home" icon="sap-icon://home">
+						<!--<tnt:NavigationListItem text="Sub Item 1" />-->
+						<!--<tnt:NavigationListItem text="Sub Item 2" />-->
+					</tnt:NavigationListItem>
+					<tnt:NavigationListItem text="Reports" icon="sap-icon://tools-opportunity">
+						<tnt:NavigationListItem text="Sub Item 1"/>
+						<tnt:NavigationListItem text="Sub Item 2"/>
 					</tnt:NavigationListItem>
 				</tnt:NavigationList>
 				<tnt:fixedItem>
 					<tnt:NavigationList id="fixedNavListItems">
 						<!-- fixed nav items here -->
+						<tnt:NavigationListItem text="Support" icon="sap-icon://headset" />
 					</tnt:NavigationList>
 				</tnt:fixedItem>
 			</tnt:SideNavigation>
 		</tnt:sideContent>
 		<tnt:mainContents>
 			<NavContainer id="pageContainer">
-				<pages>
-				
-				</pages>
+				<pages></pages>
 			</NavContainer>
 		</tnt:mainContents>
 	</tnt:ToolPage>

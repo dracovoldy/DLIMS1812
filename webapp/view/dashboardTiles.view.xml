@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="com.limscloud.app.controller.CustomerView"
+	controllerName="com.limscloud.app.controller.dashboardTiles"
 	displayBlock="true"
 	height="100%"
 	xmlns="sap.m"
@@ -7,7 +7,7 @@
   xmlns:mvc="sap.ui.core.mvc">
 	<App id="CustomerDashboardApp">
       <pages>
-        <Page title="Customer Dashboard" id="page2">
+        <Page title="Dashboard" id="page2">
         <content>
             <TileContainer id="container1">
                 <tiles>
