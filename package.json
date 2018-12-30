@@ -1,0 +1,27 @@
+{
+  "name": "dlims1812",
+  "version": "1.0.0",
+  "description": "Heroku Deploy UI5",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "request": "^2.81.0",
+    "tape": "^4.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dracovoldy/DLIMS1812.git"
+  },
+  "author": "dracovoldy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dracovoldy/DLIMS1812/issues"
+  },
+  "homepage": "https://github.com/dracovoldy/DLIMS1812#readme"
+}
