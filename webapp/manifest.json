@@ -88,6 +88,13 @@
 					"Dashboard"
 				]
 			}, {
+				"name": "dashboardTiles",
+				"pattern": "dashboardTiles",
+				"greedy": false,
+				"target": [
+					"dashboardTiles"
+				]
+			},{
 				"name": "LoginPage",
 				"pattern": "LoginPage",
 				"greedy": false,
@@ -115,6 +122,15 @@
 					"transition": "slide",
 					"clearAggregation": true,
 					"viewName": "dashboard",
+					"viewLevel": 1
+				},
+				"dashboardTiles": {
+					"viewType": "XML",
+					"parent": "Dashboard",
+        			"controlId": "pageContainer",
+					"transition": "fade",
+					"clearAggregation": true,
+					"viewName": "dashboardTiles",
 					"viewLevel": 2
 				},
 				"LoginPage": {
@@ -122,7 +138,7 @@
 					"transition": "slide",
 					"clearAggregation": true,
 					"viewName": "login",
-					"viewLevel": 1
+					"viewLevel": 0
 				}
 
 			}

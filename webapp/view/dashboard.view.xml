@@ -36,7 +36,7 @@
 			<tnt:SideNavigation expanded="true" itemSelect="onItemSelect">
 				<tnt:NavigationList id="navListItems">
 					<!-- Nav Items -->
-					<tnt:NavigationListItem text="Home" icon="sap-icon://home">
+					<tnt:NavigationListItem text="Home" icon="sap-icon://home" key="dashboardTiles">
 						<!--<tnt:NavigationListItem text="Sub Item 1" />-->
 						<!--<tnt:NavigationListItem text="Sub Item 2" />-->
 					</tnt:NavigationListItem>

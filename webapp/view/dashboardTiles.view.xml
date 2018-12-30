@@ -1,28 +1,33 @@
-<mvc:View
-	controllerName="com.limscloud.app.controller.dashboardTiles"
-	displayBlock="true"
-	height="100%"
-	xmlns="sap.m"
-  xmlns:core="sap.ui.core"
-  xmlns:mvc="sap.ui.core.mvc">
-	<App id="CustomerDashboardApp">
-      <pages>
-        <Page title="Dashboard" id="page2">
-        <content>
-            <TileContainer id="container1">
-                <tiles>
-                    <StandardTile title="Maintain Customers" icon="sap-icon://wrench" activeIcon="sap-icon://customer" number="106" numberUnit="Active" infoState="Error" id="tile4" info="Inactive: 24"/>
-                    <StandardTile xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" title="Modify Customer" icon="sap-icon://edit" activeIcon="sap-icon://customer" infoState="Error" id="tile4_copy" type="Monitor"/>
-                    <StandardTile xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" title="Customer Master" icon="sap-icon://folder-full" activeIcon="sap-icon://customer" infoState="Error" id="tile4_copy2" type="Monitor"/>
-                    <StandardTile xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" title="Create Customer" icon="sap-icon://add-document" activeIcon="sap-icon://customer" infoState="Error" id="tile4_copy3" type="Monitor"/>
-                    <StandardTile xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" title="Customer Maintenance Log" icon="sap-icon://wrench" activeIcon="sap-icon://customer" number="106" numberUnit="Active" infoState="Error" id="tile4_copy4" info="Inactive: 24"/>
-                    <StandardTile xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" title="Customer Service Dashboard" icon="sap-icon://folder-full" activeIcon="sap-icon://customer" infoState="Error" id="tile4_copy5" type="Monitor"/>
-                    <StandardTile xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" title="Customer Lookup" icon="sap-icon://wrench" activeIcon="sap-icon://customer" number="106" numberUnit="Active" infoState="Error" id="tile4_copy6" info="Inactive: 24"/>
-                    <StandardTile xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" title="Customer Analytics" icon="sap-icon://wrench" activeIcon="sap-icon://customer" number="106" numberUnit="Active" infoState="Error" id="tile4_copy7" info="Inactive: 24"/>
-                    </tiles>
-            </TileContainer>
-        </content>
-        </Page>
-        <Page title="Page 1" id="page0"/></pages>
-</App>
+<mvc:View controllerName="com.limscloud.app.controller.dashboardTiles" displayBlock="true" height="100%" xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc">
+	<App id="dashboardTilesApp">
+		<pages>
+			<Page id="page2" showHeader="false">
+				<content>
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Sales Fulfillment Application Title" subheader="Subtitle"
+						press="press">
+						<TileContent unit="EUR" footer="Current Quarter">
+							<ImageContent src="sap-icon://home-share"/>
+						</TileContent>
+					</GenericTile>
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Manage Activity Master Data Type" subheader="Subtitle"
+						press="press">
+						<TileContent>
+							<ImageContent src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/SAPLogoLargeTile_28px_height.png"/>
+						</TileContent>
+					</GenericTile>
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+						header="Manage Activity Master Data Type With a Long Title Without an Icon" subheader="Subtitle Launch Tile" mode="HeaderMode" press="press">
+						<TileContent unit="EUR" footer="Current Quarter"/>
+					</GenericTile>
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Jessica D. Prince Senior Consultant" subheader="Department"
+						press="press">
+						<TileContent>
+							<ImageContent src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/ProfileImage_LargeGenTile.png"/>
+						</TileContent>
+					</GenericTile>
+				</content>
+			</Page>
+		</pages>
+	</App>
 </mvc:View>

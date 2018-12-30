@@ -9,15 +9,21 @@ sap.ui.define([
 	"use strict";
 
 	var CController = Controller.extend("com.limscloud.app.controller.dashboard", {
-
+	
 		toLogout: function () {
 			/* Logout */
 			this.getOwnerComponent().getRouter().navTo("LoginPage");
 		},
 		onInit: function () {
+			this.router = this.getOwnerComponent().getRouter();
 			this._setToggleButtonTooltip(!sap.ui.Device.system.desktop);
 		},
-
+		onAfterRendering: function (){
+			this.router.navTo("dashboardTiles");
+		},
+		onItemSelect : function(oEvent) {
+			this.router.navTo(oEvent.getParameter("item").getKey());
+		},
 		handleUserNamePress: function (event) {
 			var self = this;
 			var popover = new Popover({
