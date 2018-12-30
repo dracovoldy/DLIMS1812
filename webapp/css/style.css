@@ -1,0 +1,56 @@
+/* Set fullscreen */
+html.sap-desktop .sapMShellAppWidthLimited .sapMShellCentralBox {
+    width: 100%;
+    margin-left: 0;    
+    left: 0;
+    background-color: rgba(255,255,255,0.3);
+}
+
+/* Remove Scrolling on main app */
+#content {
+    overflow: hidden;
+}
+
+/* LoginBox CSS*/
+.shellCustom {
+    
+    width: 350px;
+    margin: 5px;
+    padding: 1em;
+    border-radius: 0.2em;
+    text-align: center;
+    background: #8e9eab;
+    background: -webkit-linear-gradient(to bottom, #eef2f3, #8e9eab);
+    background: linear-gradient(to bottom, #eef2f3, #8e9eab);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* LoginBox-BG CSS*/
+.shellCustom-BG {
+    display: flex;              /* establish flex container */
+    flex-direction: column;     /* stack flex items vertically */
+    justify-content: center;    /* center items vertically, in this case */
+    align-items: center;        /* center items horizontally, in this case */
+    height: 100%;
+    border: 1px solid black;
+    background: #000046;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #1CB5E0, #000046);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #1CB5E0, #000046); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+/* LoginBox Button CSS*/
+.buttonLoginBox {
+    padding-right: 1em;
+    border-radius: 0.4em;
+    
+}
+/* LoginBox Header */
+.loginHeader {
+    color: black;
+    font-size: 1.5em;
+}
+/* LoginBox Footer */
+.footerLoginBox {
+    color: #000046;
+    padding-top: 15px;
+}

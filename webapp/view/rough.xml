@@ -1,0 +1,25 @@
+<mvc:View
+	controllerName="com.limscloud.app.controller.LandingPage"
+	displayBlock="true"
+	height="100%"
+	xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+  xmlns:mvc="sap.ui.core.mvc">
+	<SplitApp
+	  id="idSplitApp"
+	  mode="StretchCompressMode"
+	  showHeader="false">
+		<masterPages>
+			<!-- Example only  -->
+			<Page
+			  title="Master">
+			</Page>
+		</masterPages>
+		<detailPages>
+			<!-- Example only  -->
+			<Page
+			  title="Detail">
+			</Page>
+		</detailPages>
+	</SplitApp>
+</mvc:View>
