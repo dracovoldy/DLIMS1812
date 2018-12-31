@@ -25,6 +25,11 @@
 						<OverflowToolbarLayoutData priority="NeverOverflow" minWidth="20px"/>
 					</layoutData>
 				</ToolbarSpacer>
+				<SearchField placeholder="T-Code">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow" minWidth="60px" maxWidth="200px"/>
+					</layoutData>
+				</SearchField>
 				<Button text="Abhishek Mallik" type="Transparent" press="handleUserNamePress">
 					<layoutData>
 						<OverflowToolbarLayoutData priority="NeverOverflow"/>
