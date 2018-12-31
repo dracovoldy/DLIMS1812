@@ -11,13 +11,8 @@ sap.ui.define([
 		onInit: function () {
            // alert("Im alive: View");
            this.router = this.getOwnerComponent().getRouter();
-		},
-		_navDO01: function () {
-			this.router.navTo("DO01");
-		},
-		_navDO05: function () {
-			this.router.navTo("DO05");
 		}
+		
 		
 	});
 

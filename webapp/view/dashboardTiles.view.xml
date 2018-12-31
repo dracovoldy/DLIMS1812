@@ -7,7 +7,7 @@
 					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create New System User" subheader="Singe creation" mode="HeaderMode"
 						press="_navSU01">
 						<TileContent footer="SU01">
-							<ImageContent src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/ProfileImage_LargeGenTile.png"/>
+							<ImageContent src="sap-icon://home-share"/>
 						</TileContent>
 					</GenericTile>
 					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Customer" subheader="Single creation" press="_navCU01">
@@ -27,30 +27,30 @@
 					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Task Unassigned" subheader="Unitary task" mode="HeaderMode"
 						press="_navTT01">
 						<TileContent footer="TT01">
-							<ImageContent src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/ProfileImage_LargeGenTile.png"/>
+							<ImageContent src="sap-icon://home-share"/>
 						</TileContent>
 					</GenericTile>
 					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Task for User" subheader="Unitary task" mode="HeaderMode"
 						press="_navTT02">
 						<TileContent footer="TT02">
-							<ImageContent src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/ProfileImage_LargeGenTile.png"/>
+							<ImageContent src="sap-icon://home-share"/>
 						</TileContent>
 					</GenericTile>
 					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Assign Task to User" subheader="Unitary task" mode="HeaderMode"
 						press="_navTT03">
 						<TileContent footer="TT03">
-							<ImageContent src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/ProfileImage_LargeGenTile.png"/>
+							<ImageContent src="sap-icon://meeting-room"/>
 						</TileContent>
 					</GenericTile>
 					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Launch Task" subheader="Tasks for user" 
-					press="_navDO01">
-						<TileContent footer="DO01">
+					press="_navTL01">
+						<TileContent footer="TL01">
 							<ImageContent src="sap-icon://physical-activity"/>
 						</TileContent>
 					</GenericTile>
 					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Monitor Tasks" subheader="All tasks"
-					press="_navDO05">
-						<TileContent footer="DO05">
+					press="_navTM01">
+						<TileContent footer="TM01">
 							<ImageContent src="sap-icon://electrocardiogram"/>
 						</TileContent>
 					</GenericTile>

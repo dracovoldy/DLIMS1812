@@ -23,14 +23,14 @@
 						</TileContent>
 					</GenericTile>
 					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Launch Task" subheader="Tasks for user" 
-					press="_navDO01">
-						<TileContent footer="DO01">
+					press="_navTL01">
+						<TileContent footer="TL01">
 							<ImageContent src="sap-icon://physical-activity"/>
 						</TileContent>
 					</GenericTile>
 					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Monitor Tasks" subheader="All tasks"
-					press="_navDO05">
-						<TileContent footer="DO05">
+					press="_navTL01">
+						<TileContent footer="TL01">
 							<ImageContent src="sap-icon://electrocardiogram"/>
 						</TileContent>
 					</GenericTile>
