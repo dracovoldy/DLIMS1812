@@ -23,7 +23,7 @@ sap.ui.define([
 		},
 		onPatternMatched: function (event) {
 			// const model = this.getModel("odata");
-			this.accessToken = event.getParameter("arguments");
+			this.accessToken = event.getParameter("arguments").itemId                         ;
 			MessageToast.show(this.accessToken);
 		},
 		onAfterRendering: function () {

@@ -15,8 +15,9 @@ sap.ui.define([
 			this.addDynamicContent();
 
 		},
-		_tryLogin: function () {
+		_tryLogin: function (oEvent) {
 			var that = this;
+			// var context  = oEvent.getSource().getBindingContext();
 			var oView = this.getView();
 			var user = oView.byId("inUser").getValue(),
 				pass = oView.byId("inPass").getValue(),
@@ -28,7 +29,7 @@ sap.ui.define([
 			somedata.password = pass;
 
 			var weHaveSuccess = false;
-			var accessToken = "";
+			this.accessToken = "";
 
 			$.ajax({
 				type: "POST",
@@ -38,10 +39,11 @@ sap.ui.define([
 				data: somedata,
 				
 				success: function (result) {
-					accessToken = result.accessToken;
-					MessageToast.show(accessToken);
+					that.accessToken = result.accessToken;
+					MessageToast.show(that.accessToken);
 					weHaveSuccess = true;
-					that.toDashboard();
+					that.getOwnerComponent().getRouter().navTo("Dashboard", { itemId: that.accessToken });
+					
 				},
 				error: function (response) {
 					MessageToast.show("Error!  " + response.status);
