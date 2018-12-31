@@ -108,8 +108,24 @@
 				"target": [
 					"CU01"
 				]
+			}, {
+				"name": "SU01",
+				"pattern": "SU01",
+				"greedy": false,
+				"target": [
+					"SU01"
+				]
 			}],
 			"targets": {
+				"SU01": {
+					"viewType": "XML",
+					"parent": "Dashboard",
+        			"controlId": "pageContainer",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "CreateUsers",
+					"viewLevel": 3
+				},
 				"CU01": {
 					"viewType": "XML",
 					"parent": "Dashboard",

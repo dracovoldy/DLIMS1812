@@ -29,9 +29,18 @@
 									<core:Item text="USA" key="USA"/>
 								</items>
 							</Select>
+							<Label text="State/Province"/>
+							<Select id="State" selectedKey="{State}">
+								<items>
+									<core:Item text="Maharashtra" key="Maharashtra"/>
+									<core:Item text="Gujarat" key="Gujarat"/>
+									<core:Item text="West Bengal" key="WestBengal"/>
+								</items>
+							</Select>
+							
+							<core:Title text="Contact"/>
 							<Label text="Email"/>
 							<Input value="{Email}" type="Email" placeholder="Email"/>
-							<core:Title text="Contact"/>
 							<Label text="Phone"/>
 							<Input value="{Tel}" type="Tel" placeholder="+91 XXXXX XXXXX"/>
 							<Label text="Mobile"/>
