@@ -45,15 +45,15 @@
 						<!--<tnt:NavigationListItem text="Sub Item 1" />-->
 						<!--<tnt:NavigationListItem text="Sub Item 2" />-->
 					</tnt:NavigationListItem>
-					<tnt:NavigationListItem text="Tasks" icon="sap-icon://activity-individual" key="dashboardTasks" expanded="false">
+					<tnt:NavigationListItem text="Tasks" icon="sap-icon://activity-individual" key="dashboardTasks" expanded="true">
 						<tnt:NavigationListItem text="Monitor" key="dashboardTasks"/>
 						<tnt:NavigationListItem text="Launch Task" key="dashboardTasks"/>
 					</tnt:NavigationListItem>
-					<tnt:NavigationListItem text="Tests" icon="sap-icon://lab" key="Dashboard" expanded="false">
+					<tnt:NavigationListItem text="Tests" icon="sap-icon://lab" key="Dashboard" expanded="true">
 						<tnt:NavigationListItem text="Schemas" key="Dashboard"/>
 						<tnt:NavigationListItem text="Data" key="Dashboard"/>
 					</tnt:NavigationListItem>
-					<tnt:NavigationListItem text="Reports" icon="sap-icon://tools-opportunity" key="Dashboard"  expanded="false">
+					<tnt:NavigationListItem text="Reports" icon="sap-icon://tools-opportunity" key="Dashboard" expanded="false">
 						<tnt:NavigationListItem text="Sub Item 1" key="Dashboard"/>
 						<!--<tnt:NavigationListItem text="Sub Item 2" key="Dashboard"/>-->
 					</tnt:NavigationListItem>
