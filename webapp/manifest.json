@@ -116,11 +116,25 @@
 					"CU01"
 				]
 			}, {
+				"name": "CU05",
+				"pattern": "CU05",
+				"greedy": false,
+				"target": [
+					"CU05"
+				]
+			}, {
 				"name": "SU01",
 				"pattern": "SU01",
 				"greedy": false,
 				"target": [
 					"SU01"
+				]
+			}, {
+				"name": "SU05",
+				"pattern": "SU05",
+				"greedy": false,
+				"target": [
+					"SU05"
 				]
 			}],
 			"targets": {
@@ -133,6 +147,15 @@
 					"viewName": "CreateUsers",
 					"viewLevel": 3
 				},
+				"SU05": {
+					"viewType": "XML",
+					"parent": "Dashboard",
+        			"controlId": "pageContainer",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "ModifyUsers",
+					"viewLevel": 3
+				},
 				"CU01": {
 					"viewType": "XML",
 					"parent": "Dashboard",
@@ -140,6 +163,15 @@
 					"transition": "slide",
 					"clearAggregation": true,
 					"viewName": "CreateCustomers",
+					"viewLevel": 3
+				},
+				"CU05": {
+					"viewType": "XML",
+					"parent": "Dashboard",
+        			"controlId": "pageContainer",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "ModifyCustomers",
 					"viewLevel": 3
 				},
 				"Dashboard": {

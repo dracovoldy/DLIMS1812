@@ -7,7 +7,7 @@ sap.ui.define([
 ], function(jQuery, Controller, Popover, Button, History) {
 	"use strict";
 
-	return Controller.extend("com.limscloud.app.controller.CreateCustomers", {
+	return Controller.extend("com.limscloud.app.controller.ModifyUsers", {
 
 		onInit: function () {
            // alert("Im alive: View");

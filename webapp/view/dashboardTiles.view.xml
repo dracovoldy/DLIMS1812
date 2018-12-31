@@ -10,6 +10,12 @@
 							<ImageContent src="sap-icon://create"/>
 						</TileContent>
 					</GenericTile>
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Maintain System Users" subheader="Mass View/Modify"
+						press="_navSU05">
+						<TileContent footer="SU05">
+							<ImageContent src="sap-icon://user-edit"/>
+						</TileContent>
+					</GenericTile>
 					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Customer" subheader="Single creation" press="_navCU01">
 						<TileContent footer="CU01">
 							<ImageContent src="sap-icon://home-share"/>
