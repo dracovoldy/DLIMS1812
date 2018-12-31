@@ -6,15 +6,13 @@ sap.ui.define([
 ], function(jQuery, Controller, Popover, Button) {
 	"use strict";
 
-	return Controller.extend("com.limscloud.app.controller.dashboardTiles", {
+	return Controller.extend("com.limscloud.app.controller.CreateCustomers", {
 
 		onInit: function () {
            // alert("Im alive: View");
-           this.router = this.getOwnerComponent().getRouter();
-		},
-		_navCUCS: function () {
-			this.router.navTo("CUCS");
+           
 		}
+	
 		
 	});
 

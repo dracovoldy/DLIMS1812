@@ -4,16 +4,16 @@
 		<pages>
 			<Page id="page2" showHeader="false">
 				<content>
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Sales Fulfillment Application Title" subheader="Subtitle"
-						press="press">
-						<TileContent unit="EUR" footer="Current Quarter">
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Customers" subheader="CUCS"
+						press="_navCUCS">
+						<TileContent footer="Single creation">
 							<ImageContent src="sap-icon://home-share"/>
 						</TileContent>
 					</GenericTile>
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Manage Activity Master Data Type" subheader="Subtitle"
-						press="press">
-						<TileContent>
-							<ImageContent src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/SAPLogoLargeTile_28px_height.png"/>
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Maintain Customers" subheader="CUMM"
+						press="_navCUMM">
+						<TileContent footer="Mass View/Modify">
+							<ImageContent src="sap-icon://customer"/>
 						</TileContent>
 					</GenericTile>
 					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
