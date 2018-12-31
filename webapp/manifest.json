@@ -102,6 +102,13 @@
 					"dashboardTiles"
 				]
 			}, {
+				"name": "dashboardTasks",
+				"pattern": "dashboardTasks",
+				"greedy": false,
+				"target": [
+					"dashboardTasks"
+				]
+			}, {
 				"name": "CU01",
 				"pattern": "CU01",
 				"greedy": false,
@@ -149,6 +156,15 @@
 					"transition": "slide",
 					"clearAggregation": true,
 					"viewName": "dashboardTiles",
+					"viewLevel": 2
+				},
+				"dashboardTasks": {
+					"viewType": "XML",
+					"parent": "Dashboard",
+        			"controlId": "pageContainer",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "dashboardTasks",
 					"viewLevel": 2
 				},
 				"LoginPage": {
