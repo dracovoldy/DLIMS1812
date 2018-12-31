@@ -16,10 +16,11 @@ sap.ui.define([
 
 		},
 		_tryLogin: function () {
+			var that = this;
 			var oView = this.getView();
 			var user = oView.byId("inUser").getValue(),
 				pass = oView.byId("inPass").getValue(),
-				someurl = "abhi4api.herokuapp.com/authentication",
+				someurl = "https://abhi4api.herokuapp.com/authentication",
 				somedata = {};
 
 			somedata.strategy = "local";
@@ -28,18 +29,19 @@ sap.ui.define([
 
 			var weHaveSuccess = false;
 			var accessToken = "";
-		
 
 			$.ajax({
 				type: "POST",
 				url: someurl,
 				dataType: "json",
 				crossDomain: true,
-				data: JSON.stringify(somedata),
+				data: somedata,
+				
 				success: function (result) {
 					accessToken = result.accessToken;
 					MessageToast.show(accessToken);
 					weHaveSuccess = true;
+					that.toDashboard();
 				},
 				error: function (response) {
 					MessageToast.show("Error!  " + response.status);
