@@ -3,11 +3,11 @@
 	<VBox id="loginBoxFlex" renderType="Bare">
 		<VBox id="loginBox">
 			<Label id="loginHeader" text="LIMS Cloud Connect"></Label>
-			<Input placeholder="Username" value="" type="Text"/>
-			<Input placeholder="Password" value="" type="Password"/>
+			<Input id="inUser" placeholder="Username" value="" type="Text"/>
+			<Input id="inPass" placeholder="Password" value="" type="Password"/>
 			<HBox width="100%">
-				<Button id="signButton" text="Sign in" width="100%" type="Emphasized" press="toDashboard"/>
-				<Button id="noSignButton" text="Can't Sign in?" width="100%" type="Reject" press="toDashboard"/>
+				<Button id="signButton" text="Sign in" width="100%" type="Emphasized" press="_tryLogin"/>
+				<Button id="noSignButton" text="Can't Sign in?" width="100%" type="Reject"/>
 			</HBox>
 			<Label id="loginFooter" text=""></Label>
 			<Label id="loginFooterVersion" text="v0.1"></Label>
