@@ -27,7 +27,7 @@
 				</ToolbarSpacer>
 				<SearchField placeholder="T-Code">
 					<layoutData>
-						<OverflowToolbarLayoutData priority="Low" minWidth="3em" maxWidth="10em"/>
+						<OverflowToolbarLayoutData priority="Low" minWidth="3em" maxWidth="20em"/>
 					</layoutData>
 				</SearchField>
 				<Button text="Abhishek Mallik" type="Transparent" press="handleUserNamePress">
