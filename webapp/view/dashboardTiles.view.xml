@@ -4,10 +4,10 @@
 		<pages>
 			<Page id="page2" showHeader="false" class="sapUiSizeCompact">
 				<content>
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create New System User" subheader="Singe creation" mode="HeaderMode"
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create New System User" subheader="Singe creation"
 						press="_navSU01">
 						<TileContent footer="SU01">
-							<ImageContent src="sap-icon://home-share"/>
+							<ImageContent src="sap-icon://create"/>
 						</TileContent>
 					</GenericTile>
 					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Customer" subheader="Single creation" press="_navCU01">
@@ -21,25 +21,27 @@
 						</TileContent>
 					</GenericTile>
 					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Receive Materials from Customer" subheader="Mass Transfer"
-						mode="HeaderMode" press="_navMM01">
-						<TileContent footer="MM01"/>
+						press="_navMM01">
+						<TileContent footer="MM01">
+							<ImageContent src="sap-icon://dimension"/>
+						</TileContent>
 					</GenericTile>
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Task Unassigned" subheader="Unitary task" mode="HeaderMode"
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Task Unassigned" subheader="Unitary task"
 						press="_navTT01">
 						<TileContent footer="TT01">
-							<ImageContent src="sap-icon://home-share"/>
+							<ImageContent src="sap-icon://activity-items"/>
 						</TileContent>
 					</GenericTile>
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Task for User" subheader="Unitary task" mode="HeaderMode"
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Task for User" subheader="Unitary task"
 						press="_navTT02">
 						<TileContent footer="TT02">
-							<ImageContent src="sap-icon://home-share"/>
+							<ImageContent src="sap-icon://activity-individual"/>
 						</TileContent>
 					</GenericTile>
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Assign Task to User" subheader="Unitary task" mode="HeaderMode"
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Assign Task to User" subheader="Unitary task"
 						press="_navTT03">
 						<TileContent footer="TT03">
-							<ImageContent src="sap-icon://meeting-room"/>
+							<ImageContent src="sap-icon://activity-assigned-to-goal"/>
 						</TileContent>
 					</GenericTile>
 					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Launch Task" subheader="Tasks for user" 

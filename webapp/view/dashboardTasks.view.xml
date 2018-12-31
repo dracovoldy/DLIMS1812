@@ -4,22 +4,22 @@
 		<pages>
 			<Page id="page2" showHeader="false" class="sapUiSizeCompact">
 				<content>
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Task Unassigned" subheader="Unitary task" mode="HeaderMode"
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Task Unassigned" subheader="Unitary task"
 						press="_navTT01">
 						<TileContent footer="TT01">
-							<ImageContent src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/ProfileImage_LargeGenTile.png"/>
+							<ImageContent src="sap-icon://activity-items"/>
 						</TileContent>
 					</GenericTile>
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Task for User" subheader="Unitary task" mode="HeaderMode"
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Task for User" subheader="Unitary task"
 						press="_navTT02">
 						<TileContent footer="TT02">
-							<ImageContent src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/ProfileImage_LargeGenTile.png"/>
+							<ImageContent src="sap-icon://activity-individual"/>
 						</TileContent>
 					</GenericTile>
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Assign Task to User" subheader="Unitary task" mode="HeaderMode"
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Assign Task to User" subheader="Unitary task"
 						press="_navTT03">
 						<TileContent footer="TT03">
-							<ImageContent src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/ProfileImage_LargeGenTile.png"/>
+							<ImageContent src="sap-icon://activity-assigned-to-goal"/>
 						</TileContent>
 					</GenericTile>
 					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Launch Task" subheader="Tasks for user" 
