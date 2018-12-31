@@ -4,13 +4,13 @@
 		<pages>
 			<Page id="page2" showHeader="false" class="sapUiSizeCompact">
 				<content>
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create new User" subheader="Singe creation" mode="HeaderMode"
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create New System User" subheader="Singe creation" mode="HeaderMode"
 						press="_navSU01">
 						<TileContent footer="SU01">
 							<ImageContent src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/ProfileImage_LargeGenTile.png"/>
 						</TileContent>
 					</GenericTile>
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Customers" subheader="Single creation" press="_navCU01">
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Customer" subheader="Single creation" press="_navCU01">
 						<TileContent footer="CU01">
 							<ImageContent src="sap-icon://home-share"/>
 						</TileContent>

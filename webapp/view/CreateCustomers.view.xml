@@ -4,7 +4,7 @@
 		<pages>
 			<Page id="page0" showHeader="false" class="sapUiSizeCompact">
 				<content>
-					<f:SimpleForm id="SimpleFormChangeColumn_twoGroups234" editable="true" layout="ColumnLayout" title="Customer" columnsM="2" columnsL="3"
+					<f:SimpleForm id="SimpleFormChangeColumn_twoGroups234" editable="true" layout="ColumnLayout" title="Create Customer" columnsM="2" columnsL="3"
 						columnsXL="4">
 						<f:content>
 							<core:Title text="Mailing Address"/>
