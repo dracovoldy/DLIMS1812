@@ -4,24 +4,32 @@ sap.ui.define([
 	'sap/ui/core/mvc/Controller',
 	'sap/ui/model/json/JSONModel',
 	'sap/m/Popover',
-	'sap/m/Button'
-], function (jQuery, Fragment, Controller, JSONModel, Popover, Button) {
+	'sap/m/Button',
+	'sap/m/MessageToast'
+], function (jQuery, Fragment, Controller, JSONModel, Popover, Button, MessageToast) {
 	"use strict";
 
 	var CController = Controller.extend("com.limscloud.app.controller.dashboard", {
-	
+
 		toLogout: function () {
 			/* Logout */
 			this.getOwnerComponent().getRouter().navTo("LoginPage");
 		},
 		onInit: function () {
 			this.router = this.getOwnerComponent().getRouter();
+			var route = sap.ui.core.UIComponent.getRouterFor(this).getRoute("Dashboard");
+			route.attachPatternMatched(this.onPatternMatched, this);
 			this._setToggleButtonTooltip(!sap.ui.Device.system.desktop);
 		},
-		onAfterRendering: function (){
+		onPatternMatched: function (event) {
+			// const model = this.getModel("odata");
+			this.accessToken = event.getParameter("arguments");
+			MessageToast.show(this.accessToken);
+		},
+		onAfterRendering: function () {
 			this.router.navTo("dashboardTiles");
 		},
-		onItemSelect : function(oEvent) {
+		onItemSelect: function (oEvent) {
 			this.router.navTo(oEvent.getParameter("item").getKey());
 		},
 		handleUserNamePress: function (event) {
