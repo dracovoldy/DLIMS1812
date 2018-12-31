@@ -4,6 +4,10 @@
 		<pages>
 			<Page id="page2" showHeader="false" class="sapUiSizeCompact">
 				<content>
+					<MessageStrip showIcon="true"
+						  type="Information"
+						  text="Quick access to tiles by T-Code, use searchbar to run Tiles with T-Code"
+						  class="sapUiTinyMargin"/>
 					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create New System User" subheader="Singe creation"
 						press="_navSU01">
 						<TileContent footer="SU01">
