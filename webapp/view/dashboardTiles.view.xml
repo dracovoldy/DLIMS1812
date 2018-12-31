@@ -2,27 +2,43 @@
 	xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc">
 	<App id="dashboardTilesApp">
 		<pages>
-			<Page id="page2" showHeader="false">
+			<Page id="page2" showHeader="false" class="sapUiSizeCompact">
 				<content>
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Customers" subheader="CUCS"
-						press="_navCUCS">
-						<TileContent footer="Single creation">
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create new User" subheader="Singe creation" mode="HeaderMode"
+						press="_navSU01">
+						<TileContent footer="SU01">
+							<ImageContent src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/ProfileImage_LargeGenTile.png"/>
+						</TileContent>
+					</GenericTile>
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Customers" subheader="Single creation" press="_navCU01">
+						<TileContent footer="CU01">
 							<ImageContent src="sap-icon://home-share"/>
 						</TileContent>
 					</GenericTile>
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Maintain Customers" subheader="CUMM"
-						press="_navCUMM">
-						<TileContent footer="Mass View/Modify">
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Maintain Customers" subheader="Mass View/Modify" press="_navCU05">
+						<TileContent footer="CU05">
 							<ImageContent src="sap-icon://customer"/>
 						</TileContent>
 					</GenericTile>
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-						header="Manage Activity Master Data Type With a Long Title Without an Icon" subheader="Subtitle Launch Tile" mode="HeaderMode" press="press">
-						<TileContent unit="EUR" footer="Current Quarter"/>
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Receive Materials from Customer" subheader="Mass Transfer"
+						mode="HeaderMode" press="_navMM01">
+						<TileContent footer="MM01"/>
 					</GenericTile>
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Jessica D. Prince Senior Consultant" subheader="Department"
-						press="press">
-						<TileContent>
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Task Unassigned" subheader="Unitary task" mode="HeaderMode"
+						press="_navTT01">
+						<TileContent footer="TT01">
+							<ImageContent src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/ProfileImage_LargeGenTile.png"/>
+						</TileContent>
+					</GenericTile>
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Task for User" subheader="Unitary task" mode="HeaderMode"
+						press="_navTT02">
+						<TileContent footer="TT02">
+							<ImageContent src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/ProfileImage_LargeGenTile.png"/>
+						</TileContent>
+					</GenericTile>
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Assign Task to User" subheader="Unitary task" mode="HeaderMode"
+						press="_navTT03">
+						<TileContent footer="TT03">
 							<ImageContent src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/ProfileImage_LargeGenTile.png"/>
 						</TileContent>
 					</GenericTile>

@@ -2,57 +2,50 @@
 	xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
 	<App id="CreateCustomers">
 		<pages>
-			<Page id="page0" showHeader="false">
+			<Page id="page0" showHeader="false" class="sapUiSizeCompact">
 				<content>
-					<f:SimpleForm id="SimpleFormChangeColumn_twoGroups234" editable="true" layout="ColumnLayout" title="Customer" 
-					columnsM="2" columnsL="3"
+					<f:SimpleForm id="SimpleFormChangeColumn_twoGroups234" editable="true" layout="ColumnLayout" title="Customer" columnsM="2" columnsL="3"
 						columnsXL="4">
 						<f:content>
-							<core:Title text="Address"/>
+							<core:Title text="Mailing Address"/>
 							<Label text="Name"/>
-							<Input id="name" value="{SupplierName}"/>
-							<Label text="Street/No."/>
-							<Input value="{Street}"></Input>
-							<Input value="{HouseNumber}">
-								<layoutData>
-									<f:ColumnElementData cellsSmall="2" cellsLarge="1"/>
-								</layoutData>
-							</Input>
+							<Input id="name" placeholder="Name" value="{CustomerName}"/>
+							<Label text="Address Line 1"/>
+							<Input value="{Line1}" placeholder="Address Line 1"></Input>
+							<Label text="Address Line 2"/>
+							<Input value="{Line2}" placeholder="Address Line 2"></Input>
 							<Label text="ZIP Code/City"/>
-							<Input value="{ZIPCode}">
+							<Input value="{ZIPCode}" placeholder="pincode">
 								<layoutData>
-									<f:ColumnElementData cellsSmall="3" cellsLarge="2"/>
+									<f:ColumnElementData cellsSmall="4" cellsLarge="2"/>
 								</layoutData>
 							</Input>
-							<Input value="{City}"/>
+							<Input value="{City}" placeholder="City"/>
 							<Label text="Country"/>
 							<Select id="country" selectedKey="{Country}">
 								<items>
-									<core:Item text="England" key="England"/>
+									<core:Item text="India" key="India"/>
 									<core:Item text="Germany" key="Germany"/>
 									<core:Item text="USA" key="USA"/>
 								</items>
 							</Select>
-							<Label text="Web"/>
-							<Input value="{Url}" type="Url"/>
-							<core:Title text="Contact"/>
-							<Label text="Twitter"/>
-							<Input value="{Twitter}"/>
 							<Label text="Email"/>
-							<Input value="{Email}" type="Email"/>
-							<Label text="Tel."/>
-							<Input value="{Tel}" type="Tel"/>
-							<Label text="SMS"/>
-							<Input value="{Sms}" type="Tel"/>
+							<Input value="{Email}" type="Email" placeholder="Email"/>
+							<core:Title text="Contact"/>
+							<Label text="Phone"/>
+							<Input value="{Tel}" type="Tel" placeholder="+91 XXXXX XXXXX"/>
 							<Label text="Mobile"/>
-							<Input value="{Mobile}" type="Tel"/>
-							<Label text="Pager"/>
-							<Input value="{Pager}" type="Tel"/>
-							<Label text="Fax"/>
-							<Input value="{Fax}" type="Tel"/>
+							<Input value="{Mobile}" type="Tel" placeholder="+91 XXXXX XXXXX"/>
 						</f:content>
 					</f:SimpleForm>
 				</content>
+				<footer>
+					<OverflowToolbar>
+						<ToolbarSpacer/>
+						<Button type="Accept" text="Create"/>
+						<Button type="Reject" text="Cancel"/>
+					</OverflowToolbar>
+				</footer>
 			</Page>
 		</pages>
 	</App>

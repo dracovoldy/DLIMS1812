@@ -12,8 +12,8 @@ sap.ui.define([
            // alert("Im alive: View");
            this.router = this.getOwnerComponent().getRouter();
 		},
-		_navCUCS: function () {
-			this.router.navTo("CUCS");
+		_navCU01: function () {
+			this.router.navTo("CU01");
 		}
 		
 	});

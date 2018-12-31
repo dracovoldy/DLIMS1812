@@ -102,15 +102,15 @@
 					"dashboardTiles"
 				]
 			}, {
-				"name": "CUCS",
-				"pattern": "CUCS",
+				"name": "CU01",
+				"pattern": "CU01",
 				"greedy": false,
 				"target": [
-					"CUCS"
+					"CU01"
 				]
 			}],
 			"targets": {
-				"CUCS": {
+				"CU01": {
 					"viewType": "XML",
 					"parent": "Dashboard",
         			"controlId": "pageContainer",
