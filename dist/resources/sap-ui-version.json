@@ -1,0 +1,32 @@
+{
+	"name": "dlims1812",
+	"version": "1.0.0",
+	"buildTimestamp": 1555245366445,
+	"scmRevision": "",
+	"libraries": [
+		{
+			"name": "sap.ui.unified",
+			"version": "1.64.1",
+			"buildTimestamp": 1555245366445,
+			"scmRevision": ""
+		},
+		{
+			"name": "sap.ui.core",
+			"version": "1.64.1",
+			"buildTimestamp": 1555245366445,
+			"scmRevision": ""
+		},
+		{
+			"name": "sap.m",
+			"version": "1.64.1",
+			"buildTimestamp": 1555245366445,
+			"scmRevision": ""
+		},
+		{
+			"name": "sap.tnt",
+			"version": "1.64.1",
+			"buildTimestamp": 1555245366445,
+			"scmRevision": ""
+		}
+	]
+}

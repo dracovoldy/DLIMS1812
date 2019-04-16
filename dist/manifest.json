@@ -59,11 +59,9 @@
 			}
 		},
 		"resources": {
-			"css": [
-				{
-					"uri": "css/style.css"
-				}
-			]
+			"css": [{
+				"uri": "css/style.css"
+			}]
 		},
 		"routing": {
 			"config": {
@@ -73,103 +71,77 @@
 				"controlId": "appView",
 				"controlAggregation": "pages",
 				"transition": "slide"
+
 			},
-			"routes": [
-				{
-					"name": "InitialRoute",
-					"pattern": "",
-					"greedy": false,
-					"target": [
-						"LoginPage"
-					]
-				},
-				{
-					"name": "LoginPage",
-					"pattern": "LoginPage",
-					"greedy": false,
-					"target": [
-						"LoginPage"
-					]
-				},
-				{
-					"name": "Dashboard",
-					"pattern": "Dashboard/{itemId}",
-					"greedy": false,
-					"target": [
-						"Dashboard"
-					]
-				},
-				{
-					"name": "dashboardTiles",
-					"pattern": "dashboardTiles",
-					"greedy": false,
-					"target": [
-						"dashboardTiles"
-					]
-				},
-				{
-					"name": "dashboardTasks",
-					"pattern": "dashboardTasks",
-					"greedy": false,
-					"target": [
-						"dashboardTasks"
-					]
-				},
-				{
-					"name": "CU01",
-					"pattern": "CU01",
-					"greedy": false,
-					"target": [
-						"CU01"
-					]
-				},
-				{
-					"name": "CU05",
-					"pattern": "CU05",
-					"greedy": false,
-					"target": [
-						"CU05"
-					]
-				},
-				{
-					"name": "SU01",
-					"pattern": "SU01",
-					"greedy": false,
-					"target": [
-						"SU01"
-					]
-				},
-				{
-					"name": "SU05",
-					"pattern": "SU05",
-					"greedy": false,
-					"target": [
-						"SU05"
-					]
-				},
-				{
-					"name": "TT01",
-					"pattern": "TT01",
-					"greedy": false,
-					"target": [
-						"TT01"
-					]
-				}
-			],
+			"routes": [{
+				"name": "InitialRoute",
+				"pattern": "",
+				"greedy": false,
+				"target": [
+					"LoginPage"
+				]
+			},{
+				"name": "LoginPage",
+				"pattern": "LoginPage",
+				"greedy": false,
+				"target": [
+					"LoginPage"
+				]
+			}, {
+				"name": "Dashboard",
+				"pattern": "Dashboard/{itemId}",
+				"greedy": false,
+				"target": [
+					"Dashboard"
+				]
+			}, {
+				"name": "dashboardTiles",
+				"pattern": "dashboardTiles",
+				"greedy": false,
+				"target": [
+					"dashboardTiles"
+				]
+			}, {
+				"name": "dashboardTasks",
+				"pattern": "dashboardTasks",
+				"greedy": false,
+				"target": [
+					"dashboardTasks"
+				]
+			}, {
+				"name": "CU01",
+				"pattern": "CU01",
+				"greedy": false,
+				"target": [
+					"CU01"
+				]
+			}, {
+				"name": "CU05",
+				"pattern": "CU05",
+				"greedy": false,
+				"target": [
+					"CU05"
+				]
+			}, {
+				"name": "SU01",
+				"pattern": "SU01",
+				"greedy": false,
+				"target": [
+					"SU01"
+				]
+			}, {
+				"name": "SU05",
+				"pattern": "SU05",
+				"greedy": false,
+				"target": [
+					"SU05"
+				]
+			}],
 			"targets": {
-				"TT01": {
-					"viewType": "XML",
-					"parent": "Dashboard",
-					"controlId": "pageContainer",
-					"transition": "slide",
-					"clearAggregation": true,
-					"viewName": "CreateTasks",
-					"viewLevel": 3
-				},
 				"SU01": {
 					"viewType": "XML",
 					"parent": "Dashboard",
-					"controlId": "pageContainer",
+        			"controlId": "pageContainer",
 					"transition": "slide",
 					"clearAggregation": true,
 					"viewName": "CreateUsers",
@@ -178,7 +150,7 @@
 				"SU05": {
 					"viewType": "XML",
 					"parent": "Dashboard",
-					"controlId": "pageContainer",
+        			"controlId": "pageContainer",
 					"transition": "slide",
 					"clearAggregation": true,
 					"viewName": "ModifyUsers",
@@ -187,7 +159,7 @@
 				"CU01": {
 					"viewType": "XML",
 					"parent": "Dashboard",
-					"controlId": "pageContainer",
+        			"controlId": "pageContainer",
 					"transition": "slide",
 					"clearAggregation": true,
 					"viewName": "CreateCustomers",
@@ -196,7 +168,7 @@
 				"CU05": {
 					"viewType": "XML",
 					"parent": "Dashboard",
-					"controlId": "pageContainer",
+        			"controlId": "pageContainer",
 					"transition": "slide",
 					"clearAggregation": true,
 					"viewName": "ModifyCustomers",
@@ -212,7 +184,7 @@
 				"dashboardTiles": {
 					"viewType": "XML",
 					"parent": "Dashboard",
-					"controlId": "pageContainer",
+        			"controlId": "pageContainer",
 					"transition": "slide",
 					"clearAggregation": true,
 					"viewName": "dashboardTiles",
@@ -221,7 +193,7 @@
 				"dashboardTasks": {
 					"viewType": "XML",
 					"parent": "Dashboard",
-					"controlId": "pageContainer",
+        			"controlId": "pageContainer",
 					"transition": "slide",
 					"clearAggregation": true,
 					"viewName": "dashboardTasks",
@@ -234,6 +206,7 @@
 					"viewName": "login",
 					"viewLevel": 1
 				}
+
 			}
 		}
 	},

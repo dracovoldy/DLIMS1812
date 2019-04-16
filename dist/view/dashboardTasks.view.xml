@@ -1,0 +1,45 @@
+<mvc:View controllerName="com.limscloud.app.controller.dashboardTasks" displayBlock="true" height="100%" xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc">
+	<App id="dashboardTasksApp">
+		<pages>
+			<Page id="page2" showHeader="false" class="sapUiSizeCompact">
+				<content>
+					<MessageStrip showIcon="true"
+						  type="Information"
+						  text="Quick access to tiles by T-Code, use searchbar to run Tiles with T-Code"
+						  class="sapUiTinyMargin"/>
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Task Unassigned" subheader="Unitary task"
+						press="_navTT01">
+						<TileContent footer="TT01">
+							<ImageContent src="sap-icon://activity-items"/>
+						</TileContent>
+					</GenericTile>
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Task for User" subheader="Unitary task"
+						press="_navTT02">
+						<TileContent footer="TT02">
+							<ImageContent src="sap-icon://activity-individual"/>
+						</TileContent>
+					</GenericTile>
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Assign Task to User" subheader="Unitary task"
+						press="_navTT03">
+						<TileContent footer="TT03">
+							<ImageContent src="sap-icon://activity-assigned-to-goal"/>
+						</TileContent>
+					</GenericTile>
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Launch Task" subheader="Tasks for user" 
+					press="_navTL01">
+						<TileContent footer="TL01">
+							<ImageContent src="sap-icon://physical-activity"/>
+						</TileContent>
+					</GenericTile>
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Monitor Tasks" subheader="All tasks"
+					press="_navTL01">
+						<TileContent footer="TL01">
+							<ImageContent src="sap-icon://electrocardiogram"/>
+						</TileContent>
+					</GenericTile>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

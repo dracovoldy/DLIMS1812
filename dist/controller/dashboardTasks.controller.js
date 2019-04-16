@@ -1,0 +1,1 @@
+sap.ui.define(["jquery.sap.global","sap/ui/core/mvc/Controller","sap/m/Popover","sap/m/Button"],function(o,t,e,n){"use strict";return t.extend("com.limscloud.app.controller.dashboardTasks",{onInit:function(){this.router=this.getOwnerComponent().getRouter()}})});

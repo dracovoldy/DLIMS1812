@@ -7,6 +7,9 @@
     "start": "node index.js"
   },
   "dependencies": {
+    "@openui5/sap.m": "^1.64.1",
+    "@openui5/sap.tnt": "^1.64.1",
+    "@openui5/sap.ui.core": "^1.64.1",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "serve-favicon": "^2.5.0"

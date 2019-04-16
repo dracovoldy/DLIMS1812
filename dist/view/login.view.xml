@@ -1,0 +1,16 @@
+<mvc:View xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="com.limscloud.app.controller.login">
+	<VBox id="loginBoxFlex" renderType="Bare">
+		<VBox id="loginBox">
+			<Label id="loginHeader" text="LIMS Cloud Connect"></Label>
+			<Input id="inUser" placeholder="Username" value="" type="Text"/>
+			<Input id="inPass" placeholder="Password" value="" type="Password"/>
+			<HBox width="100%">
+				<Button id="signButton" text="Sign in" width="100%" type="Emphasized" press="_tryLogin"/>
+				<Button id="noSignButton" text="Can't Sign in?" width="100%" type="Reject"/>
+			</HBox>
+			<Label id="loginFooter" text=""></Label>
+			<Label id="loginFooterVersion" text="v0.1"></Label>
+		</VBox>
+	</VBox>
+</mvc:View>

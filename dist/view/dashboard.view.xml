@@ -1,0 +1,75 @@
+<core:View height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:tnt="sap.tnt" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" controllerName="com.limscloud.app.controller.dashboard">
+	<tnt:ToolPage id="toolPage" class="sapUiSizeCompact">
+		<tnt:header>
+			<tnt:ToolHeader>
+				<Button id="sideNavigationToggleButton" icon="sap-icon://menu2" type="Transparent" press="onSideNavButtonPress">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow"/>
+					</layoutData>
+				</Button>
+				<ToolbarSpacer width="20px"/>
+				<Button text="Tools" type="Transparent">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="High"/>
+					</layoutData>
+				</Button>
+				<Button text="Help" type="Transparent">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="Low"/>
+					</layoutData>
+				</Button>
+				<tnt:ToolHeaderUtilitySeparator/>
+				<ToolbarSpacer>
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow" minWidth="20px"/>
+					</layoutData>
+				</ToolbarSpacer>
+				<SearchField placeholder="T-Code">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="Low" minWidth="3em" maxWidth="20em"/>
+					</layoutData>
+				</SearchField>
+				<Button text="Abhishek Mallik" type="Transparent" press="handleUserNamePress">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow"/>
+					</layoutData>
+				</Button>
+			</tnt:ToolHeader>
+		</tnt:header>
+		<tnt:sideContent>
+			<tnt:SideNavigation expanded="true" itemSelect="onItemSelect">
+				<tnt:NavigationList id="navListItems">
+					<!-- Nav Items -->
+					<tnt:NavigationListItem text="Home" icon="sap-icon://home" key="dashboardTiles">
+						<!--<tnt:NavigationListItem text="Sub Item 1" />-->
+						<!--<tnt:NavigationListItem text="Sub Item 2" />-->
+					</tnt:NavigationListItem>
+					<tnt:NavigationListItem text="Tasks" icon="sap-icon://activity-individual" key="dashboardTasks" expanded="true">
+						<tnt:NavigationListItem text="Monitor" key="dashboardTasks"/>
+						<tnt:NavigationListItem text="Launch Task" key="dashboardTasks"/>
+					</tnt:NavigationListItem>
+					<tnt:NavigationListItem text="Tests" icon="sap-icon://lab" key="Dashboard" expanded="true">
+						<tnt:NavigationListItem text="Schemas" key="Dashboard"/>
+						<tnt:NavigationListItem text="Data" key="Dashboard"/>
+					</tnt:NavigationListItem>
+					<tnt:NavigationListItem text="Reports" icon="sap-icon://tools-opportunity" key="Dashboard" expanded="false">
+						<tnt:NavigationListItem text="Sub Item 1" key="Dashboard"/>
+						<!--<tnt:NavigationListItem text="Sub Item 2" key="Dashboard"/>-->
+					</tnt:NavigationListItem>
+				</tnt:NavigationList>
+				<tnt:fixedItem>
+					<tnt:NavigationList id="fixedNavListItems">
+						<!-- fixed nav items here -->
+						<tnt:NavigationListItem text="Support" icon="sap-icon://headset" />
+					</tnt:NavigationList>
+				</tnt:fixedItem>
+			</tnt:SideNavigation>
+		</tnt:sideContent>
+		<tnt:mainContents>
+			<NavContainer id="pageContainer">
+				<pages></pages>
+			</NavContainer>
+		</tnt:mainContents>
+	</tnt:ToolPage>
+</core:View>

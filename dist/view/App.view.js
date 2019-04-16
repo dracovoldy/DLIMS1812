@@ -1,0 +1,1 @@
+sap.ui.jsview("com.limscloud.app.view.App",{getControllerName:function(){return"com.limscloud.app.controller.App"},createContent:function(p){var e=new sap.m.App("appView",{});return e}});

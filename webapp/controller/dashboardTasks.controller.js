@@ -11,6 +11,9 @@ sap.ui.define([
 		onInit: function () {
            // alert("Im alive: View");
            this.router = this.getOwnerComponent().getRouter();
+		},
+		_navTT01: function () {
+			this.router.navTo("TT01");
 		}
 		
 		

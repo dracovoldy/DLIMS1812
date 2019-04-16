@@ -17,6 +17,8 @@ sap.ui.define([
 		},
 		_tryLogin: function (oEvent) {
 			var that = this;
+			that.getOwnerComponent().getRouter().navTo("Dashboard", { itemId: "devLogin" });
+
 			// var context  = oEvent.getSource().getBindingContext();
 			var oView = this.getView();
 			var user = oView.byId("inUser").getValue(),

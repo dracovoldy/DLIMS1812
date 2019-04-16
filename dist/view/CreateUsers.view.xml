@@ -1,0 +1,44 @@
+<mvc:View controllerName="com.limscloud.app.controller.CreateUsers" displayBlock="true" height="100%" xmlns="sap.m" xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<App id="CreateUsers">
+		<pages>
+			<Page id="page0" showHeader="true" class="sapUiSizeCompact" title="Create New System User" showNavButton="true" navButtonPress="onNavBack">
+				<content>
+					<f:SimpleForm id="SimpleFormChangeColumn_twoGroups234" editable="true" layout="ColumnLayout" columnsM="2"
+						columnsL="2" columnsXL="2">
+						<f:content>
+							<core:Title text="User Profile"/>
+							<Label text="Username"/>
+							<Input id="uname" placeholder="username" value="{uname}"/>
+							<Label text="Full Name"/>
+							<Input value="{Name}" placeholder="John, Doe"></Input>
+							<Label text="Role"/>
+							<Select id="Role" selectedKey="{Role}">
+								<items>
+									<core:Item text="Admin" key="Admin"/>
+									<core:Item text="Tester" key="Tester"/>
+									<core:Item text="Reviewer" key="Reviewer"/>
+									<core:Item text="Developer" key="Dev"/>
+								</items>
+							</Select>
+							<core:Title text="Contact"/>
+							<Label text="Email"/>
+							<Input value="{Email}" type="Email" placeholder="Email"/>
+							<Label text="Phone"/>
+							<Input value="{Tel}" type="Tel" placeholder="+91 XXXXX XXXXX"/>
+							<Label text="Mobile"/>
+							<Input value="{Mobile}" type="Tel" placeholder="+91 XXXXX XXXXX"/>
+						</f:content>
+					</f:SimpleForm>
+				</content>
+				<footer>
+					<OverflowToolbar>
+						<ToolbarSpacer/>
+						<Button type="Accept" text="Create"/>
+						<Button type="Reject" text="Cancel"/>
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

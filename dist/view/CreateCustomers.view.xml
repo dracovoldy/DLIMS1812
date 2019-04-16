@@ -1,0 +1,61 @@
+<mvc:View controllerName="com.limscloud.app.controller.CreateCustomers" displayBlock="true" height="100%" xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<App id="CreateCustomers">
+		<pages>
+			<Page id="page0" showHeader="true" class="sapUiSizeCompact" title="Create Customer" showNavButton="true" navButtonPress="onNavBack">
+				<content>
+					<f:SimpleForm id="SimpleFormChangeColumn_twoGroups234" editable="true" layout="ColumnLayout" columnsM="2" columnsL="3"
+						columnsXL="4">
+						<f:content>
+							<core:Title text="Mailing Address"/>
+							<Label text="Name"/>
+							<Input id="name" placeholder="Name" value="{CustomerName}"/>
+							<Label text="Address Line 1"/>
+							<Input value="{Line1}" placeholder="Address Line 1"></Input>
+							<Label text="Address Line 2"/>
+							<Input value="{Line2}" placeholder="Address Line 2"></Input>
+							<Label text="ZIP Code/City"/>
+							<Input value="{ZIPCode}" placeholder="pincode">
+								<layoutData>
+									<f:ColumnElementData cellsSmall="4" cellsLarge="2"/>
+								</layoutData>
+							</Input>
+							<Input value="{City}" placeholder="City"/>
+							<Label text="Country"/>
+							<Select id="country" selectedKey="{Country}">
+								<items>
+									<core:Item text="India" key="India"/>
+									<core:Item text="Germany" key="Germany"/>
+									<core:Item text="USA" key="USA"/>
+								</items>
+							</Select>
+							<Label text="State/Province"/>
+							<Select id="State" selectedKey="{State}">
+								<items>
+									<core:Item text="Maharashtra" key="Maharashtra"/>
+									<core:Item text="Gujarat" key="Gujarat"/>
+									<core:Item text="West Bengal" key="WestBengal"/>
+								</items>
+							</Select>
+							
+							<core:Title text="Contact"/>
+							<Label text="Email"/>
+							<Input value="{Email}" type="Email" placeholder="Email"/>
+							<Label text="Phone"/>
+							<Input value="{Tel}" type="Tel" placeholder="+91 XXXXX XXXXX"/>
+							<Label text="Mobile"/>
+							<Input value="{Mobile}" type="Tel" placeholder="+91 XXXXX XXXXX"/>
+						</f:content>
+					</f:SimpleForm>
+				</content>
+				<footer>
+					<OverflowToolbar>
+						<ToolbarSpacer/>
+						<Button type="Accept" text="Create"/>
+						<Button type="Reject" text="Cancel"/>
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

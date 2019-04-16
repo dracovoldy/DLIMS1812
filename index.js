@@ -3,6 +3,7 @@ var favicon = require('serve-favicon');
 var qs = require('querystring');
 var app = express();
 app.use('/ui5', express.static(path.join(__dirname, 'webapp')));
+app.use('/prod', express.static(path.join(__dirname, 'dist')));
 app.use(favicon(__dirname + '/webapp/favicon.ico'));
 
 app.get('/', function(req, res){
@@ -11,6 +12,6 @@ app.get('/', function(req, res){
 });
 
 
-app.listen(process.env.PORT || 3000, function(){
+app.listen(process.env.PORT || 8080, function(){
      console.log("connect to localhost:3000");
 });
