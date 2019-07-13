@@ -1,0 +1,85 @@
+<core:FragmentDefinition xmlns="sap.m" 
+	xmlns:core="sap.ui.core">
+	<Dialog id="order_picker_dialog" title="Orders" class="sapUiPopupWithPadding">
+		<subHeader>
+			<Toolbar id="toolbar1">
+				<ToolbarSpacer/>
+				<Label text="Select Customer" labelFor="custInput" required="true"/>
+
+
+				<Input id="custInput" type="Text" placeholder="Enter Customer..." showSuggestion="true" width="80%" showTableSuggestionValueHelp="false" suggestionRows="{jobsModel>/lookups/customers}" suggestionItemSelected="_onSelectCustomer">
+					<suggestionColumns>
+						<Column hAlign="Begin" popinDisplay="Inline" demandPopin="true">
+							<Label text="Name"/>
+						</Column>
+						<Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet">
+							<Label text="Customer ID"/>
+						</Column>
+						<Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet">
+							<Label text="Address"/>
+						</Column>
+						<Column hAlign="End" popinDisplay="Inline" demandPopin="true">
+							<Label text="City"/>
+						</Column>
+					</suggestionColumns>
+					<suggestionRows>
+						<ColumnListItem>
+							<cells>
+								<Label text="{jobsModel>name}"/>
+								<Label text="{jobsModel>custId}"/>
+								<Label text="{jobsModel>addLine1}"/>
+								<Label text="{jobsModel>city}"/>
+							</cells>
+						</ColumnListItem>
+					</suggestionRows>
+				</Input>
+			</Toolbar>
+		</subHeader>
+		<content>
+
+
+
+			<Table id="ordersTable" mode="SingleSelect" noDataText="No Orders Found" growingThreshold="10000" updateFinished="_disableCheckBox" selectionChange="_onOrderSelect" includeItemInSelection="false" items="{jobsModel>/lookups/orders}" growing="true">
+				<ColumnListItem>
+					<cells>
+						<ObjectIdentifier title="{jobsModel>orderId}"/>
+						<Text text="{jobsModel>orderDesc}"/>
+						<Text text="{jobsModel>createdBy}"/>
+						<Text text="{jobsModel>createdAt}"/>
+					</cells>
+				</ColumnListItem>
+				<columns>
+					<Column width="12em">
+						<header>
+							<Text text="Order Number #"/>
+						</header>
+					</Column>
+					<Column width="12em">
+						<header>
+							<Text text="Description"/>
+						</header>
+					</Column>
+					<Column width="12em">
+						<header>
+							<Text text="Created By"/>
+						</header>
+					</Column>
+					<Column width="12em">
+						<header>
+							<Text text="Created At"/>
+						</header>
+					</Column>
+
+				</columns>
+			</Table>
+
+		</content>
+
+		<buttons>
+
+			<Button type="Default" text="Cancel" press="_handleDialogClose"/>
+
+		</buttons>
+	</Dialog>
+
+</core:FragmentDefinition>

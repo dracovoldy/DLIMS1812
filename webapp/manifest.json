@@ -13,6 +13,12 @@
 		"sourceTemplate": {
 			"id": "ui5template.basicSAPUI5ApplicationProject",
 			"version": "1.32.0"
+		},
+		"dataSources": {
+			"jobsData": {
+				"uri": "jsonstore/jobsData.json",
+				"type": "JSON"
+			}
 		}
 	},
 	"sap.ui": {
@@ -56,6 +62,10 @@
 				"settings": {
 					"bundleName": "com.limscloud.app.i18n.i18n"
 				}
+			},
+			"jobsModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "jobsData"
 			}
 		},
 		"resources": {
@@ -84,21 +94,13 @@
 					]
 				},
 				{
-					"name": "LoginPage",
-					"pattern": "LoginPage",
-					"greedy": false,
-					"target": [
-						"LoginPage"
-					]
-				},
-				{
 					"name": "Dashboard",
 					"pattern": "Dashboard/{itemId}",
 					"greedy": false,
 					"target": [
 						"Dashboard"
 					]
-				},
+				},				
 				{
 					"name": "dashboardTiles",
 					"pattern": "dashboardTiles",
@@ -132,6 +134,22 @@
 					]
 				},
 				{
+					"name": "OR01",
+					"pattern": "OR01",
+					"greedy": false,
+					"target": [
+						"OR01"
+					]
+				},
+				{
+					"name": "MM01",
+					"pattern": "MM01",
+					"greedy": false,
+					"target": [
+						"MM01"
+					]
+				},
+				{
 					"name": "SU01",
 					"pattern": "SU01",
 					"greedy": false,
@@ -149,7 +167,7 @@
 				},
 				{
 					"name": "TT01",
-					"pattern": "TT01",
+					"pattern": "process/CreateJob",
 					"greedy": false,
 					"target": [
 						"TT01"
@@ -159,15 +177,17 @@
 			"targets": {
 				"TT01": {
 					"viewType": "XML",
+					"viewPath": "com.limscloud.app.view.jobs",
 					"parent": "Dashboard",
 					"controlId": "pageContainer",
 					"transition": "slide",
 					"clearAggregation": true,
-					"viewName": "CreateTasks",
+					"viewName": "CreateJob",
 					"viewLevel": 3
 				},
 				"SU01": {
 					"viewType": "XML",
+					"viewPath": "com.limscloud.app.view.users",
 					"parent": "Dashboard",
 					"controlId": "pageContainer",
 					"transition": "slide",
@@ -177,6 +197,7 @@
 				},
 				"SU05": {
 					"viewType": "XML",
+					"viewPath": "com.limscloud.app.view.users",
 					"parent": "Dashboard",
 					"controlId": "pageContainer",
 					"transition": "slide",
@@ -186,6 +207,7 @@
 				},
 				"CU01": {
 					"viewType": "XML",
+					"viewPath": "com.limscloud.app.view.customer",
 					"parent": "Dashboard",
 					"controlId": "pageContainer",
 					"transition": "slide",
@@ -195,6 +217,7 @@
 				},
 				"CU05": {
 					"viewType": "XML",
+					"viewPath": "com.limscloud.app.view.customer",
 					"parent": "Dashboard",
 					"controlId": "pageContainer",
 					"transition": "slide",
@@ -202,15 +225,29 @@
 					"viewName": "ModifyCustomers",
 					"viewLevel": 3
 				},
-				"Dashboard": {
+				"OR01": {
 					"viewType": "XML",
+					"viewPath": "com.limscloud.app.view.orders",
+					"parent": "Dashboard",
+					"controlId": "pageContainer",
 					"transition": "slide",
 					"clearAggregation": true,
-					"viewName": "dashboard",
-					"viewLevel": 1
+					"viewName": "CreateOrder",
+					"viewLevel": 3
+				},
+				"MM01": {
+					"viewType": "XML",
+					"viewPath": "com.limscloud.app.view.samples",
+					"parent": "Dashboard",
+					"controlId": "pageContainer",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "MM01",
+					"viewLevel": 3
 				},
 				"dashboardTiles": {
 					"viewType": "XML",
+					"viewPath": "com.limscloud.app.view.dashboard",
 					"parent": "Dashboard",
 					"controlId": "pageContainer",
 					"transition": "slide",
@@ -220,12 +257,21 @@
 				},
 				"dashboardTasks": {
 					"viewType": "XML",
+					"viewPath": "com.limscloud.app.view.dashboard",
 					"parent": "Dashboard",
 					"controlId": "pageContainer",
 					"transition": "slide",
 					"clearAggregation": true,
 					"viewName": "dashboardTasks",
 					"viewLevel": 2
+				},
+				"Dashboard": {
+					"viewType": "XML",
+					"viewPath": "com.limscloud.app.view.dashboard",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "dashboard",
+					"viewLevel": 1
 				},
 				"LoginPage": {
 					"viewType": "XML",

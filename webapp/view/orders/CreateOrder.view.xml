@@ -1,0 +1,52 @@
+<mvc:View controllerName="com.limscloud.app.controller.orders.CreateOrder" displayBlock="true" height="100%" 
+	xmlns="sap.m" 
+	xmlns:core="sap.ui.core" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:l="sap.ui.layout" 
+	xmlns:f="sap.ui.layout.form">
+	<App id="CreateOrder">
+		<pages>
+			<Page id="page0" showHeader="true" class="sapUiSizeCompact" title="Create Order" showNavButton="true" navButtonPress="onNavBack">
+				<content>
+					<f:SimpleForm id="sfId1" editable="true" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+						<f:content>
+							<core:Title text="General Information"/>
+
+							<Label text="Customer"/>
+							<ComboBox id="custId" items="{ordersModel>/lookups/customers}" placeholder="Select Customer" showSecondaryValues= "true" filterSecondaryValues="true">
+								<core:ListItem key="{ordersModel>custId}" text="{ordersModel>name}" additionalText="{ordersModel>desc}" />
+							</ComboBox>
+							<Label text="Description"/>
+							<TextArea id="orderDesc" placeholder="Name" value="{ordersModel>/payload/orderDesc}"/>
+
+						</f:content>
+					</f:SimpleForm>
+					<f:SimpleForm id="sfId2" editable="true" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+						<f:content>
+
+							<core:Title text="Reference Document"/>
+							<Label text="Reference Number" />
+							<Input value="" placeholder="Address Line 2" enabled="false"></Input>
+							<Label text="Date Received" />
+							<DatePicker enabled="false"/>
+
+							<core:Title text="Additional Information"/>
+							<Label text="Created By"/>
+							<ComboBox id="createdBy" items="{ordersModel>/lookups/users}" placeholder="Select user" showSecondaryValues= "true" filterSecondaryValues="true">
+								<core:ListItem key="{ordersModel>userId}" text="{ordersModel>userId}" additionalText="{ordersModel>fullname}" />
+							</ComboBox>
+
+						</f:content>
+					</f:SimpleForm>
+				</content>
+				<footer>
+					<OverflowToolbar>
+						<ToolbarSpacer/>						
+						<Button type="Reject" text="Cancel"/>
+						<Button type="Accept" text="Create" press="_onCreateCustomer"/>
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

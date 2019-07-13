@@ -1,0 +1,92 @@
+<mvc:View controllerName="com.limscloud.app.controller.samples.MM01" displayBlock="true" height="100%" 
+	xmlns="sap.m" 
+	xmlns:core="sap.ui.core" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:l="sap.ui.layout" 
+	xmlns:f="sap.ui.layout.form">
+	<App id="MM01">
+		<pages>
+			<Page id="page0" showHeader="true" class="sapUiSizeCompact" title="MM01 - Receive Sample" showNavButton="true" navButtonPress="onNavBack">
+				<content>
+					<f:SimpleForm id="sfId1" editable="true" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+						<f:content>
+							<core:Title text="General Information"/>							
+
+							<Label text="Name"/>
+							<Input id="sampleName" value="{sampleModel>/payload/sampleName}" placeholder="Name" />
+
+							<Label text="Description"/>
+							<TextArea id="sampleDesc" value="{sampleModel>/payload/sampleDesc}" placeholder="Description" />
+
+							<Label text="Order #"/>
+							<Input id="orderId" valueHelpOnly="true" showValueHelp="true" valueHelpRequest="_loadOrder" placeholder="Select Order">
+							</Input>
+
+							<Label text="Quantity"/>
+							<Input id="sampleQty" value="{sampleModel>/payload/sampleQty}" type="Number" placeholder="Quantity" />
+
+							<!-- <core:Title text="Condition"/>
+							<Label text="Condition Comments"/>
+							<Input id="sampleCond" value="" type="Number" placeholder="Quantity" />
+							<Label text="Condition"/>
+							<ComboBox id="sampleCKey" placeholder="Select Approver">
+								<core:ListItem key="Mint" text="Mint" />
+								<core:ListItem key="Good" text="Good" />
+								<core:ListItem key="Damaged" text="Damaged" />
+							</ComboBox>
+
+							<core:Title text="Additional Information"/>
+							<Label text="Created By" required="true"/>
+							<ComboBox id="createdBy" items="{jobsModel>/lookups/users}" placeholder="Select user" showSecondaryValues= "true" filterSecondaryValues="true">
+								<core:ListItem key="{jobsModel>userId}" text="{jobsModel>userId}" additionalText="{jobsModel>fullname}" />
+							</ComboBox> -->
+						</f:content>
+					</f:SimpleForm>
+
+					<f:SimpleForm id="sfId2" editable="true" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+						<f:content>
+							<!-- <core:Title text="General Information"/>							
+
+							<Label text="Name"/>
+							<Input id="sampleName" value="" placeholder="Name" />
+
+							<Label text="Description"/>
+							<TextArea id="sampleDesc" value="" placeholder="Description" />
+
+							<Label text="Order #"/>
+							<Input id="orderId" valueHelpOnly="true" showValueHelp="true" valueHelpRequest="_loadOrder" placeholder="Select Order">
+							</Input>
+
+							<Label text="Quantity"/>
+							<Input id="sampleQty" value="" type="Number" placeholder="Quantity" /> -->
+
+							<core:Title text="Condition"/>
+							<Label text="Condition Comments"/>
+							<Input id="sampleCond" value="" enabled="false" type="Number" placeholder="" />
+							<Label text="Condition"/>
+							<ComboBox id="sampleCKey" placeholder="" enabled="false">
+								<core:ListItem key="Mint" text="Mint" />
+								<core:ListItem key="Good" text="Good" />
+								<core:ListItem key="Damaged" text="Damaged" />
+							</ComboBox>
+
+							<core:Title text="Additional Information"/>
+							<Label text="Created By" required="true"/>
+							<ComboBox id="createdBy" items="{sampleModel>/lookups/users}" placeholder="Select user" showSecondaryValues= "true" filterSecondaryValues="true">
+								<core:ListItem key="{sampleModel>userId}" text="{sampleModel>userId}" additionalText="{sampleModel>fullname}" />
+							</ComboBox>
+						</f:content>
+					</f:SimpleForm>
+
+				</content>
+				<footer>
+					<OverflowToolbar>
+						<ToolbarSpacer/>
+						<Button type="Accept" text="Create"/>
+						<Button type="Reject" text="Cancel"/>
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

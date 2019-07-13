@@ -1,13 +1,13 @@
 sap.ui.define([
+	'com/limscloud/app/controller/BaseController',
 	'jquery.sap.global',
-	'sap/ui/core/mvc/Controller',
 	'sap/m/Popover',
 	'sap/m/Button',
 	'sap/m/MessageToast'
-], function (jQuery, Controller, Popover, Button, MessageToast) {
+], function (BaseController, jQuery, Popover, Button, MessageToast) {
 	"use strict";
 
-	return Controller.extend("com.limscloud.app.controller.login", {
+	return BaseController.extend("com.limscloud.app.controller.login", {
 
 		onInit: function () {
 
@@ -19,43 +19,44 @@ sap.ui.define([
 			var that = this;
 			that.getOwnerComponent().getRouter().navTo("Dashboard", { itemId: "devLogin" });
 
-			// var context  = oEvent.getSource().getBindingContext();
-			var oView = this.getView();
-			var user = oView.byId("inUser").getValue(),
-				pass = oView.byId("inPass").getValue(),
-				someurl = "https://abhi4api.herokuapp.com/authentication",
-				somedata = {};
+			var init = function(){
+				var oView = this.getView();
+				var user = oView.byId("inUser").getValue(),
+					pass = oView.byId("inPass").getValue(),
+					someurl = "https://abhi4api.herokuapp.com/authentication",
+					somedata = {};
 
-			somedata.strategy = "local";
-			somedata.email = user;
-			somedata.password = pass;
+				somedata.strategy = "local";
+				somedata.email = user;
+				somedata.password = pass;
 
-			var weHaveSuccess = false;
-			this.accessToken = "";
+				var weHaveSuccess = false;
+				this.accessToken = "";
 
-			$.ajax({
-				type: "POST",
-				url: someurl,
-				dataType: "json",
-				crossDomain: true,
-				data: somedata,
-				
-				success: function (result) {
-					that.accessToken = result.accessToken;
-					MessageToast.show(that.accessToken);
-					weHaveSuccess = true;
-					that.getOwnerComponent().getRouter().navTo("Dashboard", { itemId: that.accessToken });
-					
-				},
-				error: function (response) {
-					MessageToast.show("Error!  " + response.status);
-				},
-				complete: function () {
-					if (!weHaveSuccess) {
-						MessageToast.show("Your username/password seems to be incorrect!");
+				$.ajax({
+					type: "POST",
+					url: someurl,
+					dataType: "json",
+					crossDomain: true,
+					data: somedata,
+
+					success: function (result) {
+						that.accessToken = result.accessToken;
+						MessageToast.show(that.accessToken);
+						weHaveSuccess = true;
+						that.getOwnerComponent().getRouter().navTo("Dashboard", { itemId: that.accessToken });
+
+					},
+					error: function (response) {
+						MessageToast.show("Error!  " + response.status);
+					},
+					complete: function () {
+						if (!weHaveSuccess) {
+							MessageToast.show("Your username/password seems to be incorrect!");
+						}
 					}
-				}
-			});
+				});
+			};
 		},
 		toDashboard: function () {
 			this.getOwnerComponent().getRouter().navTo("Dashboard");

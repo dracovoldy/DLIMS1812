@@ -1,0 +1,22 @@
+{	
+	"lookups": {
+		"users": [],
+		"labs": [],
+		"samples": [],
+		"testGroups": [],
+		"testParams": [],
+		"testMethods": []		
+	},
+
+	"createJob": {
+		"header": {
+			"orderId": "",
+			"jobDesc": "",
+			"labId": "",
+			"testGroup": "",
+			"createdBy": "",
+			"approverId": ""
+		},
+		"items": []		
+	}
+}

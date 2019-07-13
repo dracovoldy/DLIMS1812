@@ -1,13 +1,13 @@
-<mvc:View controllerName="com.limscloud.app.controller.ModifyUsers" displayBlock="true" height="100%" xmlns="sap.m"
+<mvc:View controllerName="com.limscloud.app.controller.customer.ModifyCustomers" displayBlock="true" height="100%" xmlns="sap.m"
 	xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
-	<App id="ModifyUsers">
+	<App id="ModifyCustomers">
 		<pages>
-			<Page id="page0" showHeader="true" class="sapUiSizeCompact" title="Maintain Users" showNavButton="true" navButtonPress="onNavBack">
+			<Page id="page0" showHeader="true" class="sapUiSizeCompact" title="Maintain Customers" showNavButton="true" navButtonPress="onNavBack">
 				<content>
-					<Table id="idUsersTable" items="{/ProductCollection}">
+					<Table id="idCustomersTable" items="{/ProductCollection}">
 						<headerToolbar>
 							<Toolbar>
-								<Title text="Users" level="H2"/>
+								<Title text="Customers" level="H2"/>
 								<ToolbarSpacer/>
 								<Button tooltip="View Sort Settings" icon="sap-icon://sort" press="handleSortButtonPressed"/>
 								<Button tooltip="View Filter Settings" icon="sap-icon://filter" press="handleFilterButtonPressed"/>
@@ -21,11 +21,11 @@
 							</Toolbar>
 						</infoToolbar>
 						<columns>
-							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Username"/></Column>
-							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Name"/></Column>
-							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Role"/></Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Customer"/></Column>
 							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Email"/></Column>
-							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Contact"/></Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Address"/></Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Phone"/></Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Mobile"/></Column>
 						</columns>
 						<items>
 							<ColumnListItem>

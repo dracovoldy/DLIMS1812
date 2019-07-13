@@ -1,0 +1,15 @@
+{
+	"lookups": {
+		"users": []
+	},
+	"payload": {
+		"addLine1": "",
+		"addLine2": "",
+		"city": "",
+		"desc": "",
+		"name": "",
+		"zipcode": "",
+		"createdBy": "",
+		"modifiedBy": ""
+	}
+}

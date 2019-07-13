@@ -1,0 +1,74 @@
+<mvc:View controllerName="com.limscloud.app.controller.customer.CreateCustomers" displayBlock="true" height="100%" 
+	xmlns="sap.m" 
+	xmlns:core="sap.ui.core" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:l="sap.ui.layout" 
+	xmlns:f="sap.ui.layout.form">
+	<App id="CreateCustomers">
+		<pages>
+			<Page id="page0" showHeader="true" class="sapUiSizeCompact" title="CU01 - Create Customer" showNavButton="true" navButtonPress="onNavBack">
+				<content>
+					<f:SimpleForm id="sfId1" editable="true" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+						<f:content>
+							<core:Title text="Mailing Address"/>
+							<Label text="Name"/>
+							<Input id="custName" placeholder="Name" value="{customerModel>/payload/name}"/>
+							<Label text="Address Line 1"/>
+							<Input id="custAddLine1" value="{customerModel>/payload/addLine1}" placeholder="Address Line 1"></Input>
+							<Label text="Address Line 2"/>
+							<Input id="custAddLine2" value="{customerModel>/payload/addLine2}" placeholder="Address Line 2"></Input>
+							<Label text="ZIP Code/City"/>
+							<Input id="custZipcode" value="{customerModel>/payload/zipcode}" placeholder="pincode">
+								<layoutData>
+									<f:ColumnElementData cellsSmall="4" cellsLarge="2"/>
+								</layoutData>
+							</Input>
+							<Input id="custCity" value="{customerModel>/payload/city}" placeholder="City" />
+							<Label text="Country"/>
+							<Select id="country" selectedKey="" enabled="false">
+								<items>
+									<core:Item text="India" key="IN"/>
+									<core:Item text="Germany" key="DE"/>
+									<core:Item text="USA" key="US"/>
+								</items>
+							</Select>
+							<Label text="State/Province"/>
+							<Select id="State" selectedKey="" enabled="false">
+								<items>
+									<core:Item text="Maharashtra" key="MH"/>
+									<core:Item text="Gujarat" key="GJ"/>
+									<core:Item text="West Bengal" key="WB"/>
+								</items>
+							</Select>
+
+							<core:Title text="Contact"/>
+							<Label text="Email"/>
+							<Input value="" type="Email" placeholder="Email" enabled="false" />
+							<Label text="Phone"/>
+							<Input value="{Tel}" type="Tel" placeholder="+91 XXXXX XXXXX" enabled="false" />
+							<Label text="Mobile"/>
+							<Input value="{Mobile}" type="Tel" placeholder="+91 XXXXX XXXXX" enabled="false" />
+
+							<core:Title text="Additional information"/>
+							<Label text="Description"/>
+							<TextArea id="custDesc" placeholder="Description" value="{customerModel>/payload/desc}"/>
+
+							<Label text="Created By"/>
+							<ComboBox id="createdBy" items="{customerModel>/lookups/users}" placeholder="Select user" showSecondaryValues= "true" filterSecondaryValues="true">
+								<core:ListItem key="{customerModel>userId}" text="{customerModel>userId}" additionalText="{customerModel>fullname}" />
+							</ComboBox>
+						</f:content>
+					</f:SimpleForm>
+					
+				</content>
+				<footer>
+					<OverflowToolbar>
+						<ToolbarSpacer/>						
+						<Button type="Reject" text="Cancel"/>
+						<Button type="Accept" text="Create" press="_onCreateCustomer"/>
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

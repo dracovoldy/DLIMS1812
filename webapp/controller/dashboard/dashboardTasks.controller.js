@@ -1,0 +1,22 @@
+sap.ui.define([
+	'jquery.sap.global',
+	'sap/ui/core/mvc/Controller',
+	'sap/m/Popover',
+	'sap/m/Button'
+], function(jQuery, Controller, Popover, Button) {
+	"use strict";
+
+	return Controller.extend("com.limscloud.app.controller.dashboard.dashboardTasks", {
+
+		onInit: function () {
+           // alert("Im alive: View");
+           this.router = this.getOwnerComponent().getRouter();
+		},
+		_navTT01: function () {
+			this.router.navTo("TT01");
+		}
+		
+		
+	});
+
+});
