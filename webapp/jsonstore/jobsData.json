@@ -1,13 +1,13 @@
-{	
+{
 	"lookups": {
 		"users": [],
 		"labs": [],
 		"samples": [],
 		"testGroups": [],
 		"testParams": [],
-		"testMethods": []		
+		"testMethods": [],
+		"jobHeader": []
 	},
-
 	"createJob": {
 		"header": {
 			"orderId": "",
@@ -17,6 +17,10 @@
 			"createdBy": "",
 			"approverId": ""
 		},
-		"items": []		
+		"items": []
+	},
+	"perform": {
+		"header": {},
+		"items": []
 	}
 }

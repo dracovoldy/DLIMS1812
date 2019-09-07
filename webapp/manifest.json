@@ -39,13 +39,14 @@
 		},
 		"supportedThemes": [
 			"sap_hcb",
-			"sap_bluecrystal"
+			"sap_bluecrystal",
+			"sap_fiori_3"
 		]
 	},
 	"sap.ui5": {
 		"_version": "1.1.0",
 		"dependencies": {
-			"minUI5Version": "1.52.9",
+			"minUI5Version": "1.69.1",
 			"libs": {
 				"sap.ui.core": {},
 				"sap.m": {},
@@ -100,7 +101,7 @@
 					"target": [
 						"Dashboard"
 					]
-				},				
+				},
 				{
 					"name": "dashboardTiles",
 					"pattern": "dashboardTiles",
@@ -172,6 +173,22 @@
 					"target": [
 						"TT01"
 					]
+				},
+				{
+					"name": "TT02",
+					"pattern": "TT02",
+					"greedy": false,
+					"target": [
+						"TT02"
+					]
+				},
+				{
+					"name": "TT02-detail",
+					"pattern": "TT02-detail",
+					"greedy": false,
+					"target": [
+						"TT02-detail"
+					]
 				}
 			],
 			"targets": {
@@ -183,6 +200,26 @@
 					"transition": "slide",
 					"clearAggregation": true,
 					"viewName": "CreateJob",
+					"viewLevel": 3
+				},
+				"TT02": {
+					"viewType": "XML",
+					"viewPath": "com.limscloud.app.view.jobs",
+					"parent": "Dashboard",
+					"controlId": "pageContainer",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "TT02",
+					"viewLevel": 3
+				},
+				"TT02-detail": {
+					"viewType": "XML",
+					"viewPath": "com.limscloud.app.view.jobs",
+					"parent": "Dashboard",
+					"controlId": "pageContainer",
+					"transition": "show",
+					"clearAggregation": true,
+					"viewName": "TT02-detail",
 					"viewLevel": 3
 				},
 				"SU01": {

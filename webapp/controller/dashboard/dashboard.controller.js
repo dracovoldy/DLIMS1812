@@ -15,7 +15,7 @@ sap.ui.define([
 			this.router = this.getOwnerComponent().getRouter();
 			var route = sap.ui.core.UIComponent.getRouterFor(this).getRoute("Dashboard");
 			route.attachPatternMatched(this.onPatternMatched, this);
-			this._setToggleButtonTooltip(!sap.ui.Device.system.desktop);
+			// this._setToggleButtonTooltip(!sap.ui.Device.system.desktop);
 		},
 		onPatternMatched: function (event) {
 			// const model = this.getModel("odata");

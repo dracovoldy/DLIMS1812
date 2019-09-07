@@ -1,4 +1,9 @@
-<core:View height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:tnt="sap.tnt" xmlns:html="http://www.w3.org/1999/xhtml"
+<core:View height="100%" 
+	xmlns:core="sap.ui.core" 
+	xmlns="sap.m" 
+	xmlns:tnt="sap.tnt" 
+	xmlns:f="sap.f"
+	xmlns:html="http://www.w3.org/1999/xhtml" 
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" controllerName="com.limscloud.app.controller.dashboard.dashboard">
 	<tnt:ToolPage id="toolPage" sideExpanded="false" class="sapUiSizeCompact">
 		<tnt:header>
@@ -9,19 +14,6 @@
 					</layoutData>
 				</Button>
 				<ToolbarSpacer width="20px"/>
-
-
-				<!-- <Button text="Tools" type="Transparent">
-					<layoutData>
-						<OverflowToolbarLayoutData priority="High"/>
-					</layoutData>
-				</Button>
-				<Button text="Help" type="Transparent">
-					<layoutData>
-						<OverflowToolbarLayoutData priority="Low"/>
-					</layoutData>
-				</Button> -->
-
 
 				<tnt:ToolHeaderUtilitySeparator/>
 				<ToolbarSpacer>
@@ -39,14 +31,17 @@
 						<OverflowToolbarLayoutData priority="NeverOverflow"/>
 					</layoutData>
 				</Button>
+				
 			</tnt:ToolHeader>
+
+
 		</tnt:header>
 		<tnt:sideContent>
 			<tnt:SideNavigation itemSelect="onItemSelect">
 				<tnt:NavigationList id="navListItems">
 					<!-- Nav Items -->
 					<tnt:NavigationListItem text="Home" icon="sap-icon://home" key="dashboardTiles">
-					
+
 					</tnt:NavigationListItem>
 					<tnt:NavigationListItem text="Process" icon="sap-icon://activity-individual" key="dashboardTasks" expanded="false">
 						<tnt:NavigationListItem text="Create Job" key="TT01"/>

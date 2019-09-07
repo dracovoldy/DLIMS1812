@@ -25,49 +25,21 @@
 							<Label text="Quantity"/>
 							<Input id="sampleQty" value="{sampleModel>/payload/sampleQty}" type="Number" placeholder="Quantity" />
 
-							<!-- <core:Title text="Condition"/>
-							<Label text="Condition Comments"/>
-							<Input id="sampleCond" value="" type="Number" placeholder="Quantity" />
-							<Label text="Condition"/>
-							<ComboBox id="sampleCKey" placeholder="Select Approver">
-								<core:ListItem key="Mint" text="Mint" />
-								<core:ListItem key="Good" text="Good" />
-								<core:ListItem key="Damaged" text="Damaged" />
-							</ComboBox>
-
-							<core:Title text="Additional Information"/>
-							<Label text="Created By" required="true"/>
-							<ComboBox id="createdBy" items="{jobsModel>/lookups/users}" placeholder="Select user" showSecondaryValues= "true" filterSecondaryValues="true">
-								<core:ListItem key="{jobsModel>userId}" text="{jobsModel>userId}" additionalText="{jobsModel>fullname}" />
-							</ComboBox> -->
+							
 						</f:content>
 					</f:SimpleForm>
 
 					<f:SimpleForm id="sfId2" editable="true" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
 						<f:content>
-							<!-- <core:Title text="General Information"/>							
-
-							<Label text="Name"/>
-							<Input id="sampleName" value="" placeholder="Name" />
-
-							<Label text="Description"/>
-							<TextArea id="sampleDesc" value="" placeholder="Description" />
-
-							<Label text="Order #"/>
-							<Input id="orderId" valueHelpOnly="true" showValueHelp="true" valueHelpRequest="_loadOrder" placeholder="Select Order">
-							</Input>
-
-							<Label text="Quantity"/>
-							<Input id="sampleQty" value="" type="Number" placeholder="Quantity" /> -->
-
+							
 							<core:Title text="Condition"/>
 							<Label text="Condition Comments"/>
-							<Input id="sampleCond" value="" enabled="false" type="Number" placeholder="" />
+							<Input id="sampleCond" value="" enabled="true" placeholder="" />
 							<Label text="Condition"/>
-							<ComboBox id="sampleCKey" placeholder="" enabled="false">
-								<core:ListItem key="Mint" text="Mint" />
-								<core:ListItem key="Good" text="Good" />
-								<core:ListItem key="Damaged" text="Damaged" />
+							<ComboBox id="sampleCKey" placeholder="" enabled="true">
+								<core:ListItem key="M" text="Mint" />
+								<core:ListItem key="G" text="Good" />
+								<core:ListItem key="D" text="Damaged" />
 							</ComboBox>
 
 							<core:Title text="Additional Information"/>
@@ -82,7 +54,7 @@
 				<footer>
 					<OverflowToolbar>
 						<ToolbarSpacer/>
-						<Button type="Accept" text="Create"/>
+						<Button type="Accept" text="Create"  press="_createSample"/>
 						<Button type="Reject" text="Cancel"/>
 					</OverflowToolbar>
 				</footer>
