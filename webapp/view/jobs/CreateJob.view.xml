@@ -3,42 +3,70 @@
 	xmlns:core="sap.ui.core" 
 	xmlns:mvc="sap.ui.core.mvc" 
 	xmlns:l="sap.ui.layout" 
-	xmlns:f="sap.ui.layout.form">
-	<App id="CreateJob">
+	xmlns:f="sap.ui.layout.form"
+	>
+	<App id="CreateJob" class="sapUiSizeCompact">
 		<pages>
-			<Page id="page0" showHeader="true" showFooter="false" class="sapUiSizeCompact" title="TT01 - Create Job" showNavButton="true" navButtonPress="onNavBack">
+			<Page id="page0" showHeader="true" showFooter="false" class="sapUiSizeCompact" title="TT01 - CREATE JOB REVIEW" showNavButton="true" navButtonPress="onNavBack">
 				<content>
-					<f:SimpleForm id="createJobHeaderSimpleForm1" editable="true" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4" ariaLabelledBy="title1">
+					<f:SimpleForm id="createJobHeaderSimpleForm1" editable="true" layout="ResponsiveGridLayout" 
+								labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" 
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" 
+								columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false">
 						<f:toolbar>
 							<Toolbar id="TB1">
-								<Title id="Title1" text="Job Header" level="H4" titleStyle="H4"/>
+								<Title id="Title1" text="DOCUMENT HEADER" level="H4" titleStyle="H4"/>
 								<ToolbarSpacer />
-								<Button text="Create Items" type="Accept" press="_createItemBtnPress"/>
+								<Button text="ITEM" icon="sap-icon://create-form" type="Emphasized" press="_createItemBtnPress"/>
 							</Toolbar>
 						</f:toolbar>
 						<f:content>
-
-							<Label text="Job Description" required="true" />
-							<Input id="headDesc" value="{jobsModel>/createJob/header/jobDesc}" placeholder="Description" />
-							<Label text="Order #" required="true"/>
-							<Input id="headOrder" valueHelpOnly="true" showValueHelp="true" valueHelpRequest="_loadOrder" placeholder="Select Order">
+							<core:Title text="General Information" />
+							<Label text="Customer #" required="true"/>
+							<Input id="headCust" valueHelpOnly="true" showValueHelp="true" valueHelpRequest="_loadCustomerF4" 
+							placeholder="">
 							</Input>
+
+							<Label text="Order #" required="true"/>
+							<Input id="headOrder" valueHelpOnly="true" showValueHelp="true" valueHelpRequest="_loadOrderF4"
+							 placeholder="">
+							</Input>
+
+							<Label text="Date Received" required="true"/>
+							<DatePicker id="headDate" displayFormat="dd/MM/yyyy" />
+
+							<Label text="Reference Information" required="false" />
+							<TextArea id="headDesc" value="{jobsModel>/createJob/header/jobDesc}" placeholder="Description" />
+
+							
+
+							<core:Title text="Job Information" />
+
 							<Label text="Lab" required="true"/>
 							<ComboBox id="headLab" items="{jobsModel>/lookups/labs}" placeholder="Select Lab" showSecondaryValues= "true" filterSecondaryValues="true">
 								<core:ListItem key="{jobsModel>labId}" text="{jobsModel>labId}" additionalText="{jobsModel>labName}" />
 							</ComboBox>
-							<Label text="Test Group" required="true"/>
-							<ComboBox id="headTestGroup" items="{jobsModel>/lookups/testGroups}" placeholder="Select Lab" showSecondaryValues= "true" filterSecondaryValues="true">
-								<core:ListItem key="{jobsModel>GPIX}" text="{jobsModel>NAME}" additionalText="{jobsModel>DESC}"/>
-							</ComboBox>
+
+							
+							<Label text="Discipline" required="true"/>
+							<Input id="headDisp" valueHelpOnly="true" showValueHelp="true" valueHelpRequest="_handleTestDispF4"/>
+
+							<Label text="Group" required="true"/>
+							<Input id="headGroup" valueHelpOnly="true" showValueHelp="true" valueHelpRequest="_handleTestGrpF4"/>							
+
+							<core:Title text="Other Information" />
 							<Label text="Issued By" required="true"/>
 							<ComboBox id="headIssuer" items="{jobsModel>/lookups/users}" placeholder="Select Issuer" showSecondaryValues= "true" filterSecondaryValues="true">
 								<core:ListItem key="{jobsModel>userId}" text="{jobsModel>userId}" additionalText="{jobsModel>fullname}" />
 							</ComboBox>
+
 							<Label text="Assign Approver" required="true"/>
 							<ComboBox id="headApprover" items="{jobsModel>/lookups/users}" placeholder="Select Approver" showSecondaryValues= "true" filterSecondaryValues="true">
 								<core:ListItem key="{jobsModel>userId}" text="{jobsModel>userId}" additionalText="{jobsModel>fullname}" />
 							</ComboBox>
+
+							
+
 
 						</f:content>
 					</f:SimpleForm>
@@ -49,8 +77,8 @@
 								<content>
 									<Title text="Job Items" />
 									<ToolbarSpacer />
-									<Button text="Add" press="_addItem" type="Emphasized" />
-									<Button text="Edit" press="_manageItems" type="Emphasized" />
+									<Button icon="sap-icon://add" press="_triggerAddItem" type="Emphasized" />
+									<Button icon="sap-icon://edit" press="_manageItems" type="Emphasized" />
 								</content>
 							</OverflowToolbar>
 						</headerToolbar>
@@ -58,7 +86,46 @@
 							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="4em">
 								<Text text="Item" />
 							</Column>
-							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="11em">
+
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="100%">
+								<Label required="false" text="Information" wrapping="true" />
+							</Column>
+
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="6em">
+								<Label required="false" text="" wrapping="true" />
+							</Column>
+
+							<!-- <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="8em">
+								<Label required="true" text="Test" wrapping="true"/>
+							</Column>
+
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="8em">
+								<Label required="true" text="Method" wrapping="true"/>
+							</Column>
+
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="8em">
+								<Label required="true" text="Spec." wrapping="true"/>
+							</Column>
+
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="4em">
+								<Label required="true" text="Method OK" wrapping="true" />
+							</Column>
+
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="4em">
+								<Label required="true" text="Capability" wrapping="true"/>
+							</Column>
+
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="4em">
+								<Label required="true" text="Qty Sufficient" wrapping="true"/>
+							</Column>
+
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="8em">
+								<Label required="true" text="Judgement" wrapping="true" />
+							</Column>
+
+
+							 -->
+							<!-- <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="11em">
 								<Label required="true" text="Description" />
 							</Column>
 							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="11em">
@@ -69,23 +136,29 @@
 							</Column>
 							<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center" width="8em">
 								<Label required="true" text="Test Method" />
-							</Column>
+							</Column> -->
+
+
 						</columns>
 						<items>
 							<ColumnListItem>
 								<cells>
 									<Text text="{jobsModel>itemId}" />
-									<TextArea value="{jobsModel>desc}" />
-									<ComboBox items="{jobsModel>/lookups/samples}" change="_onSampleChange" placeholder="Select Sample" showSecondaryValues= "true" filterSecondaryValues="true">
-										<core:ListItem key="{jobsModel>sampleId}" text="{jobsModel>sampleName}" additionalText="{jobsModel>sampleDesc}"/>
-									</ComboBox>
-									<ComboBox items="{jobsModel>/lookups/testParams}" change="_onTestParamChange" placeholder="Select Parameter" showSecondaryValues= "true" filterSecondaryValues="true">
-										<core:ListItem key="{jobsModel>ParamId}" text="{jobsModel>ParamValue}" additionalText="{jobsModel>ParamDesc}"/>
-									</ComboBox>
-									<Input change="_onTestMethodChange" valueHelpOnly="true" showValueHelp="true" valueHelpRequest="_loadTestMethods" placeholder="Select Method">
-									</Input>
+
+									<Text text="{jobsModel>Info}" />
+
+									<HBox>
+										<Button icon="sap-icon://show" type="Transparent" class="sapUiTinyMarginEnd"/>
+										<Button icon="sap-icon://edit" enabled="false" type="Transparent" class="sapUiTinyMarginEnd"/>
+									</HBox>
+									
 								</cells>
 							</ColumnListItem>
+
+							<!-- <CustomListItem>
+								<Button icon="sap-icon://search" type="Transparent" />
+								<Button icon="sap-icon://edit" type="Transparent"/>
+							</CustomListItem> -->
 						</items>
 					</Table>
 				</content>

@@ -10,6 +10,7 @@ sap.ui.define([
 
 	return BaseController.extend("com.limscloud.app.controller.jobs.CreateJob", {
 
+		// LIFE CYCLE FUNC.
 		onInit: function () {
 			this.router = this.getOwnerComponent().getRouter();
 			var route = sap.ui.core.UIComponent.getRouterFor(this).getRoute("TT01");
@@ -76,11 +77,11 @@ sap.ui.define([
 				});
 			}
 
-			var initTestGroups = function () {
+			var initDisp = function () {
 				var URL = "";
 				var weHaveSuccess = false;
 
-				URL = "http://localhost:3000/api/lookups/testGroups"
+				URL = "http://localhost:3000/api/tests/disp"
 				$.ajax({
 					type: "GET",
 					url: URL,
@@ -89,14 +90,14 @@ sap.ui.define([
 
 					success: function (results) {
 						weHaveSuccess = true;
-						that.getView().getModel("jobsModel").setProperty("/lookups/testGroups", results);
+						that.getView().getModel("jobsModel").setProperty("/lookups/testDisp", results);
 					},
 					error: function (response) {
 						MessageToast.show("Error!  " + response.status);
 					},
 					complete: function () {
 						if (!weHaveSuccess) {
-							MessageToast.show("Unable to fetch testGroups");
+							MessageToast.show("Unable to fetch testDisp");
 						}
 					}
 				});
@@ -104,22 +105,20 @@ sap.ui.define([
 
 			initUsers();
 			initLabs();
-			initTestGroups();
+			initDisp();
+
+			this.getView().byId("headDate").setDateValue(new Date());
 
 		},
-
 		_resetApp: function (oEvent) {
 
 		},
 
-
-		// Load Order
-		_loadOrder: function (oEvent) {
+		// HEADER Customer F4 
+		_loadCustomerF4: function (oEvent) {
 			var that = this;
 
-			var oModel = this.getView().getModel("jobsModel");
-			var oInputControl = oEvent.getSource();
-
+			this.inputId = oEvent.getSource().getId();
 
 			var initCustomers = function () {
 				var URL = "";
@@ -146,6 +145,85 @@ sap.ui.define([
 					}
 				});
 			}
+
+
+			var initFragment = function (oId, oFragment) {
+
+				that.inputId = oEvent.getSource().getId();
+				var oView = that.getView();
+				that._valueHelpDialog = oView.byId(oId);
+				// create value help dialog
+
+				if (!that._valueHelpDialog) {
+					// create dialog via fragment factory
+					that._valueHelpDialog = sap.ui.xmlfragment(oView.getId(), "com.limscloud.app.view.jobs.fragments." + oFragment, that);
+					oView.addDependent(that._valueHelpDialog);
+				}
+				// open value help dialog filtered by the input value
+				that._valueHelpDialog.open();
+			}
+			initFragment("customer_f4", "customerFragment");
+			initCustomers();
+		},
+		_onCustomerF4Select: function (oEvent) {
+			
+			var oModel = this.getView().getModel("jobsModel");
+			var oInput = this.getView().byId(this.inputId);
+			
+			var sPath = oEvent.getParameters().listItem.getBindingContextPath();
+			var sObject = oModel.getProperty(sPath);
+
+			oModel.setProperty("/createJob/header/customerId", sObject.custId);
+			oModel.setProperty("/createJob/header/customerName", sObject.name);
+
+			oInput.setValue(sObject.custId + " - " + sObject.name);
+			oInput.setValueState("None");
+			oInput.setValueStateText("");
+
+			this._valueHelpDialog.close();
+
+		},	
+		//HEADER  Load Order F4
+		_loadOrderF4: function (oEvent) {
+			var that = this;
+
+			var oModel = this.getView().getModel("jobsModel");
+			var selCustId = oModel.getProperty("/createJob/header/customerId");
+
+			if (!selCustId || selCustId.length <= 0) {
+				this.getView().byId("headCust").setValueState("Error");
+				this.getView().byId("headCust").setValueStateText("Please select Customer");
+				this.getView().byId("headCust").focus();
+				return;
+			}			
+
+			var initOrders = function (oCustId) {
+				var URL = "";
+				var weHaveSuccess = false;
+
+				URL = "http://localhost:3000/api/orders?custId=" + oCustId;
+				$.ajax({
+					type: "GET",
+					url: URL,
+					dataType: "json",
+					crossDomain: true,
+
+					success: function (results) {
+						weHaveSuccess = true;
+						oModel.setProperty("/lookups/orders", results);
+					},
+					error: function (response) {
+						MessageToast.show("Error!  " + response.status);
+					},
+					complete: function () {
+						if (!weHaveSuccess) {
+							MessageToast.show("Unable to fetch orders");
+						}
+					}
+				});
+			}
+
+
 			var initFragment = function () {
 
 				that.inputId = oEvent.getSource().getId();
@@ -158,28 +236,78 @@ sap.ui.define([
 					that._valueHelpDialog = sap.ui.xmlfragment(oView.getId(), "com.limscloud.app.view.jobs.fragments.orderPickerDialog", that);
 					oView.addDependent(that._valueHelpDialog);
 				}
+
+				that._valueHelpDialog.setTitle("Orders for: " + oModel.getProperty("/createJob/header/customerName"))
+
 				// open value help dialog filtered by the input value
 				that._valueHelpDialog.open();
 			}
 			initFragment();
-			initCustomers();
+			initOrders(selCustId);
 		},
-		//Test Method Dialog
-		_loadTestMethods: function (oEvent) {
-			var that = this;
+		_onOrderF4Select: function (oEvent) {
 
+			var oInput = this.getView().byId(this.inputId);
 			var oModel = this.getView().getModel("jobsModel");
-			var oInputControl = oEvent.getSource();
-			var sPath = oInputControl.getParent().getBindingContextPath();
 
-			var groupId = this.getView().byId("headTestGroup").getSelectedKey(),
-				paramId = oModel.getObject(sPath).testParamId;
+			var sPath = oEvent.getParameters().listItem.getBindingContextPath();
+			var sObject = oModel.getProperty(sPath);			
 
-			var initTestParams = function (groupId, paramId) {
+			oInput.setValue(sObject.orderId + " - " + sObject.orderDesc);
+
+			oModel.setProperty("/createJob/header/orderId", sObject.orderId);
+			oModel.setProperty("/createJob/header/orderName", sObject.orderDesc);
+
+			oInput.setValueState("None");
+			oInput.setValueStateText("");
+
+			this._valueHelpDialog.close();
+		},	
+		
+
+		// HEADER TEST DISCIPLINE F4 FUNCTIONS
+		_handleTestDispF4: function (oEvent){
+			this.inputId = oEvent.getSource().getId();
+			var oView = this.getView();
+			this._valueHelpDialog = oView.byId("test_disp_dialog");
+			// create value help dialog
+
+			if (!this._valueHelpDialog) {
+				// create dialog via fragment factory
+				this._valueHelpDialog = sap.ui.xmlfragment(oView.getId(), "com.limscloud.app.view.jobs.fragments." + "testDispDialog", this);
+				oView.addDependent(this._valueHelpDialog);
+			}
+			// open value help dialog filtered by the input value
+			this._valueHelpDialog.open();
+		},
+		_hdlTestDispConfirm: function (oEvent) {
+			var oItem = oEvent.getParameter("selectedContexts")[0].getObject()
+			this.getView().byId(this.inputId).setValue(oItem.disp_id + " - " + oItem.disp_name);
+		},
+		_hdlTestDispCancel: function (oEvent) {			
+			this.getView().byId(this.inputId).setValue(null);
+		},
+
+		// HEADER TEST GROUP F4 FUNCTIONS
+		_handleTestGrpF4: function (oEvent){
+			var that = this;
+			this.inputId = oEvent.getSource().getId();
+			var oView = this.getView();
+			this._valueHelpDialog = oView.byId("test_grp_dialog");
+			// create value help dialog
+
+			if (!this._valueHelpDialog) {
+				// create dialog via fragment factory
+				this._valueHelpDialog = sap.ui.xmlfragment(oView.getId(), "com.limscloud.app.view.jobs.fragments." + "testGroupDialog", this);
+				oView.addDependent(this._valueHelpDialog);
+			}
+			// open value help dialog filtered by the input value
+
+			var getTestGroups = function (dispId) {
 				var URL = "";
 				var weHaveSuccess = false;
 
-				URL = "http://localhost:3000/api/lookups/testMethods?groupId=" + groupId + "&paramId=" + paramId;
+				URL = "http://localhost:3000/api/tests/group?dispId=" + dispId;
 				$.ajax({
 					type: "GET",
 					url: URL,
@@ -188,56 +316,221 @@ sap.ui.define([
 
 					success: function (results) {
 						weHaveSuccess = true;
-						that.getView().getModel("jobsModel").setProperty("/lookups/testMethods", results);
+						that.getView().getModel("jobsModel").setProperty("/lookups/testGroup", results);
 					},
 					error: function (response) {
 						MessageToast.show("Error!  " + response.status);
 					},
-					complete: function () {
+					complete: function (oRes) {
 						if (!weHaveSuccess) {
-							MessageToast.show("Unable to fetch testMethods");
+							MessageToast.show(oRes.responseJSON.error);
+							return;
 						}
+						that._valueHelpDialog.open();
 					}
 				});
 			}
-			var initFragment = function () {
-				var sInputValue = oEvent.getSource().getValue();
-				that.inputId = oEvent.getSource().getId();
-				var oView = that.getView();
-				that._valueHelpDialog = oView.byId("test_method_dialog");
-				// create value help dialog
+			var dispId = this.getView().byId("headDisp").getValue().split(" - ")[0]
+			getTestGroups(dispId);
 
-				if (!that._valueHelpDialog) {
-					// create dialog via fragment factory
-					that._valueHelpDialog = sap.ui.xmlfragment(oView.getId(), "com.limscloud.app.view.jobs.fragments.testMethDialog", that);
-					oView.addDependent(that._valueHelpDialog);
-				}
-
-				// create a filter for the binding
-				that._valueHelpDialog.getBinding("items").filter([new Filter(
-					"MethodValue",
-					sap.ui.model.FilterOperator.Contains, ""
-				)]);
-
-				// open value help dialog filtered by the input value
-				that._valueHelpDialog.open();
-			}
-
-			initTestParams(groupId, paramId);
-			initFragment();
-
-
+			
 		},
-		_handleInputConfirm: function (oEvent) {
-			var obj = this.getOwnerComponent().getModel("jobsModel").getProperty(oEvent.getParameter("selectedItem").getBindingContextPath());
-			this.getView().getModel("jobsModel").setProperty(sap.ui.getCore().byId(this.inputId).getParent().getBindingContextPath() + "/testMethId", obj.MethodId);
-			sap.ui.getCore().byId(this.inputId).setValue(obj.MethodValue + " - " + obj.MethodDesc);
+		_hdlTestGrpConfirm: function (oEvent) {
+			var oItem = oEvent.getParameter("selectedContexts")[0].getObject()
+			this.getView().byId(this.inputId).setValue(oItem.grp_id + " - " + oItem.grp_desc);
+		},
+		_hdlTestGrpCancel: function (oEvent) {			
+			this.getView().byId(this.inputId).setValue(null);
+		},
+
+		//ITEM TEST PRODUCT MATERIAL F4
+		_itemHdlTestProductF4: function (oEvent){
+			var that = this;
+			this.inputId = oEvent.getSource().getId();
+			var oView = this.getView();
+			this._valueHelpDialog = oView.byId("test_prod_dialog");
+			// create value help dialog
+
+			if (!this._valueHelpDialog) {
+				// create dialog via fragment factory
+				this._valueHelpDialog = sap.ui.xmlfragment(oView.getId(), "com.limscloud.app.view.jobs.fragments." + "testProdDialog", this);
+				oView.addDependent(this._valueHelpDialog);
+			}
+			// open value help dialog filtered by the input value
+
+			var getTestProds = function (groupId) {
+				var URL = "";
+				var weHaveSuccess = false;
+
+				URL = "http://localhost:3000/api/tests/prod?groupId=" + groupId;
+				$.ajax({
+					type: "GET",
+					url: URL,
+					dataType: "json",
+					crossDomain: true,
+
+					success: function (results) {
+						weHaveSuccess = true;
+						that.getView().getModel("jobsModel").setProperty("/lookups/testProd", results);
+					},
+					error: function (response) {
+						MessageToast.show("Error!  " + response.status);
+					},
+					complete: function (oRes) {
+						if (!weHaveSuccess) {
+							MessageToast.show(oRes.responseJSON.error);
+							return;
+						}
+						that._valueHelpDialog.open();
+					}
+				});
+			}
+			var groupId = this.getView().byId("headGroup").getValue().split(" - ")[0]
+			getTestProds(groupId);
+
+			
+		},
+		_itemHdlTestProductConfirm: function (oEvent) {
+			var oItem = oEvent.getParameter("selectedContexts")[0].getObject()
+			this.getView().byId(this.inputId).setValue(oItem.pm_id + " - " + oItem.pm_desc);
+		},
+		_itemHdlTestProductCancel: function (oEvent) {			
+			this.getView().byId(this.inputId).setValue(null);
+		},
+
+		//ITEM TEST MASTER F4
+		_itemHdlTestMasterF4: function (oEvent){
+			var that = this;
+			this.inputId = oEvent.getSource().getId();
+			var oView = this.getView();
+			this._valueHelpDialog = oView.byId("test_master_dialog");
+			// create value help dialog
+
+			if (!this._valueHelpDialog) {
+				// create dialog via fragment factory
+				this._valueHelpDialog = sap.ui.xmlfragment(oView.getId(), "com.limscloud.app.view.jobs.fragments." + "testMasterDialog", this);
+				oView.addDependent(this._valueHelpDialog);
+			}
+			// open value help dialog filtered by the input value
+
+			var getTestMaster = function (prodId) {
+				var URL = "";
+				var weHaveSuccess = false;
+
+				URL = "http://localhost:3000/api/tests/master?prodId=" + prodId;
+				$.ajax({
+					type: "GET",
+					url: URL,
+					dataType: "json",
+					crossDomain: true,
+
+					success: function (results) {
+						weHaveSuccess = true;
+						that.getView().getModel("jobsModel").setProperty("/lookups/testMaster", results);
+					},
+					error: function (response) {
+						MessageToast.show("Error!  " + response.status);
+					},
+					complete: function (oRes) {
+						if (!weHaveSuccess) {
+							MessageToast.show(oRes.responseJSON.error);
+							return;
+						}
+						that._valueHelpDialog.open();
+					}
+				});
+			}
+			var prodId = this.getView().byId("itemProd").getValue().split(" - ")[0]
+			getTestMaster(prodId);
+
+			
+		},
+		_hdlTestMasterConfirm: function (oEvent) {
+			var oItem = oEvent.getParameter("selectedContexts")[0].getObject()
+			// console.log(oItem);
+			this.getView().byId(this.inputId).setValue(oItem.tms_id + " - " + oItem.tms_snam);
+		},
+		_hdlTestMasterCancel: function (oEvent) {			
+			this.getView().byId(this.inputId).setValue(null);
+		},
+
+		//ITEM TEST TYPE F4
+		_itemHdlTestTypeF4: function (oEvent){
+			var that = this;
+			this.inputId = oEvent.getSource().getId();
+			var oView = this.getView();
+			this._valueHelpDialog = oView.byId("test_type_dialog");
+			// create value help dialog
+
+			if (!this._valueHelpDialog) {
+				// create dialog via fragment factory
+				this._valueHelpDialog = sap.ui.xmlfragment(oView.getId(), "com.limscloud.app.view.jobs.fragments." + "testTypeDialog", this);
+				oView.addDependent(this._valueHelpDialog);
+			}
+			// open value help dialog filtered by the input value
+
+			var getTestType = function (masterId) {
+				var URL = "";
+				var weHaveSuccess = false;
+
+				URL = "http://localhost:3000/api/tests/type?masterId=" + masterId;
+				$.ajax({
+					type: "GET",
+					url: URL,
+					dataType: "json",
+					crossDomain: true,
+
+					success: function (results) {
+						weHaveSuccess = true;
+						that.getView().getModel("jobsModel").setProperty("/lookups/testType", results);
+					},
+					error: function (response) {
+						MessageToast.show("Error!  " + response.status);
+					},
+					complete: function (oRes) {
+						if (!weHaveSuccess) {
+							MessageToast.show(oRes.responseJSON.error);
+							return;
+						}
+						that._valueHelpDialog.open();
+					}
+				});
+			}
+			var masterId = this.getView().byId("itemTestMaster").getValue().split(" - ")[0]
+			getTestType(masterId);
+
+			
+		},
+		_hdlTestTypeConfirm: function (oEvent) {
+			var oItem = oEvent.getParameter("selectedContexts")[0].getObject()
+			this.getView().byId(this.inputId).setValue(oItem.tmt_id + " - " + oItem.tmt_desc);
+		},
+		_hdlTestTypeCancel: function (oEvent) {			
+			this.getView().byId(this.inputId).setValue(null);
 		},
 
 
 
 		// Table Management funcitions
-		_addItem: function (oEvent) {
+		_triggerAddItem: function (oEvent) {
+			var that = this;
+			// that.inputId = oEvent.getSource().getId();
+			var oView = that.getView();
+			that._createDialog = oView.byId("createJobItemDialog");
+			// create value help dialog
+
+			if (!that._createDialog) {
+				// create dialog via fragment factory
+				that._createDialog = sap.ui.xmlfragment(oView.getId(), "com.limscloud.app.view.jobs.fragments.createJobItem", that);
+				oView.addDependent(that._createDialog);
+			}			
+
+			// open value help dialog filtered by the input value
+			that._createDialog.open();
+
+
+		},
+		_addItem: function (oItem) {
 			var oModel = this.getView().getModel("jobsModel");
 			var tableItems = oModel.getProperty("/createJob/items");
 			var tableLength = oModel.getProperty("/createJob/items").length;
@@ -248,14 +541,14 @@ sap.ui.define([
 				return s;
 			};
 
-			var oItem = {};
+			// var oItem = {};
 			oItem.itemId = pad(tableLength + 1, 3);
-			oItem.desc = "";
-			oItem.sampleId = "";
-			oItem.testGroupId = this.getView().byId("headTestGroup").getSelectedKey();
-			oItem.testParamId = "";
-			oItem.testMethId = "";
-			oItem.createdBy = this.getView().byId("headIssuer").getSelectedKey();
+			oItem.info = "";
+			// oItem.sampleId = "";
+			// oItem.testGroupId = "";
+			// oItem.testParamId = "";
+			// oItem.testMethId = "";
+			// oItem.createdBy = "";
 
 			tableItems.push(oItem);
 
@@ -268,18 +561,18 @@ sap.ui.define([
 			var that = this;
 			var oModel = this.getView().getModel("jobsModel");
 
-			var orderId = this.getView().byId("headOrder").getValue(),
-				desc = this.getView().byId("headDesc").getValue(),
-				labId = this.getView().byId("headLab").getSelectedKey(),
-				groupId = this.getView().byId("headTestGroup").getSelectedKey(),
-				issuerId = this.getView().byId("headIssuer").getSelectedKey(),
-				approverId = this.getView().byId("headApprover").getSelectedKey();
+			// var orderId = this.getView().byId("headOrder").getValue(),
+			// 	desc = this.getView().byId("headDesc").getValue(),
+			// 	labId = this.getView().byId("headLab").getSelectedKey(),
+			// 	groupId = this.getView().byId("headTestDisp").getSelectedKey(),
+			// 	issuerId = this.getView().byId("headIssuer").getSelectedKey(),
+			// 	approverId = this.getView().byId("headApprover").getSelectedKey();
 
-			oModel.setProperty("/createJob/header/jobDesc", desc);
-			oModel.setProperty("/createJob/header/labId", labId);
-			oModel.setProperty("/createJob/header/testGroup", groupId);
-			oModel.setProperty("/createJob/header/createdBy", issuerId);
-			oModel.setProperty("/createJob/header/approverId", approverId);
+			// oModel.setProperty("/createJob/header/jobDesc", desc);
+			// oModel.setProperty("/createJob/header/labId", labId);
+			// oModel.setProperty("/createJob/header/testGroup", groupId);
+			// oModel.setProperty("/createJob/header/createdBy", issuerId);
+			// oModel.setProperty("/createJob/header/approverId", approverId);
 
 			var initSamples = function () {
 				var URL = "";
@@ -333,98 +626,15 @@ sap.ui.define([
 				});
 			}
 
-			initSamples();
-			initTestParams(groupId);
+			// initSamples();
+			// initTestParams(groupId);
 
 			this.getView().byId("jobItemsTable").setVisible(true);
 			this.getView().byId("page0").setShowFooter(true);
 
 		},
 
-		//handle ComboBox changes - header level
-		_onOrderSelect: function (oEvent) {
-			var orderId = oEvent.getParameter("listItem").getCells()[0].getTitle();
-			this.getView().byId(this.inputId).setValue(orderId);
-			this._valueHelpDialog.close();
-			this.getView().getModel("jobsModel").setProperty("/createJob/header/orderId", orderId);
-		},
-		_onSelectCustomer: function (oEvent) {
-			console.log(oEvent.getParameters());
-
-			var that = this;
-
-			var custId = oEvent.getParameter("selectedRow").getAggregation("cells")[1].getText();
-
-			var initOrders = function (custId) {
-				var URL = "";
-				var weHaveSuccess = false;
-
-				URL = "http://localhost:3000/api/orders?custId=" + custId;
-				$.ajax({
-					type: "GET",
-					url: URL,
-					dataType: "json",
-					crossDomain: true,
-
-					success: function (results) {
-						weHaveSuccess = true;
-						that.getView().getModel("jobsModel").setProperty("/lookups/orders", results);
-					},
-					error: function (response) {
-						MessageToast.show("Error!  " + response.status);
-					},
-					complete: function () {
-						if (!weHaveSuccess) {
-							MessageToast.show("Unable to fetch Orders");
-						}
-					}
-				});
-
-			}
-
-			initOrders(custId);
-		},
-
-		//handle ComboBox changes - item level
-		_onSampleChange: function (oEvent) {
-			var oComboBox = oEvent.getSource(),
-				sSelectedKey = oComboBox.getSelectedKey();
-
-			var sPath = oComboBox.getParent().getBindingContextPath();
-
-			if (!sSelectedKey) {
-				oComboBox.setValueState("Error");
-			} else {
-				this.getView().getModel("jobsModel").setProperty(sPath + "/sampleId", oEvent.getSource().getSelectedKey());
-				oComboBox.setValueState("None");
-			}
-		},
-		_onTestParamChange: function (oEvent) {
-			var oComboBox = oEvent.getSource(),
-				sSelectedKey = oComboBox.getSelectedKey();
-
-			var sPath = oComboBox.getParent().getBindingContextPath();
-
-			if (!sSelectedKey) {
-				oComboBox.setValueState("Error");
-			} else {
-				this.getView().getModel("jobsModel").setProperty(sPath + "/testParamId", oEvent.getSource().getSelectedKey());
-				oComboBox.setValueState("None");
-			}
-		},
-		_onTestMethodChange: function (oEvent) {
-			var oComboBox = oEvent.getSource(),
-				sSelectedKey = oComboBox.getSelectedKey();
-
-			var sPath = oComboBox.getParent().getBindingContextPath();
-
-			if (!sSelectedKey) {
-				oComboBox.setValueState("Error");
-			} else {
-				this.getView().getModel("jobsModel").setProperty(sPath + "/testMethId", oEvent.getSource().getSelectedKey());
-				oComboBox.setValueState("None");
-			}
-		},
+		
 
 
 		onCreateSave: function (oEvent) {

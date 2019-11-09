@@ -1,0 +1,7 @@
+<core:FragmentDefinition xmlns="sap.m" 
+	xmlns:core="sap.ui.core">
+	<Dialog id="order_picker_dialog" title="Orders" class="sapUiNoContentPadding">
+
+	</Dialog>
+
+</core:FragmentDefinition>

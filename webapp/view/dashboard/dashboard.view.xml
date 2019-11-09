@@ -21,6 +21,7 @@
 						<OverflowToolbarLayoutData priority="NeverOverflow" minWidth="20px"/>
 					</layoutData>
 				</ToolbarSpacer>
+				<Button icon="sap-icon://ui-notifications" type="Transparent" press="handleNotifPress"/>
 				<SearchField placeholder="Search transaction...">
 					<layoutData>
 						<OverflowToolbarLayoutData priority="Low" minWidth="3em" maxWidth="20em"/>

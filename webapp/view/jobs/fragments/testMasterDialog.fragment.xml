@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog 
+		id="test_master_dialog"
+		title="Tests"
+		class="sapUiPopupWithPadding"
+		items="{jobsModel>/lookups/testMaster}"
+		search="_hdlTestMasterSearch"
+		confirm="_hdlTestMasterConfirm"
+		cancel="_hdlTestMasterCancel"
+		noDataText="No tests found"
+		>       
+		<StandardListItem
+			title="{jobsModel>tms_id}"
+            info="{jobsModel>tms_snam}"
+			description="{jobsModel>tms_lnam}" />
+	</SelectDialog>
+</core:FragmentDefinition>

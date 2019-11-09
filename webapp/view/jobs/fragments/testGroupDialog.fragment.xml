@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog 
+		id="test_grp_dialog"
+		title="Test Group"
+		class="sapUiPopupWithPadding"
+		items="{jobsModel>/lookups/testGroup}"
+		search="_hdlTestGrpSearch"
+		confirm="_hdlTestGrpConfirm"
+		cancel="_hdlTestGrpCancel"
+		noDataText="No groups found"
+		>       
+		<StandardListItem
+			title="{jobsModel>grp_id}"
+            info="{jobsModel>grp_desc}"
+			description="{jobsModel>grp_desc}" />
+	</SelectDialog>
+</core:FragmentDefinition>

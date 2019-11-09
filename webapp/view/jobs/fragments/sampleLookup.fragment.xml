@@ -1,0 +1,66 @@
+<core:FragmentDefinition xmlns="sap.m" 
+	xmlns:core="sap.ui.core">
+	<Dialog id="sampleLookupDialog" title="Orders" class="sapUiNoContentPadding">
+		<subHeader>
+			<Toolbar id="toolbar1">
+				<SearchField />
+				<!-- <Button type="Emphasized" text="Order" icon="sap-icon://create"/>
+				<Button type="Emphasized" icon="sap-icon://reset" tooltip="Reset"/> -->
+				<Button type="Emphasized" icon="sap-icon://decline" tooltip="Cancel"/>
+			</Toolbar>
+		</subHeader>
+		<content>
+			<Table id="sampleLookupTable" noDataText="No Samples" growingThreshold="10" 
+			 itemPress="_onSampleF4Select" includeItemInSelection="true" items="{jobsModel>/lookups/samples}" growing="true">
+				<ColumnListItem type="Active"> 
+					<cells>
+						<ObjectIdentifier title="{jobsModel>sampleId}"/>
+						<Text text="{jobsModel>sampleName}"/>
+						<Text text="{jobsModel>sampleDesc}"/>
+						<Text text="{jobsModel>sampleQty}"/>
+						<Text text="{jobsModel>unit}"/>
+					</cells>
+				</ColumnListItem>
+				<columns>
+
+					<Column width="12em">
+						<header>
+							<Text text="Sample #"/>
+						</header>
+					</Column>
+
+					<Column width="12em">
+						<header>
+							<Text text="Name"/>
+						</header>
+					</Column>
+
+					<Column width="12em">
+						<header>
+							<Text text="Description"/>
+						</header>
+					</Column>
+
+					<Column width="12em">
+						<header>
+							<Text text="Qty"/>
+						</header>
+					</Column>
+
+					<Column width="12em">
+						<header>
+							<Text text="UoM"/>
+						</header>
+					</Column>
+
+				</columns>
+			</Table>
+
+		</content>
+
+		<buttons>			
+
+		</buttons>
+	</Dialog>
+
+</core:FragmentDefinition>

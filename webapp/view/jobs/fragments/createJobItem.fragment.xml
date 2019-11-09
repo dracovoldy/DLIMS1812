@@ -1,0 +1,79 @@
+<core:FragmentDefinition xmlns="sap.m" 
+	xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout" 
+	xmlns:f="sap.ui.layout.form">
+	<Dialog id="createJobItemDialog" title="Create Item : ItemNoHere" stretch="true" class="sapUiNoContentPadding">
+		<subHeader>
+			<!-- <Toolbar class="sapUiNoContentPadding">				
+				<SearchField />
+				<Button type="Emphasized" text="Customer" icon="sap-icon://create"/>
+				<Button type="Emphasized" icon="sap-icon://reset" tooltip="Reset"/>
+				<Button type="Emphasized" icon="sap-icon://decline" tooltip="Cancel"/>
+			</Toolbar> -->
+		</subHeader>
+		<content>
+			<f:SimpleForm id="createJobItemForm" editable="true" layout="ResponsiveGridLayout" 
+								labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" 
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" 
+								columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false">
+						<f:toolbar>
+							<!-- <Toolbar id="TB1">
+								<Title id="Title1" text="DOCUMENT HEADER" level="H4" titleStyle="H4"/>
+								<ToolbarSpacer />
+								<Button text="ITEM" icon="sap-icon://create-form" type="Emphasized" press="_createItemBtnPress"/>
+							</Toolbar> -->
+						</f:toolbar>
+						<f:content>
+							<core:Title text="Sample Information" />
+
+							<Label text="Sample" required="true"/>
+							<Input id="itemSample" valueHelpOnly="true" showValueHelp="true" placeholder="">
+							</Input>
+
+							<Label text="Quantity" required="true"/>
+							<Input id="itemQty" type="Number" placeholder="00.00">
+							</Input>                            
+							<Input id="itemUom" valueHelpOnly="true" placeholder="Unit"  showValueHelp="true">
+                                <layoutData>
+                                    <l:GridData span="XL2 L3 M3 S4" />
+                                </layoutData>
+							</Input>
+
+                            <Label text="Quantity Sufficient" required="false"/>
+                            <Switch state="true" customTextOn="Yes" customTextOff="No">
+                                <layoutData>
+                                    <FlexItemData growFactor="1" />
+                                </layoutData>
+                            </Switch>
+
+							<core:Title text="Test Specification" />
+
+							<Label text="Product" required="true"/>
+							<Input id="itemProd" valueHelpOnly="true" placeholder="" showValueHelp="true" valueHelpRequest="_itemHdlTestProductF4">
+							</Input>
+
+                            <Label text="Test" required="true"/>
+							<Input id="itemTestMaster" valueHelpOnly="true" placeholder="" showValueHelp="true" valueHelpRequest="_itemHdlTestMasterF4">
+							</Input>
+
+                            <Label text="Method" required="true"/>
+							<Input id="itemType" valueHelpOnly="true" placeholder="" showValueHelp="true" valueHelpRequest="_itemHdlTestTypeF4">
+							</Input>
+
+                            <Label text="Capability" required="false"/>
+                            <Switch state="true" customTextOn="Yes" customTextOff="No">
+                                <layoutData>
+                                    <FlexItemData growFactor="1" />
+                                </layoutData>
+                            </Switch>				
+
+						</f:content>
+					</f:SimpleForm>
+		</content>
+		<buttons>			
+                <Button type="Emphasized" text="OK" tooltip="Ok"/>
+				<Button type="Emphasized" text="Cancel" tooltip="Cancel"/>
+		</buttons>
+	</Dialog>
+
+</core:FragmentDefinition>
