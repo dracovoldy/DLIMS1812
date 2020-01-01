@@ -2,7 +2,7 @@
 	xmlns:core="sap.ui.core">
 	<Dialog id="order_picker_dialog" title="Orders" class="sapUiNoContentPadding">
 		<subHeader>
-			<Toolbar id="toolbar1">
+			<Toolbar>
 				<SearchField />
 				<Button type="Emphasized" text="Order" icon="sap-icon://create"/>
 				<Button type="Emphasized" icon="sap-icon://reset" tooltip="Reset"/>

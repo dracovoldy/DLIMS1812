@@ -1,0 +1,69 @@
+<core:FragmentDefinition xmlns="sap.m" 
+	xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout" 
+	xmlns:f="sap.ui.layout.form">
+	<Dialog id="viewJobItemDialog" title="View Item {jobsModel>itemId}" stretch="true" class="sapUiNoContentPadding">
+		<subHeader>
+			
+		</subHeader>
+		<content>
+			<f:SimpleForm id="viewJobItemForm" editable="true" layout="ResponsiveGridLayout" 
+								labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" 
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" 
+								columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false">
+						<f:toolbar>
+							
+						</f:toolbar>
+						<f:content>
+							<core:Title text="Sample Information" />
+
+							<Label text="Sample"/>
+							<Input id="dSample" editable="false" value="{jobsModel>sampleId} - {jobsModel>sampleName}">
+							</Input>
+
+							<Label text="Quantity / Units"/>
+							<Input id="dQty" editable="false" value="{jobsModel>itemQty}">
+							</Input>                            
+							<Input id="dUom" editable="false" value="{jobsModel>itemUom}">
+                                <layoutData>
+                                    <l:GridData span="XL2 L3 M3 S4" />
+                                </layoutData>
+							</Input>
+
+                            <Label text="Quantity Sufficient"/>
+                            <Switch id="dQtyOK" state="{= ${jobsModel>itemQtyOk} === 'X' ? true : false}" customTextOn="Yes" customTextOff="No" enabled="false">
+                                <layoutData>
+                                    <FlexItemData growFactor="1" />
+                                </layoutData>
+                            </Switch>
+
+							<core:Title text="Test Specification" />
+
+							<Label text="Product"/>
+							<Input id="dProd" editable="false" value="{jobsModel>itemProd} - {jobsModel>itemProdName}">
+							</Input>
+
+                            <Label text="Test"/>
+							<Input id="dTestMaster" editable="false" value="{jobsModel>itemTestMaster} - {jobsModel>itemTestMasterName}">
+							</Input>
+
+                            <Label text="Method"/>
+							<Input id="dType" editable="false" value="{jobsModel>itemType} - {jobsModel>itemTypeName}">
+							</Input>
+
+                            <Label text="Capability"/>
+                            <Switch id="dTestCap" state="{= ${jobsModel>itemTestCap} === 'X' ? true : false}" customTextOn="Yes" customTextOff="No" enabled="false">
+                                <layoutData>
+                                    <FlexItemData growFactor="1" />
+                                </layoutData>
+                            </Switch>				
+
+						</f:content>
+					</f:SimpleForm>
+		</content>
+		<buttons>			                
+				<Button type="Emphasized" text="Close" tooltip="Cancel"/>
+		</buttons>
+	</Dialog>
+
+</core:FragmentDefinition>

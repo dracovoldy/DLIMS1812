@@ -1,0 +1,69 @@
+<core:FragmentDefinition xmlns="sap.m" 
+	xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout" 
+	xmlns:f="sap.ui.layout.form">
+	<Dialog id="editJobItemDialog" title="Edit Item {jobsModel>itemId}" stretch="true" class="sapUiNoContentPadding">
+		<subHeader>
+			
+		</subHeader>
+		<content>
+			<f:SimpleForm id="editJobItemForm" editable="true" layout="ResponsiveGridLayout" 
+								labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" 
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" 
+								columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false">
+						<f:toolbar>
+							
+						</f:toolbar>
+						<f:content>
+							<core:Title text="Sample Information" />
+
+							<Label text="Sample" required="true" />
+							<Input id="eSample" value="{jobsModel>sampleId} - {jobsModel>sampleName}" valueHelpOnly="true" showValueHelp="true" placeholder="select sample" valueHelpRequest="_itemSampleF4">
+							</Input>
+
+							<Label text="Quantity / Units" required="true"/>
+							<Input id="eQty" value="{jobsModel>itemQty}">
+							</Input>                            
+							<Input id="eUom" editable="false" value="{jobsModel>itemUom}">
+                                <layoutData>
+                                    <l:GridData span="XL2 L3 M3 S4" />
+                                </layoutData>
+							</Input>
+
+                            <Label text="Quantity Sufficient"/>
+                            <Switch id="eQtyOK" state="{= ${jobsModel>itemQtyOk} === 'X' ? true : false}" customTextOn="Yes" customTextOff="No" enabled="true">
+                                <layoutData>
+                                    <FlexItemData growFactor="1" />
+                                </layoutData>
+                            </Switch>
+
+							<core:Title text="Test Specification" />
+
+							<Label text="Product"/>
+							<Input id="eProd" value="{jobsModel>itemProd} - {jobsModel>itemProdName}" valueHelpOnly="true" placeholder="" showValueHelp="true" valueHelpRequest="_itemHdlTestProductF4">
+							</Input>
+
+                            <Label text="Test"/>
+							<Input id="eTestMaster" value="{jobsModel>itemTestMaster} - {jobsModel>itemTestMasterName}" valueHelpOnly="true" placeholder="" showValueHelp="true" valueHelpRequest="_itemHdlTestMasterF4">
+							</Input>
+
+                            <Label text="Method"/>
+							<Input id="eType" value="{jobsModel>itemType} - {jobsModel>itemTypeName}" valueHelpOnly="true" placeholder="" showValueHelp="true" valueHelpRequest="_itemHdlTestTypeF4">
+							</Input>
+
+                            <Label text="Capability"/>
+                            <Switch id="eTestCap" state="{= ${jobsModel>itemTestCap} === 'X' ? true : false}" customTextOn="Yes" customTextOff="No" enabled="true">
+                                <layoutData>
+                                    <FlexItemData growFactor="1" />
+                                </layoutData>
+                            </Switch>				
+
+						</f:content>
+					</f:SimpleForm>
+		</content>
+		<buttons>			                
+				<Button type="Emphasized" text="Save" tooltip="Save"/>
+		</buttons>
+	</Dialog>
+
+</core:FragmentDefinition>

@@ -2,7 +2,7 @@
 	xmlns:core="sap.ui.core">
 	<Dialog id="customer_f4" title="Customer List" class="sapUiNoContentPadding">
 		<subHeader>
-			<Toolbar class="sapUiNoContentPadding">				
+			<Toolbar>				
 				<SearchField />
 				<Button type="Emphasized" text="Customer" icon="sap-icon://create"/>
 				<Button type="Emphasized" icon="sap-icon://reset" tooltip="Reset"/>

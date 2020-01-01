@@ -2,7 +2,7 @@
 	xmlns:core="sap.ui.core">
 	<Dialog id="sampleLookupDialog" title="Orders" class="sapUiNoContentPadding">
 		<subHeader>
-			<Toolbar id="toolbar1">
+			<Toolbar>
 				<SearchField />
 				<!-- <Button type="Emphasized" text="Order" icon="sap-icon://create"/>
 				<Button type="Emphasized" icon="sap-icon://reset" tooltip="Reset"/> -->
@@ -11,7 +11,7 @@
 		</subHeader>
 		<content>
 			<Table id="sampleLookupTable" noDataText="No Samples" growingThreshold="10" 
-			 itemPress="_onSampleF4Select" includeItemInSelection="true" items="{jobsModel>/lookups/samples}" growing="true">
+			 itemPress="_itemSampleF4Confirm" includeItemInSelection="true" items="{jobsModel>/lookups/samples}" growing="true">
 				<ColumnListItem type="Active"> 
 					<cells>
 						<ObjectIdentifier title="{jobsModel>sampleId}"/>

@@ -167,11 +167,27 @@
 					]
 				},
 				{
-					"name": "TT01",
-					"pattern": "process/CreateJob",
+					"name": "RD01",
+					"pattern": "process/CreateReviewDocument",
 					"greedy": false,
 					"target": [
-						"TT01"
+						"RD01"
+					]
+				},
+				{
+					"name": "RD02",
+					"pattern": "process/EditReviewDocument",
+					"greedy": false,
+					"target": [
+						"RD02"
+					]
+				},
+				{
+					"name": "AD01",
+					"pattern": "process/AssignReviewDocument",
+					"greedy": false,
+					"target": [
+						"AD01"
 					]
 				},
 				{
@@ -181,25 +197,37 @@
 					"target": [
 						"TT02"
 					]
-				},
-				{
-					"name": "TT02-detail",
-					"pattern": "TT02-detail",
-					"greedy": false,
-					"target": [
-						"TT02-detail"
-					]
 				}
 			],
 			"targets": {
-				"TT01": {
+				"RD01": {
 					"viewType": "XML",
 					"viewPath": "com.limscloud.app.view.jobs",
 					"parent": "Dashboard",
 					"controlId": "pageContainer",
 					"transition": "slide",
 					"clearAggregation": true,
-					"viewName": "CreateJob",
+					"viewName": "CreateReview",
+					"viewLevel": 3
+				},
+				"RD02": {
+					"viewType": "XML",
+					"viewPath": "com.limscloud.app.view.jobs",
+					"parent": "Dashboard",
+					"controlId": "pageContainer",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "CreateReview",
+					"viewLevel": 3
+				},
+				"AD01": {
+					"viewType": "XML",
+					"viewPath": "com.limscloud.app.view.jobs",
+					"parent": "Dashboard",
+					"controlId": "pageContainer",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "AssignReview",
 					"viewLevel": 3
 				},
 				"TT02": {

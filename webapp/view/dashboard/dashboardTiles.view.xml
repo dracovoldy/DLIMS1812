@@ -1,87 +1,110 @@
-<mvc:View controllerName="com.limscloud.app.controller.dashboard.dashboardTiles" displayBlock="true" height="100%" xmlns="sap.m"
-	xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc">
+<mvc:View controllerName="com.limscloud.app.controller.dashboard.dashboardTiles" displayBlock="true" height="100%" 
+	xmlns="sap.m" 
+	xmlns:core="sap.ui.core" 
+	xmlns:layout="sap.ui.layout" 
+	xmlns:mvc="sap.ui.core.mvc">
 	<App id="dashboardTilesApp">
 		<pages>
 			<Page id="page2" showHeader="false" class="sapUiSizeCompact">
 				<content>
-					<!-- <MessageStrip showIcon="true"
-						  type="Information"
-						  text="Quick access to tiles by T-Code, use searchbar to run Tiles with T-Code"
-						  class="sapUiTinyMargin"/> -->
 
-					<!-- <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create User" subheader="Singe creation"
-						press="_navSU01">
-						<TileContent footer="SU01">
-							<ImageContent src="sap-icon://create"/>
-						</TileContent>
-					</GenericTile> -->
+					<layout:VerticalLayout class="sapUiResponsiveMargin">
+						<Title titleStyle="H2" text="Sales" class="sapUiTinyMarginBegin"/>
+						<layout:HorizontalLayout allowWrapping="true">
+							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Customer" subheader="Single creation" press="_navCU01">
+								<TileContent footer="CU01">
+									<ImageContent src="sap-icon://home-share"/>
+								</TileContent>
+							</GenericTile>
 
-					<!-- <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Maintain System Users" subheader="Mass View/Modify"
-						press="_navSU05">
-						<TileContent footer="SU05">
-							<ImageContent src="sap-icon://user-edit"/>
-						</TileContent>
-					</GenericTile> -->
-					
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Customer" subheader="Single creation" press="_navCU01">
-						<TileContent footer="CU01">
-							<ImageContent src="sap-icon://home-share"/>
-						</TileContent>
-					</GenericTile>
+							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Order" subheader="Single creation" press="_navOR01">
+								<TileContent footer="OR01">
+									<ImageContent src="sap-icon://customer"/>
+								</TileContent>
+							</GenericTile>
 
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Order" subheader="Single creation" press="_navOR01">
-						<TileContent footer="OR01">
-							<ImageContent src="sap-icon://customer"/>
-						</TileContent>
-					</GenericTile>
 
-					<!-- <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Maintain Customers" subheader="Mass View/Modify" press="_navCU05">
-						<TileContent footer="CU05">
-							<ImageContent src="sap-icon://customer"/>
-						</TileContent>
-					</GenericTile> -->
+						</layout:HorizontalLayout>
 
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Receive Sample" subheader="Mass Transfer"
-						press="_navMM01">
-						<TileContent footer="MM01">
-							<ImageContent src="sap-icon://dimension"/>
-						</TileContent>
-					</GenericTile>
+						<Title titleStyle="H2" text="Materials Management" class="sapUiTinyMarginBegin sapUiMediumMarginTop"/>
+						<layout:HorizontalLayout allowWrapping="true">
 
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Job" subheader="Process"
-						press="_navTT01">
-						<TileContent footer="TT01">
-							<ImageContent src="sap-icon://activity-items"/>
-						</TileContent>
-					</GenericTile>
+							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Material" subheader="Stock" press="_navMM01">
+								<TileContent footer="MM01">
+									<ImageContent src="sap-icon://dimension"/>
+								</TileContent>
+							</GenericTile>
 
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Perform Job" subheader="Process"
-						press="_navTT02">
-						<TileContent footer="TT02">
-							<ImageContent src="sap-icon://activity-individual"/>
-						</TileContent>
-					</GenericTile>
+							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Receive Sample" subheader="Stock Transfer" press="_navMM01">
+								<TileContent footer="MM02">
+									<ImageContent src="sap-icon://dimension"/>
+								</TileContent>
+							</GenericTile>
 
-					<!-- <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Assign Task to User" subheader="Unitary task"
-						press="_navTT03">
-						<TileContent footer="TT03">
-							<ImageContent src="sap-icon://activity-assigned-to-goal"/>
-						</TileContent>
-					</GenericTile> -->
 
-					<!-- <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Launch Task" subheader="Tasks for user" 
-					press="_navTL01">
-						<TileContent footer="TL01">
-							<ImageContent src="sap-icon://physical-activity"/>
-						</TileContent>
-					</GenericTile> -->
+						</layout:HorizontalLayout>
 
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Job Report" subheader="All tasks"
-					press="_navTM01">
-						<TileContent footer="TM01">
-							<ImageContent src="sap-icon://electrocardiogram"/>
-						</TileContent>
-					</GenericTile>
+						<Title titleStyle="H2" text="Review" class="sapUiTinyMarginBegin sapUiMediumMarginTop"/>
+						<layout:HorizontalLayout allowWrapping="true">
+
+							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="New Review Document" subheader="Process" press="_navRD01">
+								<TileContent footer="RD01">
+									<ImageContent src="sap-icon://activity-items"/>
+								</TileContent>
+							</GenericTile>
+
+							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Edit Review Document" subheader="Process" press="_navRD02">
+								<TileContent footer="RD02">
+									<ImageContent src="sap-icon://activity-items"/>
+								</TileContent>
+							</GenericTile>
+
+							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Assign Review Document" subheader="Process" press="_navAD01">
+								<TileContent footer="AD01">
+									<ImageContent src="sap-icon://activity-items"/>
+								</TileContent>
+							</GenericTile>
+
+						</layout:HorizontalLayout>
+
+						<Title titleStyle="H2" text="Testing" class="sapUiTinyMarginBegin sapUiMediumMarginTop"/>
+						<layout:HorizontalLayout allowWrapping="true">
+
+							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Job" subheader="Process" press="_navTT01">
+								<TileContent footer="JB01">
+									<ImageContent src="sap-icon://activity-items"/>
+								</TileContent>
+							</GenericTile>
+
+							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Assign Job" subheader="Process" press="_navTT02">
+								<TileContent footer="AD02">
+									<ImageContent src="sap-icon://activity-individual"/>
+								</TileContent>
+							</GenericTile>
+
+							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Perform Job" subheader="Process" press="_navTT02">
+								<TileContent footer="JB03">
+									<ImageContent src="sap-icon://activity-individual"/>
+								</TileContent>
+							</GenericTile>
+
+							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Edit Job" subheader="Process" press="_navTT02">
+								<TileContent footer="JB02">
+									<ImageContent src="sap-icon://activity-individual"/>
+								</TileContent>
+							</GenericTile>
+
+							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Job Report" subheader="All tasks" press="_navTM01">
+								<TileContent footer="TM01">
+									<ImageContent src="sap-icon://electrocardiogram"/>
+								</TileContent>
+							</GenericTile>
+						</layout:HorizontalLayout>
+
+					</layout:VerticalLayout>
+
+
+
 				</content>
 			</Page>
 		</pages>

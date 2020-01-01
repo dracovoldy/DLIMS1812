@@ -1,4 +1,4 @@
-<mvc:View controllerName="com.limscloud.app.controller.jobs.CreateJob" displayBlock="true" height="100%" 
+<mvc:View controllerName="com.limscloud.app.controller.jobs.CreateReview" displayBlock="true" height="100%" 
 	xmlns="sap.m" 
 	xmlns:core="sap.ui.core" 
 	xmlns:mvc="sap.ui.core.mvc" 
@@ -7,7 +7,7 @@
 	>
 	<App id="CreateJob" class="sapUiSizeCompact">
 		<pages>
-			<Page id="page0" showHeader="true" showFooter="false" class="sapUiSizeCompact" title="TT01 - CREATE JOB REVIEW" showNavButton="true" navButtonPress="onNavBack">
+			<Page id="page0" showHeader="true" showFooter="false" class="sapUiSizeCompact" title="" showNavButton="true" navButtonPress="onNavBack">
 				<content>
 					<f:SimpleForm id="createJobHeaderSimpleForm1" editable="true" layout="ResponsiveGridLayout" 
 								labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" 
@@ -15,13 +15,15 @@
 								columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false">
 						<f:toolbar>
 							<Toolbar id="TB1">
-								<Title id="Title1" text="DOCUMENT HEADER" level="H4" titleStyle="H4"/>
+								<Title id="Title1" text="Document Properties" level="H4" titleStyle="H4"/>
 								<ToolbarSpacer />
-								<Button text="ITEM" icon="sap-icon://create-form" type="Emphasized" press="_createItemBtnPress"/>
+								<Button text="Review Tasks" icon="sap-icon://create-form" type="Emphasized" press="_createItemBtnPress"/>
 							</Toolbar>
 						</f:toolbar>
 						<f:content>
+
 							<core:Title text="General Information" />
+							
 							<Label text="Customer #" required="true"/>
 							<Input id="headCust" valueHelpOnly="true" showValueHelp="true" valueHelpRequest="_loadCustomerF4" 
 							placeholder="">
@@ -37,13 +39,13 @@
 
 							<Label text="Reference Information" required="false" />
 							<TextArea id="headDesc" value="{jobsModel>/createJob/header/jobDesc}" placeholder="Description" />
-
 							
 
 							<core:Title text="Job Information" />
 
 							<Label text="Lab" required="true"/>
-							<ComboBox id="headLab" items="{jobsModel>/lookups/labs}" placeholder="Select Lab" showSecondaryValues= "true" filterSecondaryValues="true">
+							<ComboBox id="headLab" items="{jobsModel>/lookups/labs}" placeholder="Select Lab" 
+								showSecondaryValues= "true" filterSecondaryValues="true">
 								<core:ListItem key="{jobsModel>labId}" text="{jobsModel>labId}" additionalText="{jobsModel>labName}" />
 							</ComboBox>
 
@@ -63,9 +65,7 @@
 							<Label text="Assign Approver" required="true"/>
 							<ComboBox id="headApprover" items="{jobsModel>/lookups/users}" placeholder="Select Approver" showSecondaryValues= "true" filterSecondaryValues="true">
 								<core:ListItem key="{jobsModel>userId}" text="{jobsModel>userId}" additionalText="{jobsModel>fullname}" />
-							</ComboBox>
-
-							
+							</ComboBox>						
 
 
 						</f:content>
@@ -75,7 +75,7 @@
 						<headerToolbar>
 							<OverflowToolbar>
 								<content>
-									<Title text="Job Items" />
+									<Title text="Tasks" />
 									<ToolbarSpacer />
 									<Button icon="sap-icon://add" press="_triggerAddItem" type="Emphasized" />
 									<Button icon="sap-icon://edit" press="_manageItems" type="Emphasized" />
@@ -94,71 +94,22 @@
 							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="6em">
 								<Label required="false" text="" wrapping="true" />
 							</Column>
-
-							<!-- <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="8em">
-								<Label required="true" text="Test" wrapping="true"/>
-							</Column>
-
-							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="8em">
-								<Label required="true" text="Method" wrapping="true"/>
-							</Column>
-
-							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="8em">
-								<Label required="true" text="Spec." wrapping="true"/>
-							</Column>
-
-							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="4em">
-								<Label required="true" text="Method OK" wrapping="true" />
-							</Column>
-
-							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="4em">
-								<Label required="true" text="Capability" wrapping="true"/>
-							</Column>
-
-							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="4em">
-								<Label required="true" text="Qty Sufficient" wrapping="true"/>
-							</Column>
-
-							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="8em">
-								<Label required="true" text="Judgement" wrapping="true" />
-							</Column>
-
-
-							 -->
-							<!-- <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="11em">
-								<Label required="true" text="Description" />
-							</Column>
-							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="11em">
-								<Label required="true" text="Sample" />
-							</Column>
-							<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center" width="8em">
-								<Label required="true" text="Test Parameter" />
-							</Column>
-							<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center" width="8em">
-								<Label required="true" text="Test Method" />
-							</Column> -->
-
-
+							
 						</columns>
 						<items>
 							<ColumnListItem>
 								<cells>
 									<Text text="{jobsModel>itemId}" />
 
-									<Text text="{jobsModel>Info}" />
+									<Text text="{jobsModel>info}" />
 
 									<HBox>
-										<Button icon="sap-icon://show" type="Transparent" class="sapUiTinyMarginEnd"/>
-										<Button icon="sap-icon://edit" enabled="false" type="Transparent" class="sapUiTinyMarginEnd"/>
+										<Button icon="sap-icon://show" press="_triggerShowItem" enabled="true" type="Transparent" class="sapUiTinyMarginEnd"/>
+										<Button icon="sap-icon://edit" press="_triggerEditItem" enabled="true" type="Transparent" class="sapUiTinyMarginEnd"/>
 									</HBox>
 									
 								</cells>
 							</ColumnListItem>
-
-							<!-- <CustomListItem>
-								<Button icon="sap-icon://search" type="Transparent" />
-								<Button icon="sap-icon://edit" type="Transparent"/>
-							</CustomListItem> -->
 						</items>
 					</Table>
 				</content>

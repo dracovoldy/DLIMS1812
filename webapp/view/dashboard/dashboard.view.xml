@@ -13,21 +13,24 @@
 						<OverflowToolbarLayoutData priority="NeverOverflow"/>
 					</layoutData>
 				</Button>
-				<ToolbarSpacer width="20px"/>
+				<Image src="icons/ui5lt.png" height="45px">
+				</Image>
+				<!-- <Title text="Labtech LIMS" wrapping="false"/> -->
+				<ToolbarSpacer/>
 
-				<tnt:ToolHeaderUtilitySeparator/>
+				<!-- <tnt:ToolHeaderUtilitySeparator/>
 				<ToolbarSpacer>
 					<layoutData>
 						<OverflowToolbarLayoutData priority="NeverOverflow" minWidth="20px"/>
 					</layoutData>
-				</ToolbarSpacer>
-				<Button icon="sap-icon://ui-notifications" type="Transparent" press="handleNotifPress"/>
+				</ToolbarSpacer> -->
+				<Button icon="sap-icon://bell" type="Transparent" press="handleNotifPress"/>
 				<SearchField placeholder="Search transaction...">
 					<layoutData>
 						<OverflowToolbarLayoutData priority="Low" minWidth="3em" maxWidth="20em"/>
 					</layoutData>
 				</SearchField>
-				<Button text="Username" type="Transparent" press="handleUserNamePress">
+				<Button icon="icons/avatar.png" type="Transparent" press="handleUserNamePress">
 					<layoutData>
 						<OverflowToolbarLayoutData priority="NeverOverflow"/>
 					</layoutData>
