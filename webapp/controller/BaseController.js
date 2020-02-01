@@ -2,8 +2,11 @@
 
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/ui/core/routing/History"
-], function (Controller, History) {
+    "sap/ui/core/routing/History",
+    "com/limscloud/app/util/moment",
+    'sap/m/MessageToast',
+	'sap/m/MessageBox',
+], function (Controller, History, momentjs, MessageToast, MessageBox) {
 
     "use strict";
 
@@ -73,5 +76,6 @@ sap.ui.define([
         testBase: function (oEvent) {
             console.log("I'm the base controller function")
         }
+        
     });
 });

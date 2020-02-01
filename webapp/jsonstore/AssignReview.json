@@ -1,0 +1,19 @@
+{
+	"lookups": {
+		"users": [],
+		"labs": [],
+		"samples": [],
+		"testGroups": [],
+		"testParams": [],
+		"testMethods": [],
+		"jobHeader": []
+	},
+	"header": {		
+		"userId": "",
+		"labId": "",
+		"fromDateValue": null,
+		"toDateValue": null,
+		"status": ""
+	},
+	"documents": []
+}

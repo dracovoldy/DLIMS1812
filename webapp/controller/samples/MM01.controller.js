@@ -9,6 +9,8 @@ sap.ui.define([
 ], function (BaseController, jQuery, Popover, Button, JSONModel, MessageBox, MessageToast) {
 	"use strict";
 
+	var appModelName = "sampleModel";
+
 	return BaseController.extend("com.limscloud.app.controller.samples.MM01", {
 
 		onInit: function () {
@@ -21,131 +23,84 @@ sap.ui.define([
 			// Init Model data
 			var oModel = new JSONModel(jQuery.sap.getModulePath("com.limscloud.app.jsonstore", "/MM01.json"));
 			oModel.setSizeLimit(1000000);
-			this.getView().setModel(oModel, "sampleModel");
+			this.getView().setModel(oModel, appModelName);		
 
-
-			var initUsers = function (modelName) {
-				var URL = "";
-				var weHaveSuccess = false;
-
-				URL = "http://localhost:3000/api/lookups/users"
-				$.ajax({
-					type: "GET",
-					url: URL,
-					dataType: "json",
-					crossDomain: true,
-
-					success: function (results) {
-						weHaveSuccess = true;
-						that.getView().getModel(modelName).setProperty("/lookups/users", results);
-					},
-					error: function (response) {
-						MessageToast.show("Error!  " + response.status);
-					},
-					complete: function () {
-						if (!weHaveSuccess) {
-							MessageToast.show("Unable to fetch users");
-						}
-					}
-				});
-			}
-
-			initUsers("sampleModel");
-
+			this.loadUsers();
 		},
-		// Load Order
-		_loadOrder: function (oEvent) {
-			var that = this;
+		loadUsers: function () {
+			var that = this;		
+			var URL = "";
+			var weHaveSuccess = false;
 
-			var oModel = this.getView().getModel("jobsModel");
-			var oInputControl = oEvent.getSource();
+			URL = "http://localhost:3000/api/lookups/users"
+			$.ajax({
+				type: "GET",
+				url: URL,
+				dataType: "json",
+				crossDomain: true,
 
-
-			var initCustomers = function () {
-				var URL = "";
-				var weHaveSuccess = false;
-
-				URL = "http://localhost:3000/api/customers";
-				$.ajax({
-					type: "GET",
-					url: URL,
-					dataType: "json",
-					crossDomain: true,
-
-					success: function (results) {
-						weHaveSuccess = true;
-						that.getView().getModel("jobsModel").setProperty("/lookups/customers", results);
-					},
-					error: function (response) {
-						MessageToast.show("Error!  " + response.status);
-					},
-					complete: function () {
-						if (!weHaveSuccess) {
-							MessageToast.show("Unable to fetch customers");
-						}
+				success: function (results) {
+					weHaveSuccess = true;
+					that.getView().getModel(appModelName).setProperty("/lookups/users", results);
+				},
+				error: function (response) {
+					MessageToast.show("Error!  " + response.status);
+				},
+				complete: function () {
+					if (!weHaveSuccess) {
+						MessageToast.show("Unable to fetch users");
 					}
-				});
-			}
-			var initFragment = function () {
-
-				that.inputId = oEvent.getSource().getId();
-				var oView = that.getView();
-				that._valueHelpDialog = oView.byId("order_picker_dialog");
-				// create value help dialog
-
-				if (!that._valueHelpDialog) {
-					// create dialog via fragment factory
-					that._valueHelpDialog = sap.ui.xmlfragment(oView.getId(), "com.limscloud.app.view.jobs.fragments.orderPickerDialog", that);
-					oView.addDependent(that._valueHelpDialog);
 				}
-				// open value help dialog filtered by the input value
-				that._valueHelpDialog.open();
-			}
-			initFragment();
-			initCustomers();
+			});
 		},
-		_onSelectCustomer: function (oEvent) {
-			console.log(oEvent.getParameters());
+		loadOrderHelpDialog: function () {			
+			var oView = this.getView();
 
+			this._valueHelpDialog = oView.byId("order_picker_dialog");
+			// create value help dialog
+			if (!this._valueHelpDialog) {
+				// create dialog via fragment factory
+				this._valueHelpDialog = sap.ui.xmlfragment(oView.getId(), "com.limscloud.app.view.samples.fragments.orderPickerDialog", this);
+				oView.addDependent(this._valueHelpDialog);
+			}
+			// open value help dialog filtered by the input value
+			this._valueHelpDialog.open();
+		},
+		getOrders: function () {
 			var that = this;
+			var URL = "";
+			var weHaveSuccess = false;
 
-			var custId = oEvent.getParameter("selectedRow").getAggregation("cells")[1].getText();
+			URL = "http://localhost:3000/api/orders";
+			$.ajax({
+				type: "GET",
+				url: URL,
+				dataType: "json",
+				crossDomain: true,
 
-			var initOrders = function (custId) {
-				var URL = "";
-				var weHaveSuccess = false;
-
-				URL = "http://localhost:3000/api/orders?custId=" + custId;
-				$.ajax({
-					type: "GET",
-					url: URL,
-					dataType: "json",
-					crossDomain: true,
-
-					success: function (results) {
-						weHaveSuccess = true;
-						that.getView().getModel("jobsModel").setProperty("/lookups/orders", results);
-					},
-					error: function (response) {
-						MessageToast.show("Error!  " + response.status);
-					},
-					complete: function () {
-						if (!weHaveSuccess) {
-							MessageToast.show("Unable to fetch Orders");
-						}
+				success: function (results) {
+					weHaveSuccess = true;
+					that.getView().getModel(appModelName).setProperty("/lookups/orders", results);
+				},
+				error: function (response) {
+					MessageToast.show("Error!  " + response.status);
+				},
+				complete: function () {
+					if (!weHaveSuccess) {
+						MessageToast.show("Unable to fetch customers");
 					}
-				});
-
-			}
-
-			initOrders(custId);
-		},
-		//handle ComboBox changes - header level
-		_onOrderSelect: function (oEvent) {
+				}
+			});
+		},		
+		handleOrderHelp: function (oEvent) {
+			this.inputId = oEvent.getSource().getId();			
+			this.loadOrderHelpDialog();
+			this.getOrders();
+		},			
+		handleOrderSelect: function (oEvent) {
 			var orderId = oEvent.getParameter("listItem").getCells()[0].getTitle();
 			this.getView().byId(this.inputId).setValue(orderId);
 			this._valueHelpDialog.close();
-
 		},
 		_createSample: function (oEvent) {
 			var oPayload = {
@@ -153,6 +108,7 @@ sap.ui.define([
 				"sampleName": this.getView().byId("sampleName").getValue(),
 				"sampleDesc": this.getView().byId("sampleDesc").getValue(),
 				"sampleQty": this.getView().byId("sampleQty").getValue(),
+				"sampleUom": this.getView().byId("sampleUom").getValue(),
 				"sampleCKey": this.getView().byId("sampleCKey").getSelectedKey(),
 				"sampleCond": this.getView().byId("sampleCond").getValue(),
 				"createdBy": this.getView().byId("createdBy").getSelectedKey(),

@@ -1,10 +1,10 @@
 /* Set fullscreen */
-html.sap-desktop .sapMShellAppWidthLimited .sapMShellCentralBox {
+/* html.sap-desktop .sapMShellAppWidthLimited .sapMShellCentralBox {
     width: 100%;
     margin-left: 0;    
     left: 0;
     background-color: rgba(255,255,255,0.3);
-}
+} */
 
 /* Remove Scrolling on main app */
 #content {

@@ -59,8 +59,14 @@
 								</TileContent>
 							</GenericTile>
 
-							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Assign Review Document" subheader="Process" press="_navAD01">
+							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Assign Reviews" subheader="Process" press="_navAD01">
 								<TileContent footer="AD01">
+									<ImageContent src="sap-icon://activity-items"/>
+								</TileContent>
+							</GenericTile>
+
+							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Approve Reviews" subheader="Process" press="_navRD50">
+								<TileContent footer="RD50">
 									<ImageContent src="sap-icon://activity-items"/>
 								</TileContent>
 							</GenericTile>
@@ -70,7 +76,7 @@
 						<Title titleStyle="H2" text="Testing" class="sapUiTinyMarginBegin sapUiMediumMarginTop"/>
 						<layout:HorizontalLayout allowWrapping="true">
 
-							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Job" subheader="Process" press="_navTT01">
+							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create Job" subheader="Process" press="_navJB01">
 								<TileContent footer="JB01">
 									<ImageContent src="sap-icon://activity-items"/>
 								</TileContent>

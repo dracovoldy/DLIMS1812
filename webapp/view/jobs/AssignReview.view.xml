@@ -1,0 +1,206 @@
+<mvc:View controllerName="com.limscloud.app.controller.jobs.AssignReview" displayBlock="true" height="100%" 
+	xmlns="sap.m" 
+	xmlns:c="sap.ui.core" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:layout="sap.ui.layout" 
+	xmlns:f="sap.f" 
+	xmlns:u="sap.ui.unified" 
+	xmlns:t="sap.ui.table">
+	<App id="CreateJob" class="sapUiSizeCompact">
+		<pages>
+			<Page id="page0" showHeader="true" showFooter="false" class="sapUiSizeCompact" title="Assign Reviews" showNavButton="true" navButtonPress="onNavBack">
+				<content>
+					<f:DynamicPage id="dynamicPageId" preserveHeaderStateOnScroll="true" headerExpanded="{/headerExpanded}">
+						<!-- DynamicPage Title -->
+						<f:title>
+							<f:DynamicPageTitle>
+								<f:heading>
+									<Title text="Filtered By: "/>
+								</f:heading>
+								<f:expandedContent>
+
+								</f:expandedContent>
+								<f:snappedContent>
+									<layout:HorizontalLayout allowWrapping="true">
+										<layout:VerticalLayout class="sapUiSmallMarginEnd">
+											<ObjectStatus title="Created By" text="{appModel>/header/userId}"/>
+										</layout:VerticalLayout>
+										<layout:VerticalLayout class="sapUiSmallMarginEnd">
+											<ObjectStatus title="Date" text="{appModel>/header/fromDateValue} - {appModel>/header/toDateValue}"/>
+										</layout:VerticalLayout>
+										<layout:VerticalLayout class="sapUiSmallMarginEnd">
+											<ObjectStatus title="Location" text="{appModel>/header/labId}" state="Success"/>
+										</layout:VerticalLayout>
+										<layout:VerticalLayout>
+											<ObjectStatus title="Status" text="{appModel>/header/status}" state="Success"/>
+										</layout:VerticalLayout>
+									</layout:HorizontalLayout>
+								</f:snappedContent>
+								<f:content>
+									<!-- <OverflowToolbar>
+										<GenericTag text="SR" status="Error" press="onGenericTagPress" design="StatusIconHidden">
+											<ObjectNumber number="2" unit="M" emphasized="false" state="Error"/>
+										</GenericTag>
+									</OverflowToolbar> -->
+								</f:content>
+								<f:actions>
+									<ToolbarSpacer/>
+									<Button text="Filter" type="Emphasized" press="handleFilterPress"/>
+									<!-- <Button text="Delete" type="Transparent"/>
+									<Button text="Copy" type="Transparent"/>
+									<Button icon="sap-icon://action" type="Transparent"/> -->
+								</f:actions>
+							</f:DynamicPageTitle>
+						</f:title>
+
+						<!-- DynamicPage Header -->
+						<f:header>
+							<f:DynamicPageHeader pinnable="true">
+								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
+									<items>
+										<Panel backgroundDesign="Transparent" class="sapUiNoContentPadding">
+											<content>
+												<layout:HorizontalLayout allowWrapping="true">
+													<layout:VerticalLayout class="sapUiMediumMarginEnd">
+														<Label text="Created By" labelFor="fl_createdBy"/>
+														<Input id="fl_createdBy" class="sapUiSmallMarginBottom" type="Text" placeholder="Username" 
+														enabled="true" editable="true" showValueHelp="true" valueHelpRequest="handleVH_createdBy" 
+														suggestionRows="{appModel>/lookups/users}" value="{appModel>/header/userId}" showSuggestion="true">
+															<suggestionColumns>
+																<Column hAlign="Begin" popinDisplay="Inline" demandPopin="true">
+																	<Label text="Username"/>
+																</Column>
+																<Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet">
+																	<Label text="Name"/>
+																</Column>
+
+															</suggestionColumns>
+															<suggestionRows>
+																<ColumnListItem>
+																	<cells>
+																		<Label text="{appModel>userId}"/>
+																		<Label text="{appModel>fullname}"/>
+																	</cells>
+																</ColumnListItem>
+															</suggestionRows>
+														</Input>
+													</layout:VerticalLayout>
+													<layout:VerticalLayout class="sapUiMediumMarginEnd">
+														<Label text="Created Date" labelFor="fl_createdDat"/>
+														<DateRangeSelection id="fl_createdDat" displayFormat="dd/MM/yyyy" 
+														dateValue="{appModel>/header/fromDate}" secondDateValue="{appModel>/header/toDate}"/>
+													</layout:VerticalLayout>
+													<layout:VerticalLayout class="sapUiMediumMarginEnd">
+														<Label text="Lab" labelFor="fl_lab"/>
+														<Input id="fl_lab" class="sapUiSmallMarginBottom" type="Text" placeholder="Lab" enabled="true" 
+														editable="true" showValueHelp="true" valueHelpRequest="handleVH_lab" value="{appModel>/header/labId}" 
+														suggestionRows="{appModel>/lookups/labs}" showSuggestion="true">
+															<suggestionColumns>
+																<Column hAlign="Begin" popinDisplay="Inline" demandPopin="true">
+																	<Label text="Lab ID"/>
+																</Column>
+																<Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet">
+																	<Label text="Lab Name"/>
+																</Column>
+															</suggestionColumns>
+															<suggestionRows>
+																<ColumnListItem>
+																	<cells>
+																		<Label text="{appModel>labId}"/>
+																		<Label text="{appModel>labName}"/>
+																	</cells>
+																</ColumnListItem>
+															</suggestionRows>
+														</Input>
+													</layout:VerticalLayout>
+													<layout:VerticalLayout>
+														<Label text="Status" labelFor="fl_status"/>
+														<Select id="fl_status" forceSelection="false" selectedKey="{appModel>/header/status}" width="12.6em">
+															<c:Item key="Assigned" text="Assigned" />
+															<c:Item key="Unassigned" text="Unassigned" />
+														</Select>
+													</layout:VerticalLayout>
+												</layout:HorizontalLayout>
+											</content>
+										</Panel>
+									</items>
+								</FlexBox>
+							</f:DynamicPageHeader>
+						</f:header>
+
+						<f:content>
+							<t:Table rows="{appModel>/documents}" title="Documents ({appModel>/documentsCount})" enableCellFilter="true" selectionMode="Single">
+								<t:columns>
+									<t:Column width="7rem" hAlign="Begin">
+										<Label text="Document #" />
+										<t:template>
+											<Text text="{appModel>job_id}" wrapping="true" />
+										</t:template>
+									</t:Column>
+									<t:Column width="7rem" hAlign="Begin">
+										<Label text="Description" />
+										<t:template>
+											<Text text="{appModel>header_desc}" wrapping="true" />
+										</t:template>
+									</t:Column>	
+									<t:Column width="7rem" hAlign="Begin">
+										<Label text="Customer" />
+										<t:template>
+											<Text text="{appModel>customer_id} - {appModel>customer_name}" wrapping="true" />
+										</t:template>
+									</t:Column>
+									<t:Column width="7rem" hAlign="Begin">
+										<Label text="Order" />
+										<t:template>
+											<Text text="{appModel>order_id}" wrapping="true" />
+										</t:template>
+									</t:Column>	
+									<t:Column width="7rem" hAlign="Begin">
+										<Label text="Lab" />
+										<t:template>
+											<Text text="{appModel>lab_id} - {appModel>lab_name}" wrapping="true" />
+										</t:template>
+									</t:Column>	
+									<t:Column width="7rem" hAlign="Begin">
+										<Label text="Discipline" />
+										<t:template>
+											<Text text="{appModel>disp_name}" wrapping="true" />
+										</t:template>
+									</t:Column>	
+									<t:Column width="7rem" hAlign="Begin">
+										<Label text="Group" />
+										<t:template>
+											<Text text="{appModel>grp_desc}" wrapping="true" />
+										</t:template>
+									</t:Column>	
+									<t:Column width="7rem" hAlign="Begin">
+										<Label text="Status" />
+										<t:template>
+											<Text text="{appModel>status_code}" wrapping="true" />
+										</t:template>
+									</t:Column>
+								</t:columns>
+							</t:Table>
+						</f:content>
+						<!-- DynamicPage Footer -->
+						<f:footer>
+							<OverflowToolbar>
+								<Button icon="sap-icon://message-popup" text="{/messagesLength}" type="Emphasized" press="onMessageButtonPress" visible="{= !!${/messagesLength}}"/>
+								<ToolbarSpacer/>
+								<Button type="Accept" text="Accept"/>
+								<Button type="Reject" text="Reject"/>
+							</OverflowToolbar>
+						</f:footer>
+					</f:DynamicPage>
+				</content>
+				<footer>
+					<OverflowToolbar>
+						<ToolbarSpacer/>
+						<Button type="Accept" text="Create" press="onCreateSave" />
+						<Button type="Reject" text="Cancel" />
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

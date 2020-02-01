@@ -183,6 +183,14 @@
 					]
 				},
 				{
+					"name": "RD50",
+					"pattern": "process/ApproveReviewDocument",
+					"greedy": false,
+					"target": [
+						"RD50"
+					]
+				},
+				{
 					"name": "AD01",
 					"pattern": "process/AssignReviewDocument",
 					"greedy": false,
@@ -197,9 +205,37 @@
 					"target": [
 						"TT02"
 					]
+				},
+				{
+					"name": "JB01",
+					"pattern": "JB01",
+					"greedy": false,
+					"target": [
+						"JB01"
+					]
 				}
 			],
 			"targets": {
+				"JB01": {
+					"viewType": "XML",
+					"viewPath": "com.limscloud.app.view.jobs",
+					"parent": "Dashboard",
+					"controlId": "pageContainer",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "CreateJob",
+					"viewLevel": 3
+				},
+				"RD50": {
+					"viewType": "XML",
+					"viewPath": "com.limscloud.app.view.jobs",
+					"parent": "Dashboard",
+					"controlId": "pageContainer",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "ApproveReview",
+					"viewLevel": 3
+				},
 				"RD01": {
 					"viewType": "XML",
 					"viewPath": "com.limscloud.app.view.jobs",

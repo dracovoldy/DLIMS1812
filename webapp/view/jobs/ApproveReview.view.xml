@@ -1,0 +1,58 @@
+<mvc:View controllerName="com.limscloud.app.controller.jobs.ApproveReview" displayBlock="true" height="100%" 
+	xmlns="sap.m" 
+	xmlns:c="sap.ui.core" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:layout="sap.ui.layout">
+
+	<SplitApp id="splitApp0" initialMaster="master" orientationChange=".onOrientationChange" class="sapUiSizeCompact">
+		<detailPages>
+			<Page id="detail" title="Document Detail" class="sapUiStdPage" showHeader="true" navButtonText="Back" navButtonPress=".onPressDetailBack" showNavButton="true">
+				<content>
+					<ObjectHeader id="oh1" responsive="true" fullScreenOptimized="true" title="{appModel>job_id}-{appModel>item_id} {appModel>header_desc} for {appModel>customer_name}" intro="{appModel>disp_name} > {appModel>grp_desc} > {appModel>pm_desc} > {appModel>tms_snam} > {appModel>tmt_name}" number="{appModel>qty_value}" numberUnit="{appModel>qty_uom}" numberState="Success">
+						<ObjectAttribute title="Order" text="{appModel>order_id}"/>
+						<ObjectAttribute title="Sample" text="{appModel>sample_id}"/>
+						<ObjectAttribute title="Document" text="{appModel>job_id}-{appModel>item_id}"/>
+						<ObjectAttribute title="Lab" text="101 - TEST LAB"/>
+
+						<statuses>
+							<ObjectStatus title="Quantity Suffcient" text="Yes" state="Success"/>
+							<ObjectStatus title="Test Capability" text="Yes" state="Success"/>
+							<ObjectStatus title="Created On" text="{appModel>created_at}" state="Information"/>
+							<ObjectStatus title="Approval" text="Pending" state="Warning"/>
+						</statuses>
+					</ObjectHeader>
+				</content>
+				<footer>
+					<OverflowToolbar>
+						<ToolbarSpacer/>
+						<Button type="Accept" text="Approve" press="handleApprove" />
+						<Button type="Reject" text="Reject" />
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</detailPages>
+		<masterPages>
+			<Page id="master" class="sapUiStdPage" title="Pending Tasks" showNavButton="true" navButtonPress="onNavBack">
+				<subHeader>
+					<Toolbar>
+						<SearchField />
+					</Toolbar>
+				</subHeader>
+				<content>
+					<List items="{appModel>/documents}" itemPress=".onListItemPress">
+						<!-- <CustomListItem>
+							<HBox>								
+								<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+									<ObjectAttribute title="Job ID" text="{appModel>job_id}" />
+									<ObjectAttribute title="Job Item" text="{appModel>item_id}" />
+									<ObjectAttribute title="Description" text="{appModel>header_desc}" />
+								</VBox>
+							</HBox>
+						</CustomListItem> -->
+						<StandardListItem title="Document Number : {appModel>job_id}-{appModel>item_id}" info="{appModel>created_by}" infoState="Information" description="Description : {appModel>header_desc}" wrapping="true" type="Active"/>
+					</List>
+				</content>
+			</Page>
+		</masterPages>
+	</SplitApp>
+</mvc:View>

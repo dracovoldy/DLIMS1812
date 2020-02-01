@@ -1,0 +1,54 @@
+<core:FragmentDefinition xmlns="sap.m" 
+	xmlns:core="sap.ui.core">
+	<Dialog id="order_picker_dialog" title="Orders" class="sapUiNoContentPadding">
+		<subHeader>
+			<Toolbar>
+				<SearchField />
+				<Button type="Emphasized" text="Order" icon="sap-icon://create"/>
+				<Button type="Emphasized" icon="sap-icon://reset" tooltip="Reset"/>
+				<Button type="Emphasized" icon="sap-icon://decline" tooltip="Cancel"/>
+			</Toolbar>
+		</subHeader>
+		<content>
+			<Table id="orders_f4_table" noDataText="No Orders" growingThreshold="10" itemPress="handleOrderSelect" includeItemInSelection="true" items="{sampleModel>/lookups/orders}" growing="true">
+				<ColumnListItem type="Active">
+					<cells>
+						<ObjectIdentifier title="{sampleModel>orderId}"/>
+						<Text text="{sampleModel>orderDesc}"/>
+						<Text text="{sampleModel>createdBy}"/>
+						<Text text="{sampleModel>createdAt}"/>
+					</cells>
+				</ColumnListItem>
+				<columns>
+					<Column width="12em">
+						<header>
+							<Text text="Order Number #"/>
+						</header>
+					</Column>
+					<Column width="12em">
+						<header>
+							<Text text="Description"/>
+						</header>
+					</Column>
+					<Column width="12em">
+						<header>
+							<Text text="Created By"/>
+						</header>
+					</Column>
+					<Column width="12em">
+						<header>
+							<Text text="Created At"/>
+						</header>
+					</Column>
+
+				</columns>
+			</Table>
+
+		</content>
+
+		<buttons>
+
+		</buttons>
+	</Dialog>
+
+</core:FragmentDefinition>

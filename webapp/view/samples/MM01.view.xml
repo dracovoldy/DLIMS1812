@@ -12,27 +12,30 @@
 						<f:content>
 							<core:Title text="General Information"/>							
 
-							<Label text="Name"/>
+							<Label text="Material Name"/>
 							<Input id="sampleName" value="{sampleModel>/payload/sampleName}" placeholder="Name" />
 
-							<Label text="Description"/>
+							<Label text="Material Description"/>
 							<TextArea id="sampleDesc" value="{sampleModel>/payload/sampleDesc}" placeholder="Description" />
 
-							<Label text="Order #"/>
-							<Input id="orderId" valueHelpOnly="true" showValueHelp="true" valueHelpRequest="_loadOrder" placeholder="Select Order">
+							<core:Title text="Order Information"/>		
+							<Label text="Order Number"/>
+							<Input id="orderId" valueHelpOnly="true" showValueHelp="true" valueHelpRequest="handleOrderHelp" 
+							placeholder="Select Order">
 							</Input>
 
-							<Label text="Quantity"/>
-							<Input id="sampleQty" value="{sampleModel>/payload/sampleQty}" type="Number" placeholder="Quantity" />
+							<Label text="Quantity / Units"/>
+							<Input id="sampleQty" value="{sampleModel>/payload/sampleQty}" type="Number" placeholder="Quantity">
+							</Input>							
+							<Input id="sampleUom" value="{sampleModel>/payload/sampleUom}" type="Text" placeholder="UoM" >
+							</Input>
 
-							
 						</f:content>
 					</f:SimpleForm>
 
 					<f:SimpleForm id="sfId2" editable="true" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
-						<f:content>
-							
-							<core:Title text="Condition"/>
+						<f:content>							
+							<core:Title text="Sample Condition"/>
 							<Label text="Condition Comments"/>
 							<Input id="sampleCond" value="" enabled="true" placeholder="" />
 							<Label text="Condition"/>
