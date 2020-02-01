@@ -32,7 +32,7 @@ sap.ui.define([
 			var URL = "";
 			var weHaveSuccess = false;
 
-			URL = "http://localhost:3000/api/lookups/users"
+			URL = "http://localhost:3000/api/commons/users"
 			$.ajax({
 				type: "GET",
 				url: URL,
@@ -71,7 +71,7 @@ sap.ui.define([
 			var URL = "";
 			var weHaveSuccess = false;
 
-			URL = "http://localhost:3000/api/orders";
+			URL = "http://localhost:3000/api/sales/orders";
 			$.ajax({
 				type: "GET",
 				url: URL,
@@ -117,7 +117,7 @@ sap.ui.define([
 
 			console.log(oPayload);
 			//prepare post
-			var URL = "http://localhost:3000/api/samples";
+			var URL = "http://localhost:3000/api/mm/samples";
 
 			$.ajax({
 				url: URL,

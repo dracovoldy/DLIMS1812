@@ -40,7 +40,7 @@ sap.ui.define([
 			var URL = "";
 			var weHaveSuccess = false;
 
-			URL = "http://localhost:3000/api/jobs/ApprovalItems"
+			URL = "http://localhost:3000/api/review/RD50"
 			$.ajax({
 				type: "GET",
 				url: URL,
@@ -102,7 +102,7 @@ sap.ui.define([
 			var URL = "";
 			var weHaveSuccess = false;
 
-			URL = "http://localhost:3000/api/jobs/ApprovalItems"
+			URL = "http://localhost:3000/api/review/RD50"
 			$.ajax({
 				type: "POST",
 				data: payload,

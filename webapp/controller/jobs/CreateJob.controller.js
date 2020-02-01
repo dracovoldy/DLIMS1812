@@ -17,7 +17,6 @@ sap.ui.define([
 			this.router = this.getOwnerComponent().getRouter();
 			var route = sap.ui.core.UIComponent.getRouterFor(this).getRoute("JB01");
 			route.attachPatternMatched(this.onPatternMatched, this);
-
 		},
 		onPatternMatched: function (oEvent) {
 			console.log("I'm at JB01 - Create Job")
@@ -40,7 +39,7 @@ sap.ui.define([
 			var URL = "";
 			var weHaveSuccess = false;
 
-			URL = "http://localhost:3000/api/jobs/ApprovalItems"
+			URL = "http://localhost:3000/api/review/RD03"
 			$.ajax({
 				type: "GET",
 				url: URL,
@@ -102,7 +101,7 @@ sap.ui.define([
 			var URL = "";
 			var weHaveSuccess = false;
 
-			URL = "http://localhost:3000/api/jobs/ApprovalItems"
+			URL = "http://localhost:3000/api/review/RD03"
 			$.ajax({
 				type: "POST",
 				data: payload,

@@ -18,7 +18,6 @@ sap.ui.define([
 			var route2 = sap.ui.core.UIComponent.getRouterFor(this).getRoute("RD02");
 			route1.attachPatternMatched(this.onPatternMatched1, this);
 			route2.attachPatternMatched(this.onPatternMatched2, this);
-
 		},
 		onPatternMatched1: function (oEvent) {
 			var that = this;
@@ -34,7 +33,7 @@ sap.ui.define([
 				var URL = "";
 				var weHaveSuccess = false;
 
-				URL = "http://localhost:3000/api/lookups/users"
+				URL = "http://localhost:3000/api/commons/users"
 				$.ajax({
 					type: "GET",
 					url: URL,
@@ -60,7 +59,7 @@ sap.ui.define([
 				var URL = "";
 				var weHaveSuccess = false;
 
-				URL = "http://localhost:3000/api/lookups/labs"
+				URL = "http://localhost:3000/api/commons/labs"
 				$.ajax({
 					type: "GET",
 					url: URL,
@@ -86,7 +85,7 @@ sap.ui.define([
 				var URL = "";
 				var weHaveSuccess = false;
 
-				URL = "http://localhost:3000/api/tests/disp"
+				URL = "http://localhost:3000/api/testing/disp"
 				$.ajax({
 					type: "GET",
 					url: URL,
@@ -145,7 +144,7 @@ sap.ui.define([
 				var URL = "";
 				var weHaveSuccess = false;
 
-				URL = "http://localhost:3000/api/customers";
+				URL = "http://localhost:3000/api/sales/customers";
 				$.ajax({
 					type: "GET",
 					url: URL,
@@ -221,7 +220,7 @@ sap.ui.define([
 				var URL = "";
 				var weHaveSuccess = false;
 
-				URL = "http://localhost:3000/api/orders?custId=" + oCustId;
+				URL = "http://localhost:3000/api/sales/orders?custId=" + oCustId;
 				$.ajax({
 					type: "GET",
 					url: URL,
@@ -327,7 +326,7 @@ sap.ui.define([
 				var URL = "";
 				var weHaveSuccess = false;
 
-				URL = "http://localhost:3000/api/tests/group?dispId=" + dispId;
+				URL = "http://localhost:3000/api/testing/group?dispId=" + dispId;
 				$.ajax({
 					type: "GET",
 					url: URL,
@@ -382,7 +381,7 @@ sap.ui.define([
 				var URL = "";
 				var weHaveSuccess = false;
 
-				URL = "http://localhost:3000/api/tests/prod?groupId=" + groupId;
+				URL = "http://localhost:3000/api/testing/prod?groupId=" + groupId;
 				$.ajax({
 					type: "GET",
 					url: URL,
@@ -437,7 +436,7 @@ sap.ui.define([
 				var URL = "";
 				var weHaveSuccess = false;
 
-				URL = "http://localhost:3000/api/tests/master?prodId=" + prodId;
+				URL = "http://localhost:3000/api/testing/master?prodId=" + prodId;
 				$.ajax({
 					type: "GET",
 					url: URL,
@@ -493,7 +492,7 @@ sap.ui.define([
 				var URL = "";
 				var weHaveSuccess = false;
 
-				URL = "http://localhost:3000/api/tests/type?masterId=" + masterId;
+				URL = "http://localhost:3000/api/testing/type?masterId=" + masterId;
 				$.ajax({
 					type: "GET",
 					url: URL,
@@ -548,7 +547,7 @@ sap.ui.define([
 				var URL = "";
 				var weHaveSuccess = false;
 
-				URL = "http://localhost:3000/api/samples?orderId=" + orderId;
+				URL = "http://localhost:3000/api/mm/samples?orderId=" + orderId;
 				$.ajax({
 					type: "GET",
 					url: URL,
@@ -835,7 +834,7 @@ sap.ui.define([
 
 
 			//prepare post
-			var URL = "http://localhost:3000/api/jobs/";
+			var URL = "http://localhost:3000/api/review/";
 
 			$.ajax({
 				url: URL,
