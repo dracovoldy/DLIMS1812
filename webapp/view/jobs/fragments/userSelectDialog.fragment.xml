@@ -1,0 +1,18 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog 
+		id="users_select_dialog"
+		title="Assign to User"
+		class="sapUiPopupWithPadding"
+		items="{appModel>/lookups/users}"
+		search="handleUserSearch"
+		confirm="handleUserSelect"
+		cancel="handleUserCancel"
+		noDataText="No users"
+		>       
+		<StandardListItem
+			title="{appModel>userId}"
+            info="{appModel>fullname}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

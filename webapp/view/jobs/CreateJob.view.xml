@@ -1,58 +1,102 @@
 <mvc:View controllerName="com.limscloud.app.controller.jobs.CreateJob" displayBlock="true" height="100%" 
 	xmlns="sap.m" 
 	xmlns:c="sap.ui.core" 
+	xmlns:f="sap.ui.layout.form" 
 	xmlns:mvc="sap.ui.core.mvc" 
-	xmlns:layout="sap.ui.layout">
+	xmlns:layout="sap.ui.layout" 
+	xmlns:ui="sap.ui.table" 
+	xmlns:u="sap.ui.unified">
 
-	<SplitApp id="splitApp0" initialMaster="master" orientationChange=".onOrientationChange" class="sapUiSizeCompact">
-		<detailPages>
-			<Page id="detail" title="Create Job" class="sapUiStdPage" showHeader="true" navButtonText="Back" navButtonPress=".onPressDetailBack" showNavButton="true">
+	<Page class= "sapUiResponsivePadding--header" title="Document Detail" showHeader="true" navButtonPress="onNavBack" showNavButton="true">
+		<headerContent>
+			<Button text="Assign selected" icon="sap-icon://complete" type="Accept" press="onAssignBtnPress" />
+		</headerContent>
+		<content>
+			<IconTabBar expanded="{device>/isNoPhone}" select="handleTabSelect" class="sapUiSmallMarginBottom sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter icon="sap-icon://alert" iconColor="Negative" count="{appModel>/documentsCount}" text="Unassigned" key="Ok" />
+					<IconTabFilter icon="sap-icon://chain-link" iconColor="Default" count="7" text="Assigned" key="Ok" />
+					<IconTabFilter icon="sap-icon://begin" iconColor="Critical" count="3" text="In progress" key="Heavy" />
+					<IconTabFilter icon="sap-icon://complete" iconColor="Positive" count="5" text="Completed" key="Overweight" />
+				</items>
 				<content>
-					<ObjectHeader id="oh1" responsive="true" fullScreenOptimized="true" title="{appModel>job_id}-{appModel>item_id} {appModel>header_desc} for {appModel>customer_name}" intro="{appModel>disp_name} > {appModel>grp_desc} > {appModel>pm_desc} > {appModel>tms_snam} > {appModel>tmt_name}" number="{appModel>qty_value}" numberUnit="{appModel>qty_uom}" numberState="Success">
-						<!-- <ObjectAttribute title="Order" text="{appModel>order_id}"/>
-						<ObjectAttribute title="Sample" text="{appModel>sample_id}"/>
-						<ObjectAttribute title="Document" text="{appModel>job_id}-{appModel>item_id}"/>
-						<ObjectAttribute title="Lab" text="101 - TEST LAB"/> -->
+					<ui:TreeTable id="TreeTableBasic" 
+					rows="{path:'appModel>/jobs/items', parameters: {arrayNames:['documents']}}" 
+					selectionMode="MultiToggle" enableSelectAll="false" ariaLabelledBy="title" class="sapUiTinyMargin"
+					rowSelectionChange="onTreeNodeSelected">
+						<ui:extension>
+							<OverflowToolbar>
+								<Title id="title" text="Jobs Selected : "/>
+								<ToolbarSpacer/>
+								<!-- <Button text="Collapse all" press="onCollapseAll"/>
+								<Button text="Collapse selection" press="onCollapseSelection"/>
+								<Button text="Expand first level" press="onExpandFirstLevel"/>
+								<Button text="Expand selection" press="onExpandSelection"/> -->
+							</OverflowToolbar>
+						</ui:extension>
+						<ui:columns>
+							<ui:Column width="13rem">
+								<Label text="Document Number"/>
+								<ui:template>
+									<Text text="{appModel>documentNo}" wrapping="false" />
+								</ui:template>
+							</ui:Column>
+							<ui:Column width="6rem">
+								<Label text="ItemNo"/>
+								<ui:template>
+									<Text text="{appModel>itemNo}" wrapping="false" />
+								</ui:template>
+							</ui:Column>
+							<ui:Column width="9rem">
+								<Label text="Description"/>
+								<ui:template>
+									<Text text="{appModel>order_desc}" wrapping="false" />
+								</ui:template>
+							</ui:Column>
+							<ui:Column width="11rem">
+								<Label text="Discipline"/>
+								<ui:template>
+									<Text text="{appModel>disp_name}" wrapping="false" />
+								</ui:template>
+							</ui:Column>
+							<ui:Column width="11rem">
+								<Label text="Group"/>
+								<ui:template>
+									<Text text="{appModel>grp_desc}" wrapping="false" />
+								</ui:template>
+							</ui:Column>
+							<ui:Column width="11rem">
+								<Label text="Product"/>
+								<ui:template>
+									<Text text="{appModel>pm_desc}" wrapping="false" />
+								</ui:template>
+							</ui:Column>
+							<ui:Column width="11rem">
+								<Label text="Test"/>
+								<ui:template>
+									<Text text="{appModel>tms_snam}" wrapping="false" />
+								</ui:template>
+							</ui:Column>
+							<ui:Column width="11rem">
+								<Label text="Method"/>
+								<ui:template>
+									<Text text="{appModel>tmt_name}" wrapping="false" />
+								</ui:template>
+							</ui:Column>
+						</ui:columns>
+					</ui:TreeTable>
+				</content>
+			</IconTabBar>
+		</content>
+		<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button text="Assign selected" icon="sap-icon://complete" type="Accept" press="onAssignBtnPress"/>
+				<!-- <Button text="Reject" type="Reject" />
+				<Button text="Edit" />
+				<Button text="Delete" /> -->
+			</OverflowToolbar>
+		</footer>
+	</Page>
 
-						<statuses>
-							<!-- <ObjectStatus title="Quantity Suffcient" text="Yes" state="Success"/>
-							<ObjectStatus title="Test Capability" text="Yes" state="Success"/>
-							<ObjectStatus title="Created On" text="{appModel>created_at}" state="Information"/>
-							<ObjectStatus title="Approval" text="Pending" state="Warning"/> -->
-						</statuses>
-					</ObjectHeader>
-				</content>
-				<footer>
-					<OverflowToolbar>
-						<ToolbarSpacer/>
-						<Button type="Accept" text="Approve" press="handleApprove" />
-						<Button type="Reject" text="Reject" />
-					</OverflowToolbar>
-				</footer>
-			</Page>
-		</detailPages>
-		<masterPages>
-			<Page id="master" class="sapUiStdPage" title=" Approved Review Documents" showNavButton="true" navButtonPress="onNavBack">
-				<subHeader>
-					<Toolbar>
-						<SearchField />
-					</Toolbar>
-				</subHeader>
-				<content>
-					<List items="{appModel>/documents}" itemPress=".onListItemPress">
-						<!-- <CustomListItem>
-							<HBox>								
-								<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
-									<ObjectAttribute title="Job ID" text="{appModel>job_id}" />
-									<ObjectAttribute title="Job Item" text="{appModel>item_id}" />
-									<ObjectAttribute title="Description" text="{appModel>header_desc}" />
-								</VBox>
-							</HBox>
-						</CustomListItem> -->
-						<StandardListItem title="Document Number : {appModel>job_id}-{appModel>item_id}" info="{appModel>created_by}" infoState="Information" description="Description : {appModel>header_desc}" wrapping="true" type="Active"/>
-					</List>
-				</content>
-			</Page>
-		</masterPages>
-	</SplitApp>
 </mvc:View>

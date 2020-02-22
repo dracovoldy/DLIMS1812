@@ -85,7 +85,7 @@ sap.ui.define([
 				var URL = "";
 				var weHaveSuccess = false;
 
-				URL = "http://localhost:3000/api/testing/disp"
+				URL = "http://localhost:3000/api/testing/repository/disp"
 				$.ajax({
 					type: "GET",
 					url: URL,
@@ -326,7 +326,7 @@ sap.ui.define([
 				var URL = "";
 				var weHaveSuccess = false;
 
-				URL = "http://localhost:3000/api/testing/group?dispId=" + dispId;
+				URL = "http://localhost:3000/api/testing/repository/group?dispId=" + dispId;
 				$.ajax({
 					type: "GET",
 					url: URL,
@@ -381,7 +381,7 @@ sap.ui.define([
 				var URL = "";
 				var weHaveSuccess = false;
 
-				URL = "http://localhost:3000/api/testing/prod?groupId=" + groupId;
+				URL = "http://localhost:3000/api/testing/repository/prod?groupId=" + groupId;
 				$.ajax({
 					type: "GET",
 					url: URL,
@@ -436,7 +436,7 @@ sap.ui.define([
 				var URL = "";
 				var weHaveSuccess = false;
 
-				URL = "http://localhost:3000/api/testing/master?prodId=" + prodId;
+				URL = "http://localhost:3000/api/testing/repository/master?prodId=" + prodId;
 				$.ajax({
 					type: "GET",
 					url: URL,
@@ -492,7 +492,7 @@ sap.ui.define([
 				var URL = "";
 				var weHaveSuccess = false;
 
-				URL = "http://localhost:3000/api/testing/type?masterId=" + masterId;
+				URL = "http://localhost:3000/api/testing/repository/type?masterId=" + masterId;
 				$.ajax({
 					type: "GET",
 					url: URL,
@@ -783,9 +783,9 @@ sap.ui.define([
 				oModel.setProperty("/createJob/header/labId", hLab.getValue());
 				oModel.setProperty("/createJob/header/testGroup", hGroup.getValue());
 				oModel.setProperty("/createJob/header/hDiscipline", hDiscipline.getValue());
-				oModel.setProperty("/createJob/header/approverId", hIssuer.getValue());
-				oModel.setProperty("/createJob/header/createdBy", hApprover.getValue());
-
+				oModel.setProperty("/createJob/header/approverId", hApprover.getValue());
+				oModel.setProperty("/createJob/header/createdBy", hIssuer.getValue());
+				
 				oView.byId("jobItemsTable").setVisible(true);
 				oView.byId("page0").setShowFooter(true);
 			}

@@ -11,7 +11,7 @@ app.use(favicon(__dirname + '/webapp/favicon.ico'));
 //    	res.send("It works!");
 // });
 
-let PORT = 80;
+let PORT = 8080;
 
 app.listen(process.env.PORT || PORT, function(){
      console.log(`connect to localhost:${PORT}`);

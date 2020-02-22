@@ -37,8 +37,6 @@
 				</Button>
 				
 			</tnt:ToolHeader>
-
-
 		</tnt:header>
 		<tnt:sideContent>
 			<tnt:SideNavigation itemSelect="onItemSelect">
