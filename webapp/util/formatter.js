@@ -1,14 +1,17 @@
-sap.ui.define([], function () {
+sap.ui.define([
+    "com/limscloud/app/util/moment"
+], function (momentjs) {
     "use strict";
 
     return {
         formatDateTime: function (oDate) {
             if (oDate !== null) {
-                jQuery.sap.require("sap.ui.core.format.DateFormat");
-                var oDateFormat = sap.ui.core.format.DateFormat.getDateTimeInstance({ pattern: "dd-MM-yyyy HH:mm a" });
+                // jQuery.sap.require("sap.ui.core.format.DateFormat");
+                // var oDateFormat = sap.ui.core.format.DateFormat.getDateTimeInstance({ pattern: "dd-MM-yyyy HH:mm a" });
 
                 var dt = new Date(oDate)
-                return oDateFormat.format(dt);
+                // return oDateFormat.format(dt);
+                return moment(dt).fromNow();
             } else {
                 return oDate;
             }
@@ -16,50 +19,41 @@ sap.ui.define([], function () {
         },
 
         formatJobStatusText: function (sValue) {
-            if (sValue === null || sValue === '') {
-                return "Not started"
-            } else if (sValue === 'P') {
-                return "In Progress"
-            } else if (sValue === 'C') {
-                return "Complete"
+            var sText = null;
+            switch (sValue) {
+                case '012': {
+                    sText = "Assigned";
+                }
+                    break;
+                case '020': {
+                    sText = "In Progress"
+                }
+                    break;
+                default: {
+                    sText = "Invalid Status"
+                }
             }
 
-            return "Undefined"
+            return sText;
         },
-
-        formatJobStatusValueState: function (sValue) {
-            if (sValue === null || sValue === '') {
-                return "None"
-            } else if (sValue === 'P') {
-                return "Warning"
-            } else if (sValue === 'C') {
-                return "Success"
-            }
-            return "None"
-        },
-
-
-        formatXFLAG: function (sValue) {
-            if (sValue === null || sValue === '' || sValue === 'M') {
-                return true;
-            } else if (sValue === 'T') {
-                return false;
-            } else if (sValue === 'X') {
-                return false;
-            }
-
-            return false;
-        },
-
         formatSButton: function (sValue) {
-            if (sValue === null || sValue === '') {
-                return true
-            } else if (sValue === 'P') {
-                return true
-            } else if (sValue === 'C') {
-                return false
+            var sText = null;
+            switch (sValue) {
+                case '012': {
+                    sText = false;
+                }
+                    break;
+                case '020': {
+                    sText = true
+                }
+                    break;
+                default: {
+                    sText = false
+                }
             }
-            return false;            
+
+            return sText;
         }
+
     };
 });

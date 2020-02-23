@@ -1,0 +1,66 @@
+<mvc:View controllerName="com.limscloud.app.controller.jobs.JB03-detail" displayBlock="true" height="100%" 
+	xmlns="sap.m" 
+	xmlns:core="sap.ui.core" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:f="sap.f" 
+	xmlns:layout="sap.ui.layout">
+
+	<f:DynamicPage id="dynamicPageId" headerExpanded="{/headerExpanded}" toggleHeaderOnTitleClick="{/titleClickable}" showFooter="true">
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="Reference Document Number: {JB03>/selected/job_id}-{JB03>/selected/item_id}"/>
+				</f:heading>
+				<f:expandedContent>
+					<ObjectStatus class="sapUiSmallMarginBottom" title="Status" text="{path:'JB03>/selected/status', formatter: '.formatter.formatJobStatusText'}" state="Information" icon="sap-icon://alert" />
+
+				</f:expandedContent>
+				<f:snappedContent>
+					<ObjectStatus class="sapUiSmallMarginBottom" title="Status" text="{path:'JB03>/selected/status', formatter: '.formatter.formatJobStatusText'}" state="Information" icon="sap-icon://alert" />
+
+				</f:snappedContent>
+				<f:actions>
+					<!-- <Button icon="sap-icon://message-popup" text="{/messagesLength}" type="Transparent" press="onMessageButtonPress" visible="{= !!${/messagesLength}}"/> -->
+					<Button text="Change Status" type="Emphasized" press="onStatusChangeBtnPress" visible="true"/>
+					<Button text="Save" icon="sap-icon://save" type="Transparent" press="_onSavePress" visible="{ path: 'JB03>/selected/status', 
+																			formatter: '.formatter.formatSButton'}"/>
+					<Button text="Submit" icon="sap-icon://accept" type="Accept" press="_onSubmitPress" visible="{ path: 'JB03>/selected/status', 
+																			formatter: '.formatter.formatSButton'}"/>
+				</f:actions>
+				<f:navigationActions>
+					<Button icon="sap-icon://decline" type="Transparent" press="onNavBack" tooltip="Close"/>
+				</f:navigationActions>
+			</f:DynamicPageTitle>
+		</f:title>
+		<!-- DynamicPage Header -->
+		<f:header>
+			<f:DynamicPageHeader pinnable="false">
+				<layout:HorizontalLayout allowWrapping="true">
+					<layout:VerticalLayout class="sapUiMediumMarginEnd">
+						<ObjectAttribute title="Test Discipline" text="{JB03>/selected/disp_name}"/>
+						<ObjectAttribute title="Test Group" text="{JB03>/selected/grp_desc}"/>
+					</layout:VerticalLayout>
+					<layout:VerticalLayout class="sapUiMediumMarginEnd">
+						<ObjectAttribute title="Product" text="{JB03>/selected/pm_desc}"/>
+						<ObjectAttribute title="Test Method" text="{JB03>/selected/tms_snam} - {JB03>/selected/tmt_name}"/>
+					</layout:VerticalLayout>
+				</layout:HorizontalLayout>
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			
+		</f:content>
+		<!-- DynamicPage Footer -->
+		<f:footer>
+			<!-- <OverflowToolbar>
+						<Button icon="sap-icon://message-popup" text="{/messagesLength}" type="Emphasized" press="onMessageButtonPress" visible="{= !!${/messagesLength}}"/>
+						<ToolbarSpacer/>
+						<Button type="Accept" text="Accept"/>
+						<Button type="Reject" text="Reject"/>
+					</OverflowToolbar> -->
+		</f:footer>
+	</f:DynamicPage>
+
+
+</mvc:View>

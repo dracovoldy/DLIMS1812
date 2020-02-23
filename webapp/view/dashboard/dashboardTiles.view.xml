@@ -88,7 +88,7 @@
 								</TileContent>
 							</GenericTile> -->
 
-							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Perform Job" subheader="Process" press="_navTT02">
+							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Perform Job" subheader="Process" press="_navJB03">
 								<TileContent footer="JB03">
 									<ImageContent src="sap-icon://activity-individual"/>
 								</TileContent>

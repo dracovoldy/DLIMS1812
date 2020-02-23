@@ -49,8 +49,8 @@ sap.ui.define([
 		_navAD01: function () {
 			this.router.navTo("AD01");
 		},
-		_navTT02: function () {
-			this.router.navTo("TT02");
+		_navJB03: function () {
+			this.router.navTo("JB03");
 		}
 
 	});

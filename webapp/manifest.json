@@ -199,11 +199,19 @@
 					]
 				},
 				{
-					"name": "TT02",
-					"pattern": "TT02",
+					"name": "JB03",
+					"pattern": "JB03",
 					"greedy": false,
 					"target": [
-						"TT02"
+						"JB03"
+					]
+				},
+				{
+					"name": "JB03-detail",
+					"pattern": "JB03-detail",
+					"greedy": false,
+					"target": [
+						"JB03-detail"
 					]
 				},
 				{
@@ -255,35 +263,25 @@
 					"clearAggregation": true,
 					"viewName": "CreateReview",
 					"viewLevel": 3
-				},
-				"AD01": {
+				},				
+				"JB03": {
 					"viewType": "XML",
 					"viewPath": "com.limscloud.app.view.jobs",
 					"parent": "Dashboard",
 					"controlId": "pageContainer",
 					"transition": "slide",
 					"clearAggregation": true,
-					"viewName": "AssignReview",
+					"viewName": "JB03",
 					"viewLevel": 3
 				},
-				"TT02": {
+				"JB03-detail": {
 					"viewType": "XML",
 					"viewPath": "com.limscloud.app.view.jobs",
 					"parent": "Dashboard",
 					"controlId": "pageContainer",
 					"transition": "slide",
 					"clearAggregation": true,
-					"viewName": "TT02",
-					"viewLevel": 3
-				},
-				"TT02-detail": {
-					"viewType": "XML",
-					"viewPath": "com.limscloud.app.view.jobs",
-					"parent": "Dashboard",
-					"controlId": "pageContainer",
-					"transition": "show",
-					"clearAggregation": true,
-					"viewName": "TT02-detail",
+					"viewName": "JB03-detail",
 					"viewLevel": 3
 				},
 				"SU01": {

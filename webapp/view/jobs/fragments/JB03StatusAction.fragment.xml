@@ -1,0 +1,9 @@
+<core:FragmentDefinition xmlns="sap.m" 
+    xmlns:core="sap.ui.core">
+    <ActionSheet title="Choose Your Action" showCancelButton="true" placement="Bottom">
+        <Button text="In Progress" press="_changeStatusWIP" />
+        <Button text="Pending" press="actionSelected" />
+        <Button text="Suspended" press="actionSelected" />
+        <Button text="Finished" press="actionSelected" />
+    </ActionSheet>
+</core:FragmentDefinition>

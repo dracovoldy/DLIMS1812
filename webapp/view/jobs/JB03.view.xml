@@ -1,0 +1,66 @@
+<mvc:View controllerName="com.limscloud.app.controller.jobs.JB03" displayBlock="true" height="100%" 
+	xmlns="sap.m" 
+	xmlns:core="sap.ui.core" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:l="sap.ui.layout" 
+	xmlns:f="sap.ui.layout.form">
+	<NavContainer id="JB03">
+		<pages>
+			<Page id="page0" showHeader="true" showFooter="false" class="sapUiSizeCompact" title="Perform Job" showNavButton="true" navButtonPress="onNavBack">
+				<content>
+
+					<Table id="jobHeaderTable" inset="false" items="{JB03>/documents}" 
+					mode="SingleSelectLeft" selectionChange="_navToDetail" class="sapUiResponsiveContentPadding">
+						<headerToolbar>
+							<OverflowToolbar>
+								<content>
+									<Title text="My Jobs ({JB03>/documentsCount})" />
+									<ToolbarSpacer />
+
+								</content>
+							</OverflowToolbar>
+						</headerToolbar>
+						<columns>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Begin" width="7em">
+								<Text text="Reference #" />
+							</Column>							
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Begin" width="8em">
+								<Text text="Discipline" />
+							</Column>							
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Begin" width="12em">
+								<Text text="Group - Product" />
+							</Column>							
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Begin" width="14em">
+								<Text text="Test Method" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="7em">
+								<Text text="Assigned At" />
+							</Column>							
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="4em">
+								<Text text="Status" />
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{JB03>job_id}-{JB03>item_id}" />
+									<Text text="{JB03>disp_name}" />
+									<Text text="{JB03>grp_desc} - {JB03>pm_desc}" />
+									<Text text="{JB03>tms_snam} - {JB03>tmt_name}" />									
+									<Text text="{ path: 'JB03>assignedAt', formatter: '.formatter.formatDateTime'}" />									
+									<Text text="{ path: 'JB03>status', formatter: '.formatter.formatJobStatusText'}" />
+
+									
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+				<footer>
+
+				</footer>
+			</Page>
+
+		</pages>
+	</NavContainer>
+</mvc:View>
