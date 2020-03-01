@@ -8,6 +8,8 @@ sap.ui.define([
 ], function (BaseController, jQuery, Popover, Button, JSONModel, MessageBox) {
 	"use strict";
 
+	var appModelName = "customerModel";
+
 	return BaseController.extend("com.limscloud.app.controller.customer.CreateCustomers", {
 
 		onInit: function () {
@@ -16,42 +18,42 @@ sap.ui.define([
 			route.attachPatternMatched(this.onPatternMatched, this);
 
 		},
-		onPatternMatched: function (oEvent) {
+		initUsers: function () {
 			var that = this;
+			var URL = "";
+			var weHaveSuccess = false;
+
+			URL = "http://localhost:3000/api/commons/users"
+			$.ajax({
+				type: "GET",
+				url: URL,
+				dataType: "json",
+				crossDomain: true,
+
+				success: function (results) {
+					weHaveSuccess = true;
+					that.getView().getModel(appModelName).setProperty("/lookups/users", results);
+				},
+				error: function (response) {
+					MessageToast.show("Error!  " + response.status);
+				},
+				complete: function () {
+					if (!weHaveSuccess) {
+						MessageToast.show("Unable to fetch users");
+					}
+				}
+			});
+		},
+		onPatternMatched: function (oEvent) {
+			console.log("I'm at RD50 - Create Customer")
+			this.initLocalModel();
+			this.initUsers();
+		},
+		initLocalModel: function () {
 			// Init Model data
 			var oModel = new JSONModel(jQuery.sap.getModulePath("com.limscloud.app.jsonstore", "/CU01.json"));
 			oModel.setSizeLimit(1000000);
-			this.getView().setModel(oModel, "customerModel");
-
-
-			var initUsers = function (modelName) {
-				var URL = "";
-				var weHaveSuccess = false;
-
-				URL = "http://localhost:3000/api/commons/users"
-				$.ajax({
-					type: "GET",
-					url: URL,
-					dataType: "json",
-					crossDomain: true,
-
-					success: function (results) {
-						weHaveSuccess = true;
-						that.getView().getModel(modelName).setProperty("/lookups/users", results);
-					},
-					error: function (response) {
-						MessageToast.show("Error!  " + response.status);
-					},
-					complete: function () {
-						if (!weHaveSuccess) {
-							MessageToast.show("Unable to fetch users");
-						}
-					}
-				});
-			}
-
-			initUsers("customerModel");
-
+			this.getView().setModel(oModel, appModelName);
 		},
 		_onCreateCustomer: function (oEvent) {
 			var oModel = this.getView().getModel("customerModel");
@@ -63,7 +65,7 @@ sap.ui.define([
 			oModel.setProperty("/payload/zipcode", this.getView().byId("custZipcode").getValue());
 			oModel.setProperty("/payload/city", this.getView().byId("custCity").getValue());
 			oModel.setProperty("/payload/createdBy", this.getView().byId("createdBy").getSelectedKey());
-			oModel.setProperty("/payload/modifiedBy", this.getView().byId("createdBy").getSelectedKey());			
+			oModel.setProperty("/payload/modifiedBy", this.getView().byId("createdBy").getSelectedKey());
 
 			var oPayload = this.getView().getModel("customerModel").getProperty("/payload")
 
