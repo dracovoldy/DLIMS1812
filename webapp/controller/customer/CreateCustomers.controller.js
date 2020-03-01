@@ -47,15 +47,14 @@ sap.ui.define([
 		onPatternMatched: function (oEvent) {
 			console.log("I'm at RD50 - Create Customer")
 			this.initLocalModel();
-			// this.initUsers();
+			
 		},
 		initLocalModel: function () {
 			// Init Model data
 			var oModel = new JSONModel();
 			oModel.loadData(jQuery.sap.getModulePath("com.limscloud.app.jsonstore", "/CU01.json"));
 			// attach event once fires one time when the file is loaded
-			oModel.attachEventOnce("requestCompleted", this.initUsers.bind(this));
-			// oModel.setSizeLimit(1000000);
+			oModel.attachEventOnce("requestCompleted", this.initUsers.bind(this));			
 			this.getView().setModel(oModel, appModelName);
 		},
 		_onCreateCustomer: function (oEvent) {
