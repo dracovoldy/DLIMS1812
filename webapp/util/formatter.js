@@ -29,6 +29,10 @@ sap.ui.define([
                     sText = "In Progress"
                 }
                     break;
+                case '100': {
+                    sText = "Job Finished"
+                }
+                    break;
                 default: {
                     sText = "Invalid Status"
                 }
@@ -45,6 +49,10 @@ sap.ui.define([
                     break;
                 case '020': {
                     sText = true
+                }
+                    break;
+                case '100': {
+                    sText = false
                 }
                     break;
                 default: {

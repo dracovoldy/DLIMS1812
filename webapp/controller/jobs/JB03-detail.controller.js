@@ -26,6 +26,37 @@ sap.ui.define([
 				this._showFormFragment("JB03FragmentDisplay");
 			}
 		},
+		refreshSelected: function (labUser, jobId, itemId, isAfterSubmit) {
+			var that = this;
+			var URL = "";
+			var weHaveSuccess = false;
+			var appModel = this.getOwnerComponent().getModel(appModelName);
+
+			URL = `http://localhost:3000/api/testing/JB03/refresh?labUser=${labUser}&jobId=${jobId}&itemId=${itemId}&isAfterSubmit=${isAfterSubmit}`
+			$.ajax({
+				type: "GET",
+				url: URL,
+				dataType: "json",
+				crossDomain: true,
+
+				success: function (results) {					
+					console.log(results);
+					weHaveSuccess = true;
+					MessageToast.show("Selected Job Item Refreshed");
+					appModel.setProperty("/selected", results[0]);
+				},
+				error: function (response) {
+					console.log(response);
+					MessageToast.show("Error!  " + response.status);
+				},
+				complete: function () {
+					if (!weHaveSuccess) {
+						MessageToast.show("JB03 /refresh error!");						
+					}		
+					that.onPatternMatched();		
+				}
+			});
+		},
 		onStatusChangeBtnPress: function (oEvent) {
 			var oButton = oEvent.getSource();
 
@@ -76,6 +107,8 @@ sap.ui.define([
 						MessageToast.show("JB03 setStatusWIP error!");
 						that._showFormFragment("JB03FragmentDisplay");
 					}
+
+					that.refreshSelected(payload.actionUser, payload.jobId, payload.jobItem, false);
 				}
 			});
 		},
@@ -103,116 +136,49 @@ sap.ui.define([
 			return this._formFragments[sFragmentName];
 		},
 		_onSavePress: function (oEvent) {
-			var that = this;
-			var filterItems = function (item) {
-				if (item.XFLAG === 'T' || item.XFLAG === 'X') {
-					return false;
-				} else {
-					return true;
-				}
-			}
-
-			var createObj = function (item) {
-				return {
-					"jobId": that.getView().getModel("jobsModel").getProperty("/perform/header/jobId"),
-					"itemId": item.itemId,
-					"test_value": item.test_value,
-					"performBy": item.performBy
-				}
-			}
-
-			var payload = {
-				"jobId": that.getView().getModel("jobsModel").getProperty("/perform/header/jobId"),
-				"items": this.getView().getModel("jobsModel").getProperty("/perform/items").filter(filterItems).map(createObj)
-			}
-
-			console.log(payload);
-
-			//prepare post
-			var URL = "http://localhost:3000/api/jobs/performSave";
-
-			$.ajax({
-				url: URL,
-				type: 'POST',
-				data: payload,
-				dataType: 'json',
-				crossDomain: true,
-				success: function (results) {
-					console.log(results);
-					MessageBox.success("Job successfully saved", {
-						details: results,
-						contentWidth: "100px"
-					});
-
-					that.onPatternMatched();
-				},
-				error: function (error) {
-					console.log(error);
-					that.onPatternMatched();
-				}
-			});
+			
 
 
 		},
 
 		_onSubmitPress: function (oEvent) {
 			var that = this;
-			if (this.getView().byId("jobItemsTable").getSelectedContexts().length < 1) {
-				MessageBox.error("Please select item(s) to submit");
-				return;
-			}
-
-
-			var filterItems = function (item) {
-				if (item.XFLAG === 'T' || item.XFLAG === 'X') {
-					return false;
-				} else {
-					return true;
-				}
-			}
-
-			var createObj = function (item) {
-				return {
-					"jobId": that.getView().getModel("jobsModel").getProperty("/perform/header/jobId"),
-					"itemId": item.itemId,
-					"test_value": item.test_value,
-					"performBy": item.performBy
-				}
-			}
+			var URL = "";
+			var weHaveSuccess = false;
 
 			var payload = {
-				"jobId": that.getView().getModel("jobsModel").getProperty("/perform/header/jobId"),
-				"items": that.getView().byId("jobItemsTable").getSelectedContexts().map(function (oContext) {
-					return oContext.getObject();
-				}).filter(filterItems).map(createObj)
-			}
+				"jobId": this.getModel(appModelName).getProperty("/selected/job_id"),
+				"itemId": this.getModel(appModelName).getProperty("/selected/item_id"),
+				"value": this.getModel(appModelName).getProperty("/selected/performValue"),
+				"comment": this.getModel(appModelName).getProperty("/selected/performComments"),
+				"actionUser": "PANDYAH"
+			};
 
-			console.log(payload);
-
-			//prepare post
-			var URL = "http://localhost:3000/api/jobs/performSubmit";
-
+			URL = "http://localhost:3000/api/testing/JB03/perform"
 			$.ajax({
-				url: URL,
-				type: 'POST',
+				type: "POST",
 				data: payload,
-				dataType: 'json',
+				url: URL,
+				dataType: "json",
 				crossDomain: true,
+
 				success: function (results) {
 					console.log(results);
-					MessageBox.success("Job successfully submitted", {
-						details: results,
-						contentWidth: "100px"
-					});
-
-					that.onPatternMatched();
+					weHaveSuccess = true;
+					MessageToast.show("Successfully Submitted");
 				},
-				error: function (error) {
-					console.log(error);
-					that.onPatternMatched();
+				error: function (response) {
+					console.log(response);
+					MessageToast.show("Error!  " + response.status);
+				},
+				complete: function () {
+					if (!weHaveSuccess) {
+						MessageToast.show("JB03 /perform error");
+					}
+
+					that.refreshSelected(payload.actionUser, payload.jobId, payload.itemId, true);
 				}
 			});
-
 
 		}
 	});
